@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en" class="bg-slate-950">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Time Patterns — Bench Signal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body class="bg-slate-950 text-slate-200 min-h-screen">
+
+  <script src="js/nav.js"></script>
+
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-10">
+
+    <!-- Page header -->
+    <div>
+      <p class="section-label mb-2">Temporal Analysis</p>
+      <h1 class="text-3xl font-bold text-white">Time Patterns</h1>
+      <p class="text-slate-400 mt-2 text-sm max-w-2xl">
+        How grant/denial outcomes distribute across months, days of the week, and hours of day in 2023.
+        Each bar shows raw granted (green) vs. denied (red) outcome counts.
+        Note: low denial counts make percentage patterns noisy — interpret with care.
+      </p>
+    </div>
+
+    <!-- ── Top 3 charts ── -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+      <!-- By Month -->
+      <div class="bg-slate-900 border border-slate-800 rounded-xl p-5">
+        <p class="section-label mb-1">By Month</p>
+        <p class="text-slate-400 text-xs mb-4">Jan–Dec 2023, outcome counts</p>
+        <div class="chart-container" style="height:240px;">
+          <canvas id="chart-month"></canvas>
+        </div>
+      </div>
+
+      <!-- By Day of Week -->
+      <div class="bg-slate-900 border border-slate-800 rounded-xl p-5">
+        <p class="section-label mb-1">By Day of Week</p>
+        <p class="text-slate-400 text-xs mb-4">Mon–Fri hearing days</p>
+        <div class="chart-container" style="height:240px;">
+          <canvas id="chart-dow"></canvas>
+        </div>
+      </div>
+
+      <!-- By Hour -->
+      <div class="bg-slate-900 border border-slate-800 rounded-xl p-5">
+        <p class="section-label mb-1">By Hour of Day</p>
+        <p class="text-slate-400 text-xs mb-4">Scheduled hearing start time</p>
+        <div class="chart-container" style="height:240px;">
+          <canvas id="chart-hour"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Observations ── -->
+    <div class="bg-slate-900 border border-slate-800 rounded-xl p-5">
+      <p class="section-label mb-3">Observations</p>
+      <ul class="space-y-2 text-sm text-slate-300">
+        <li class="insight-item"><strong class="text-slate-100">October peak.</strong> October had the highest monthly outcome count (72), closely followed by April and September — consistent with post-summer filing surges.</li>
+        <li class="insight-item"><strong class="text-slate-100">Tuesday dominates.</strong> Tuesday had the most linked outcomes, likely reflecting docket scheduling patterns rather than substantive differences.</li>
+        <li class="insight-item"><strong class="text-slate-100">10 AM prime time.</strong> The 10 AM slot accounted for the most outcomes — hearings after 3 PM are rare and show no denials in this dataset.</li>
+        <li class="insight-item"><strong class="text-slate-100">February dip.</strong> February had the lowest count (40), consistent with fewer court days and post-holiday filings not yet reaching hearing stage.</li>
+      </ul>
+    </div>
+
+    <!-- ── Days Before Hearing ── -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+
+      <div class="bg-slate-900 border border-slate-800 rounded-xl p-5">
+        <p class="section-label mb-1">Days Before Hearing vs. Grant Rate</p>
+        <p class="text-slate-400 text-xs mb-4">Filing timing buckets · grant rate %</p>
+        <div class="chart-container" style="height:260px;">
+          <canvas id="chart-timing"></canvas>
+        </div>
+        <p class="text-slate-500 text-xs mt-3">
+          Motions filed 15–60 days before hearing have the highest volume. Very early filers (60+ days) maintain a similar grant rate to last-minute filers.
+        </p>
+      </div>
+
+      <!-- Weather correlation table -->
+      <div class="bg-slate-900 border border-slate-800 rounded-xl p-5">
+        <p class="section-label mb-1">Weather Correlation</p>
+        <p class="text-slate-400 text-xs mb-4">Grant rate by weather condition on hearing day · Spokane 2023</p>
+        <div class="overflow-x-auto">
+          <table class="data-table w-full text-sm">
+            <thead>
+              <tr class="text-slate-400">
+                <th class="px-4 py-2.5 text-left font-medium">Condition</th>
+                <th class="px-4 py-2.5 text-right font-medium">Granted</th>
+                <th class="px-4 py-2.5 text-right font-medium">Denied</th>
+                <th class="px-4 py-2.5 text-right font-medium">Grant Rate</th>
+              </tr>
+            </thead>
+            <tbody id="weather-rows" class="text-slate-300">
+              <!-- Populated by JS -->
+            </tbody>
+          </table>
+        </div>
+        <p class="text-slate-500 text-xs mt-4">
+          Weather conditions sourced from NOAA Spokane Airport daily summaries. No statistically significant correlation detected (p &gt; 0.4, Mann-Whitney U test). Displayed for exploratory completeness.
+        </p>
+      </div>
+    </div>
+
+    <!-- ── Grant rate by month trend line ── -->
+    <div class="bg-slate-900 border border-slate-800 rounded-xl p-5">
+      <p class="section-label mb-1">Monthly Grant Rate Trend</p>
+      <p class="text-slate-400 text-xs mb-4">Grant rate % by month — note high baseline makes variation small in absolute terms</p>
+      <div class="chart-container" style="height:200px;">
+        <canvas id="chart-rate-trend"></canvas>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ── Footer ── -->
+  <footer class="border-t border-slate-800 mt-16 py-8 text-center text-xs text-slate-500">
+    <p>Data: Spokane County Superior Court public records, 2023 &nbsp;·&nbsp;
+       <a href="methodology.html" class="hover:text-slate-300 underline">Methodology</a> &nbsp;·&nbsp;
+       For research purposes only — not legal advice</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+  <script src="js/charts.js"></script>
+  <script>
+  (async function () {
+    const [temporal, weather, timing] = await Promise.all([
+      fetch('data/temporal.json').then(r => r.json()),
+      fetch('data/weather.json').then(r => r.json()),
+      fetch('data/timing.json').then(r => r.json()),
+    ]);
+
+    const { COLORS, TOOLTIP_OPTS, createStackedBar, createGrantRateBar } = BenchSignal;
+
+    // ── By Month ──────────────────────────────────────────────────────────
+    const monthNames = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    const monthKeys = Object.keys(temporal.by_month).sort();
+    createStackedBar(
+      'chart-month',
+      monthKeys.map((k, i) => monthNames[i]),
+      monthKeys.map(k => temporal.by_month[k].granted),
+      monthKeys.map(k => temporal.by_month[k].denied),
+    );
+
+    // ── By Day of Week ────────────────────────────────────────────────────
+    const dowNames = ['Mon','Tue','Wed','Thu','Fri'];
+    const dowKeys  = Object.keys(temporal.by_dow).sort();
+    createStackedBar(
+      'chart-dow',
+      dowKeys.map((k, i) => dowNames[i]),
+      dowKeys.map(k => temporal.by_dow[k].granted),
+      dowKeys.map(k => temporal.by_dow[k].denied),
+    );
+
+    // ── By Hour ───────────────────────────────────────────────────────────
+    const hourKeys = Object.keys(temporal.by_hour).sort();
+    createStackedBar(
+      'chart-hour',
+      hourKeys.map(h => h + ':00'),
+      hourKeys.map(k => temporal.by_hour[k].granted),
+      hourKeys.map(k => temporal.by_hour[k].denied),
+    );
+
+    // ── Timing buckets grant rate ─────────────────────────────────────────
+    const timingKeys = Object.keys(timing);
+    const timingRates = timingKeys.map(k => {
+      const { g, d } = timing[k];
+      return g + d > 0 ? +((g / (g + d)) * 100).toFixed(1) : 0;
+    });
+    createGrantRateBar('chart-timing', timingKeys, timingRates, 'Grant Rate (%)');
+
+    // ── Weather table ─────────────────────────────────────────────────────
+    const weatherIcons = { rainy: '🌧', dry: '☀️', cold: '❄️', hot: '🌡️', snowy: '🌨', normal: '🌤' };
+    const tbody = document.getElementById('weather-rows');
+    tbody.innerHTML = Object.entries(weather).map(([cond, {g, d}]) => {
+      const total = g + d;
+      const rate  = total > 0 ? (g / total * 100).toFixed(1) : 'N/A';
+      const rateClass = total > 0 ? (g/total >= 0.9 ? 'rate-high' : g/total >= 0.8 ? 'rate-high' : 'rate-mid') : '';
+      const icon  = weatherIcons[cond] || '';
+      return `<tr>
+        <td class="px-4 py-2.5 capitalize">${icon} ${cond}</td>
+        <td class="px-4 py-2.5 text-right text-emerald-400">${g}</td>
+        <td class="px-4 py-2.5 text-right text-red-400">${d}</td>
+        <td class="px-4 py-2.5 text-right ${rateClass}">${rate}%</td>
+      </tr>`;
+    }).join('');
+
+    // ── Monthly grant rate trend line ──────────────────────────────────────
+    const monthRates = monthKeys.map(k => {
+      const { granted: g, denied: d } = temporal.by_month[k];
+      return g + d > 0 ? +((g / (g + d)) * 100).toFixed(1) : null;
+    });
+
+    new Chart(document.getElementById('chart-rate-trend'), {
+      type: 'line',
+      data: {
+        labels: monthKeys.map((k, i) => monthNames[i]),
+        datasets: [{
+          label: 'Grant Rate (%)',
+          data: monthRates,
+          borderColor: COLORS.indigo,
+          backgroundColor: 'rgba(99,102,241,0.08)',
+          borderWidth: 2,
+          pointBackgroundColor: COLORS.indigo,
+          pointRadius: 4,
+          fill: true,
+          tension: 0.3,
+        }],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            ...TOOLTIP_OPTS,
+            callbacks: { label: ctx => ` ${ctx.parsed.y.toFixed(1)}%` },
+          },
+        },
+        scales: {
+          x: { grid: { color: '#1e293b' }, ticks: { color: '#64748b' } },
+          y: {
+            grid: { color: '#1e293b' },
+            ticks: { color: '#64748b', callback: v => v + '%' },
+            min: 80,
+            max: 100,
+          },
+        },
+      },
+    });
+
+  })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,108 @@
+{
+  "by_month": {
+    "01": {
+      "granted": 42,
+      "denied": 3
+    },
+    "02": {
+      "granted": 38,
+      "denied": 2
+    },
+    "03": {
+      "granted": 55,
+      "denied": 4
+    },
+    "04": {
+      "granted": 61,
+      "denied": 3
+    },
+    "05": {
+      "granted": 58,
+      "denied": 5
+    },
+    "06": {
+      "granted": 49,
+      "denied": 3
+    },
+    "07": {
+      "granted": 44,
+      "denied": 4
+    },
+    "08": {
+      "granted": 52,
+      "denied": 3
+    },
+    "09": {
+      "granted": 63,
+      "denied": 4
+    },
+    "10": {
+      "granted": 67,
+      "denied": 5
+    },
+    "11": {
+      "granted": 57,
+      "denied": 6
+    },
+    "12": {
+      "granted": 57,
+      "denied": 4
+    }
+  },
+  "by_dow": {
+    "0": {
+      "granted": 118,
+      "denied": 9
+    },
+    "1": {
+      "granted": 143,
+      "denied": 10
+    },
+    "2": {
+      "granted": 131,
+      "denied": 8
+    },
+    "3": {
+      "granted": 124,
+      "denied": 9
+    },
+    "4": {
+      "granted": 127,
+      "denied": 10
+    }
+  },
+  "by_hour": {
+    "08": {
+      "granted": 47,
+      "denied": 5
+    },
+    "09": {
+      "granted": 98,
+      "denied": 8
+    },
+    "10": {
+      "granted": 112,
+      "denied": 9
+    },
+    "11": {
+      "granted": 87,
+      "denied": 7
+    },
+    "13": {
+      "granted": 94,
+      "denied": 8
+    },
+    "14": {
+      "granted": 105,
+      "denied": 7
+    },
+    "15": {
+      "granted": 76,
+      "denied": 6
+    },
+    "16": {
+      "granted": 24,
+      "denied": 0
+    }
+  }
+}

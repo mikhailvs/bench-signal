@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en" class="bg-slate-950">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bench Signal — Spokane County Judicial Analytics</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: { colors: { 'slate-950': '#020617' } } }
+    };
+  </script>
+  <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body class="bg-slate-950 text-slate-200 min-h-screen">
+
+  <!-- Nav injected by nav.js -->
+  <script src="js/nav.js"></script>
+
+  <!-- ── Hero ── -->
+  <header class="relative overflow-hidden bg-gradient-to-b from-slate-900 to-slate-950 border-b border-slate-800">
+    <div class="absolute inset-0 pointer-events-none">
+      <div class="absolute -top-20 -left-20 w-96 h-96 rounded-full bg-indigo-900/20 blur-3xl"></div>
+      <div class="absolute -top-10 right-1/4 w-72 h-72 rounded-full bg-cyan-900/10 blur-3xl"></div>
+    </div>
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 md:py-20 text-center">
+      <p class="section-label mb-3">Spokane County Superior Court · Family Law · 2023</p>
+      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight">
+        <span class="text-white">Bench</span><span class="text-indigo-400">Signal</span>
+      </h1>
+      <p class="mt-4 text-xl text-slate-400 max-w-2xl mx-auto">
+        Judicial Pattern Intelligence — analyzing 2023 Spokane County Superior Court<br class="hidden sm:block"/> family law decisions to surface systematic patterns.
+      </p>
+      <div class="mt-8 flex flex-wrap justify-center gap-3">
+        <a href="judges.html"   class="px-5 py-2 bg-indigo-600 hover:bg-indigo-500 text-white rounded-lg text-sm font-medium transition-colors">Explore Judges</a>
+        <a href="motions.html"  class="px-5 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded-lg text-sm font-medium transition-colors">Motion Explorer</a>
+        <a href="methodology.html" class="px-5 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded-lg text-sm font-medium transition-colors">How It Works</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-14">
+
+    <!-- ── KPI Cards ── -->
+    <section>
+      <p class="section-label mb-4">At a glance</p>
+      <div id="kpi-grid" class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+        <!-- Populated by JS -->
+      </div>
+    </section>
+
+    <!-- ── Charts row ── -->
+    <section class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+      <!-- Judge grant rate bar -->
+      <div class="lg:col-span-2 bg-slate-900 border border-slate-800 rounded-xl p-5">
+        <div class="flex items-center justify-between mb-4">
+          <div>
+            <p class="section-label mb-1">Grant Rate by Judge</p>
+            <p class="text-slate-400 text-xs">Judges with ≥2 linked outcomes · sorted descending</p>
+          </div>
+        </div>
+        <div class="chart-container" style="height:340px;">
+          <canvas id="chart-judge-bars"></canvas>
+        </div>
+      </div>
+
+      <!-- Case subtype doughnut -->
+      <div class="bg-slate-900 border border-slate-800 rounded-xl p-5">
+        <p class="section-label mb-1">Case Subtypes</p>
+        <p class="text-slate-400 text-xs mb-4">596 cases, 2023</p>
+        <div class="chart-container" style="height:280px;">
+          <canvas id="chart-subtypes"></canvas>
+        </div>
+        <div id="subtype-legend" class="mt-4 space-y-1 text-xs text-slate-400"></div>
+      </div>
+    </section>
+
+    <!-- ── Insights ── -->
+    <section class="bg-slate-900 border border-slate-800 rounded-xl p-6">
+      <p class="section-label mb-4">What We Found</p>
+      <ul class="space-y-3 text-sm text-slate-300">
+        <li class="insight-item">
+          <strong class="text-slate-100">High overall grant rate (93%).</strong> Of 697 motion outcomes linked, 643 were granted — suggesting family law motions in Spokane courts are almost universally uncontested or pro forma at the hearing stage.
+        </li>
+        <li class="insight-item">
+          <strong class="text-slate-100">Substantial judge-level variation.</strong> Grant rates among judges with sufficient outcome data range from 87% to 100%, a ~13 percentage-point spread that persists across motion types.
+        </li>
+        <li class="insight-item">
+          <strong class="text-slate-100">Dissolution dominates the docket.</strong> 66% of cases are dissolutions; contempt and modification hearings (14% combined) show slightly lower grant rates and greater motion complexity.
+        </li>
+        <li class="insight-item">
+          <strong class="text-slate-100">Outcome linking is the key bottleneck.</strong> Only ~11.7% of all documents have linked outcomes; OCR quality on form-filled PDFs is the primary constraint — see Methodology.
+        </li>
+      </ul>
+    </section>
+
+    <!-- ── Quick links ── -->
+    <section class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+      <a href="judges.html" class="block bg-slate-900 border border-slate-800 hover:border-indigo-700 rounded-xl p-5 transition-colors group">
+        <div class="text-2xl mb-2">⚖</div>
+        <div class="font-semibold text-slate-100 group-hover:text-indigo-300 transition-colors">Judge Profiles</div>
+        <div class="text-slate-400 text-sm mt-1">Grant rates, outcome counts, and motion breakdowns for all 26 judges.</div>
+      </a>
+      <a href="motions.html" class="block bg-slate-900 border border-slate-800 hover:border-indigo-700 rounded-xl p-5 transition-colors group">
+        <div class="text-2xl mb-2">📋</div>
+        <div class="font-semibold text-slate-100 group-hover:text-indigo-300 transition-colors">Motion Explorer</div>
+        <div class="text-slate-400 text-sm mt-1">Filter by judge, motion type, and case subtype. Compare pages filed vs. outcomes.</div>
+      </a>
+      <a href="temporal.html" class="block bg-slate-900 border border-slate-800 hover:border-indigo-700 rounded-xl p-5 transition-colors group">
+        <div class="text-2xl mb-2">📅</div>
+        <div class="font-semibold text-slate-100 group-hover:text-indigo-300 transition-colors">Time Patterns</div>
+        <div class="text-slate-400 text-sm mt-1">Month, day-of-week, and hour-of-day grant rate patterns across 2023.</div>
+      </a>
+    </section>
+
+  </main>
+
+  <!-- ── Footer ── -->
+  <footer class="border-t border-slate-800 mt-16 py-8 text-center text-xs text-slate-500">
+    <p>Data: Spokane County Superior Court public records, 2023 &nbsp;·&nbsp;
+       <a href="methodology.html" class="hover:text-slate-300 underline">Methodology</a> &nbsp;·&nbsp;
+       For research purposes only — not legal advice</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+  <script src="js/charts.js"></script>
+  <script>
+  (async function () {
+    const [judges, caseSummary] = await Promise.all([
+      fetch('data/judges.json').then(r => r.json()),
+      fetch('data/case_summary.json').then(r => r.json()),
+    ]);
+
+    // ── KPI cards ──────────────────────────────────────────────────────────
+    const judgesWithOutcomes = judges.filter(j => j.n_outcomes > 0);
+    const totalOutcomes = judges.reduce((s, j) => s + j.n_outcomes, 0);
+    const totalGranted  = judges.reduce((s, j) => s + j.n_granted, 0);
+    const totalCases    = judges.reduce((s, j) => s + j.n_cases,   0);
+    const overallRate   = totalOutcomes > 0 ? (totalGranted / totalOutcomes * 100).toFixed(0) : 'N/A';
+
+    const kpis = [
+      { label: 'Total Cases',     value: totalCases.toLocaleString(),    sub: '2023 family law', color: 'text-indigo-400' },
+      { label: 'Linked Outcomes', value: totalOutcomes.toLocaleString(), sub: '~11.7% of docs',  color: 'text-cyan-400'   },
+      { label: 'Overall Grant Rate', value: overallRate + '%',           sub: 'of linked outcomes', color: 'text-emerald-400' },
+      { label: 'Judges Covered', value: judges.length.toString(),        sub: 'officers of record', color: 'text-violet-400' },
+    ];
+
+    const grid = document.getElementById('kpi-grid');
+    grid.innerHTML = kpis.map(k => `
+      <div class="kpi-card bg-slate-900 border border-slate-800 rounded-xl p-5">
+        <p class="text-xs text-slate-500 uppercase tracking-wide mb-1">${k.label}</p>
+        <p class="text-3xl font-bold ${k.color}">${k.value}</p>
+        <p class="text-xs text-slate-500 mt-1">${k.sub}</p>
+      </div>`).join('');
+
+    // ── Judge bar chart ────────────────────────────────────────────────────
+    // Only show judges with actual outcomes
+    const activeJudges = judgesWithOutcomes
+      .filter(j => j.grant_rate != null)
+      .sort((a, b) => b.grant_rate - a.grant_rate);
+
+    BenchSignal.createJudgeBarChart('chart-judge-bars', activeJudges);
+
+    // ── Case subtype doughnut ──────────────────────────────────────────────
+    const subtypeLabels = caseSummary.map(s => s.case_subtype.replace(/_/g, ' '));
+    const subtypeValues = caseSummary.map(s => s.n);
+    BenchSignal.createDoughnutChart('chart-subtypes', subtypeLabels, subtypeValues);
+
+  })();
+  </script>
+</body>
+</html>

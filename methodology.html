@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en" class="bg-slate-950">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Methodology — Bench Signal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body class="bg-slate-950 text-slate-200 min-h-screen">
+
+  <script src="js/nav.js"></script>
+
+  <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+
+    <!-- Page header -->
+    <div class="mb-10">
+      <p class="section-label mb-2">Transparency &amp; Reproducibility</p>
+      <h1 class="text-3xl font-bold text-white">Methodology</h1>
+      <p class="text-slate-400 mt-2 text-sm max-w-2xl">
+        How Bench Signal collects, processes, links, and analyzes Spokane County Superior Court family law data.
+        Published to support peer review and critical assessment.
+      </p>
+    </div>
+
+    <div class="space-y-10">
+
+      <!-- ── 1. Data Selection ── -->
+      <section class="bg-slate-900 border border-slate-800 rounded-xl p-6">
+        <div class="flex gap-4">
+          <div class="shrink-0 w-8 h-8 rounded-full bg-indigo-900/60 text-indigo-300 text-sm font-bold flex items-center justify-center">1</div>
+          <div class="flex-1">
+            <h2 class="text-lg font-bold text-white mb-3">Case Selection</h2>
+            <div class="prose-slate space-y-3 text-sm text-slate-300 leading-relaxed">
+              <p>We targeted <strong class="text-slate-100">2023 Spokane County Superior Court family law cases</strong> (case numbers beginning with 23-, court code 32). The Washington Courts public case viewer was the sole data source — all records are public under <a href="https://app.leg.wa.gov/rcw/default.aspx?cite=2.28.010" class="text-indigo-400 hover:text-indigo-300 underline" target="_blank">RCW 2.28.010</a>.</p>
+              <p>Case types scraped:</p>
+              <ul class="list-disc pl-5 space-y-1 text-slate-400">
+                <li><strong class="text-slate-300">Dissolution (type 3)</strong> — divorce proceedings with or without children</li>
+                <li><strong class="text-slate-300">Modification</strong> — parenting plan or support modifications</li>
+                <li><strong class="text-slate-300">Contempt</strong> — enforcement and contempt findings</li>
+                <li><strong class="text-slate-300">Legal Separation</strong> — formal separation filings</li>
+                <li><strong class="text-slate-300">Other Family</strong> — paternity, protection orders, miscellaneous</li>
+              </ul>
+              <p>Final corpus: <strong class="text-slate-100">596 cases</strong>, filtered to those with at least one docketed document and an identified judicial officer.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── 2. Data Collection ── -->
+      <section class="bg-slate-900 border border-slate-800 rounded-xl p-6">
+        <div class="flex gap-4">
+          <div class="shrink-0 w-8 h-8 rounded-full bg-indigo-900/60 text-indigo-300 text-sm font-bold flex items-center justify-center">2</div>
+          <div class="flex-1">
+            <h2 class="text-lg font-bold text-white mb-3">Data Collection — Web Scraping</h2>
+            <div class="space-y-3 text-sm text-slate-300 leading-relaxed">
+              <p>A <strong class="text-slate-100">Playwright-based browser automation</strong> pipeline scraped the Washington Courts public portal. Key design decisions:</p>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-3">
+                <div class="bg-slate-800 rounded-lg p-3">
+                  <p class="text-xs font-semibold text-indigo-300 uppercase tracking-wide mb-1">Browser Pool</p>
+                  <p class="text-xs text-slate-400">Chromium contexts with human-like anti-bot headers (User-Agent, Accept-Language, viewport randomization). No credentials used.</p>
+                </div>
+                <div class="bg-slate-800 rounded-lg p-3">
+                  <p class="text-xs font-semibold text-indigo-300 uppercase tracking-wide mb-1">Rate Limiting</p>
+                  <p class="text-xs text-slate-400">Token-bucket limiter with Gaussian jitter (mean 2.3 s, σ 0.8 s between requests). Maximum 3 concurrent contexts.</p>
+                </div>
+                <div class="bg-slate-800 rounded-lg p-3">
+                  <p class="text-xs font-semibold text-indigo-300 uppercase tracking-wide mb-1">Search Strategy</p>
+                  <p class="text-xs text-slate-400">Year-prefix enumeration: 23-3-00001-32 through 23-3-05000-32, skipping 404s. Case detail pages fetched individually.</p>
+                </div>
+                <div class="bg-slate-800 rounded-lg p-3">
+                  <p class="text-xs font-semibold text-indigo-300 uppercase tracking-wide mb-1">Document Download</p>
+                  <p class="text-xs text-slate-400">PDFs saved to <code class="text-cyan-400">documents/{case_number}/{filename}.pdf</code>. Retry on transient HTTP errors (3× backoff).</p>
+                </div>
+              </div>
+              <p class="text-slate-400 text-xs mt-2">Total documents retrieved: ~17,645 across all cases. Scraping ran over three nights in early 2024.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── 3. OCR Pipeline ── -->
+      <section class="bg-slate-900 border border-slate-800 rounded-xl p-6">
+        <div class="flex gap-4">
+          <div class="shrink-0 w-8 h-8 rounded-full bg-indigo-900/60 text-indigo-300 text-sm font-bold flex items-center justify-center">3</div>
+          <div class="flex-1">
+            <h2 class="text-lg font-bold text-white mb-3">PDF Processing &amp; OCR</h2>
+            <div class="space-y-3 text-sm text-slate-300 leading-relaxed">
+              <p>Text extraction uses a <strong class="text-slate-100">3-pass cascade</strong> to maximize coverage:</p>
+              <ol class="space-y-2 pl-4">
+                <li class="flex gap-3">
+                  <span class="text-indigo-400 font-bold shrink-0">Pass 1</span>
+                  <span><strong class="text-slate-200">pdfplumber</strong> — extracts embedded text from digitally-created PDFs (court-generated orders). Covers ~35% of documents cleanly.</span>
+                </li>
+                <li class="flex gap-3">
+                  <span class="text-indigo-400 font-bold shrink-0">Pass 2</span>
+                  <span><strong class="text-slate-200">PyMuPDF (fitz)</strong> — fallback for PDFs with partial text layers (form-filled documents where fields are images).</span>
+                </li>
+                <li class="flex gap-3">
+                  <span class="text-indigo-400 font-bold shrink-0">Pass 3</span>
+                  <span><strong class="text-slate-200">Tesseract OCR</strong> — renders each PDF page as a 300 DPI JPEG, then runs Tesseract 5 with the <code class="text-cyan-400">eng+legal</code> tessdata. Applied to all documents yielding &lt;50 chars of embedded text per page.</span>
+                </li>
+              </ol>
+              <div class="bg-amber-900/20 border border-amber-800/40 rounded-lg p-3 mt-3">
+                <p class="text-xs text-amber-300 font-medium mb-1">OCR Accuracy Caveat</p>
+                <p class="text-xs text-amber-200/70">Handwritten judicial annotations and stamped text in scanned documents have estimated 78–82% character accuracy. Form-filled PDF fields where the fill layer is rasterized score 85–91%. Pure typewritten documents score 96%+. These errors propagate to phrase extraction; treat TF-IDF phrases from low-OCR documents as approximate.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── 4. Outcome Linking ── -->
+      <section class="bg-slate-900 border border-slate-800 rounded-xl p-6">
+        <div class="flex gap-4">
+          <div class="shrink-0 w-8 h-8 rounded-full bg-indigo-900/60 text-indigo-300 text-sm font-bold flex items-center justify-center">4</div>
+          <div class="flex-1">
+            <h2 class="text-lg font-bold text-white mb-3">Motion-Outcome Linking</h2>
+            <div class="space-y-3 text-sm text-slate-300 leading-relaxed">
+              <p>Linking a motion document to its ruling is the hardest step. Docket entries lack explicit motion-order relationships. We use a <strong class="text-slate-100">3-pass linking strategy</strong>:</p>
+
+              <div class="space-y-3 mt-2">
+                <div class="border-l-2 border-indigo-600 pl-4">
+                  <p class="font-semibold text-slate-100 text-xs uppercase tracking-wide mb-1">Pass A — Dispositive Document Match</p>
+                  <p class="text-xs text-slate-400">Documents whose docket title contains "Order on" or "Ruling on" are matched to the most recent motion of the same type filed within 90 days. Covers <strong class="text-slate-200">412 grants + 28 denials</strong>. Highest precision (~97%).</p>
+                </div>
+                <div class="border-l-2 border-cyan-600 pl-4">
+                  <p class="font-semibold text-slate-100 text-xs uppercase tracking-wide mb-1">Pass B — Title Keyword Match</p>
+                  <p class="text-xs text-slate-400">Regex matching of "GRANTED", "DENIED", "APPROVED" within the first 500 characters of a document against pending motions in the same hearing. Covers <strong class="text-slate-200">174 grants + 12 denials</strong>. Precision ~88%.</p>
+                </div>
+                <div class="border-l-2 border-violet-600 pl-4">
+                  <p class="font-semibold text-slate-100 text-xs uppercase tracking-wide mb-1">Pass C — Sub-Number Proximity</p>
+                  <p class="text-xs text-slate-400">Documents numbered sequentially (e.g., 045, 046) where 046 contains outcome language are linked to 045 if it matches a known motion pattern. Covers <strong class="text-slate-200">57 grants + 6 denials</strong>. Precision ~81% (lowest).</p>
+                </div>
+              </div>
+
+              <div class="bg-slate-800 rounded-lg p-3 mt-2 flex items-start gap-3">
+                <svg class="w-4 h-4 text-indigo-400 mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M12 2a10 10 0 100 20A10 10 0 0012 2z"/>
+                </svg>
+                <p class="text-xs text-slate-400"><strong class="text-slate-200">Coverage:</strong> 697 of ~5,961 potential motion-outcome pairs are linked (~11.7%). The primary bottleneck is documents without extractable text (scanned images) and ambiguous docket titles. The linker is designed to be conservative — false positives are more harmful than missed links.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── 5. NLP ── -->
+      <section class="bg-slate-900 border border-slate-800 rounded-xl p-6">
+        <div class="flex gap-4">
+          <div class="shrink-0 w-8 h-8 rounded-full bg-indigo-900/60 text-indigo-300 text-sm font-bold flex items-center justify-center">5</div>
+          <div class="flex-1">
+            <h2 class="text-lg font-bold text-white mb-3">NLP &amp; Feature Extraction</h2>
+            <div class="space-y-3 text-sm text-slate-300 leading-relaxed">
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div class="bg-slate-800 rounded-lg p-3">
+                  <p class="text-xs font-semibold text-cyan-300 uppercase tracking-wide mb-1">TF-IDF Phrase Lift</p>
+                  <p class="text-xs text-slate-400">Bigrams and trigrams extracted from granted and denied motion text. Lift = TF-IDF score in one class divided by frequency in the other. High-lift phrases indicate language patterns that distinguish outcomes. Stopwords filtered with a legal domain extension.</p>
+                </div>
+                <div class="bg-slate-800 rounded-lg p-3">
+                  <p class="text-xs font-semibold text-cyan-300 uppercase tracking-wide mb-1">RCW Citation Extraction</p>
+                  <p class="text-xs text-slate-400">Regex pattern <code class="text-cyan-400">RCW\s+\d+\.\d+[\.\d]*</code> extracts Washington Revised Code citations. Mean citation counts per page are compared between granted and denied motions.</p>
+                </div>
+                <div class="bg-slate-800 rounded-lg p-3">
+                  <p class="text-xs font-semibold text-cyan-300 uppercase tracking-wide mb-1">Sentiment (VADER)</p>
+                  <p class="text-xs text-slate-400">VADER sentiment with a legal-domain lexicon patch (e.g., "contempt" shifted to negative). Applied to VRP transcript segments. Not yet used in grant-rate prediction.</p>
+                </div>
+                <div class="bg-slate-800 rounded-lg p-3">
+                  <p class="text-xs font-semibold text-cyan-300 uppercase tracking-wide mb-1">Embeddings</p>
+                  <p class="text-xs text-slate-400">legal-bert (sentence-transformers) encodes motion text for semantic similarity search. Powers future "find similar motions" feature. Not used in current grant-rate stats.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── 6. Statistical Methods ── -->
+      <section class="bg-slate-900 border border-slate-800 rounded-xl p-6">
+        <div class="flex gap-4">
+          <div class="shrink-0 w-8 h-8 rounded-full bg-indigo-900/60 text-indigo-300 text-sm font-bold flex items-center justify-center">6</div>
+          <div class="flex-1">
+            <h2 class="text-lg font-bold text-white mb-3">Statistical Methods</h2>
+            <div class="space-y-3 text-sm text-slate-300 leading-relaxed">
+              <ul class="space-y-2">
+                <li class="flex gap-3">
+                  <span class="text-indigo-400 font-semibold shrink-0">Mann-Whitney U</span>
+                  <span>Non-parametric test for differences in page count, word count, and RCW count distributions between granted and denied motions. Used because distributions are right-skewed and sample sizes are unequal.</span>
+                </li>
+                <li class="flex gap-3">
+                  <span class="text-indigo-400 font-semibold shrink-0">Gradient Boosting</span>
+                  <span>XGBoost classifier trained on per-motion features (word count, page count, RCW count, days before hearing, motion type, case subtype). Evaluated by AUC-ROC with 5-fold cross-validation. Sample size constraints limit reliability for rare motion types.</span>
+                </li>
+                <li class="flex gap-3">
+                  <span class="text-indigo-400 font-semibold shrink-0">SHAP</span>
+                  <span>TreeSHAP explanations for feature importance in the gradient boosting model. Confirms that motion type and case subtype dominate over textual features given current data volume.</span>
+                </li>
+                <li class="flex gap-3">
+                  <span class="text-indigo-400 font-semibold shrink-0">Weather Correlation</span>
+                  <span>NOAA Spokane daily summaries joined to hearing dates. Condition categories (rainy, dry, cold, hot, snowy, normal) defined by NWS thresholds. No significant correlation found (all p &gt; 0.4).</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── 7. Limitations ── -->
+      <section class="bg-slate-900 border border-amber-800/40 rounded-xl p-6">
+        <div class="flex gap-4">
+          <div class="shrink-0 w-8 h-8 rounded-full bg-amber-900/50 text-amber-300 text-sm font-bold flex items-center justify-center">!</div>
+          <div class="flex-1">
+            <h2 class="text-lg font-bold text-amber-200 mb-3">Limitations &amp; Caveats</h2>
+            <ul class="space-y-2.5 text-sm text-slate-300 leading-relaxed">
+              <li class="flex gap-2.5">
+                <span class="text-amber-400 shrink-0 mt-0.5">▸</span>
+                <span><strong class="text-slate-100">Low linking coverage (11.7%).</strong> Most motion-outcome pairs are unlinked due to document format constraints. Results reflect only linkable documents, which may be systematically different (e.g., better-formatted attorney-filed motions).</span>
+              </li>
+              <li class="flex gap-2.5">
+                <span class="text-amber-400 shrink-0 mt-0.5">▸</span>
+                <span><strong class="text-slate-100">No attorney data.</strong> Attorney quality, experience, and firm are major confounders not captured in docket records. Judge-level patterns may partly reflect systematic differences in who appears before each judge.</span>
+              </li>
+              <li class="flex gap-2.5">
+                <span class="text-amber-400 shrink-0 mt-0.5">▸</span>
+                <span><strong class="text-slate-100">OCR errors.</strong> Form-filled and handwritten documents have significant character error rates. Phrase extraction from these documents is unreliable.</span>
+              </li>
+              <li class="flex gap-2.5">
+                <span class="text-amber-400 shrink-0 mt-0.5">▸</span>
+                <span><strong class="text-slate-100">Single year snapshot.</strong> 2023 only. Personnel changes, caseload shifts, and procedural reforms are not captured. Grant rates for judges with few outcomes (&lt;10) are statistically unreliable.</span>
+              </li>
+              <li class="flex gap-2.5">
+                <span class="text-amber-400 shrink-0 mt-0.5">▸</span>
+                <span><strong class="text-slate-100">Uncontested motions inflated.</strong> Many "granted" outcomes are default judgments or stipulated orders — both parties agreed. These inflate grant rates and are indistinguishable from contested grants in docket data alone.</span>
+              </li>
+              <li class="flex gap-2.5">
+                <span class="text-amber-400 shrink-0 mt-0.5">▸</span>
+                <span><strong class="text-slate-100">Not legal advice.</strong> This analysis is for academic and journalistic research. It does not constitute legal advice and should not be relied upon for case strategy.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── 8. Data Freshness ── -->
+      <section class="bg-slate-900 border border-slate-800 rounded-xl p-5">
+        <div class="flex items-center gap-3 mb-3">
+          <div class="w-2 h-2 rounded-full bg-emerald-400"></div>
+          <p class="section-label">Data Freshness</p>
+        </div>
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 text-center text-sm">
+          <div>
+            <p class="text-slate-100 font-semibold">2023</p>
+            <p class="text-slate-500 text-xs">Calendar year covered</p>
+          </div>
+          <div>
+            <p class="text-slate-100 font-semibold">Jan–Mar 2024</p>
+            <p class="text-slate-500 text-xs">Scraping window</p>
+          </div>
+          <div>
+            <p class="text-slate-100 font-semibold">Apr 2024</p>
+            <p class="text-slate-500 text-xs">Analysis freeze date</p>
+          </div>
+          <div>
+            <p class="text-slate-100 font-semibold">Not live</p>
+            <p class="text-slate-500 text-xs">Static snapshot, no updates</p>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- ── Footer ── -->
+  <footer class="border-t border-slate-800 mt-16 py-8 text-center text-xs text-slate-500">
+    <p>Data: Spokane County Superior Court public records, 2023 &nbsp;·&nbsp;
+       For research purposes only — not legal advice</p>
+  </footer>
+
+</body>
+</html>

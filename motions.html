@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en" class="bg-slate-950">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Motion Explorer — Bench Signal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body class="bg-slate-950 text-slate-200 min-h-screen">
+
+  <script src="js/nav.js"></script>
+
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+
+    <!-- Page header -->
+    <div class="mb-8">
+      <p class="section-label mb-2">Data Explorer</p>
+      <h1 class="text-3xl font-bold text-white">Motion Explorer</h1>
+      <p class="text-slate-400 mt-2 text-sm max-w-2xl">
+        Filter and sort all motion-level statistics across judges and case types.
+        Color-coded grant rates: <span class="text-emerald-400 font-medium">green &gt;80%</span>,
+        <span class="text-amber-400 font-medium">yellow 50–80%</span>,
+        <span class="text-red-400 font-medium">red &lt;50%</span>.
+      </p>
+    </div>
+
+    <!-- ── Filter bar ── -->
+    <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 mb-6">
+      <div class="flex flex-wrap gap-3 items-end">
+        <div class="flex-1 min-w-40">
+          <label class="block text-xs text-slate-400 mb-1">Judge</label>
+          <select id="filter-judge" class="w-full bg-slate-800 border border-slate-700 text-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-indigo-500">
+            <option value="">All Judges</option>
+          </select>
+        </div>
+        <div class="flex-1 min-w-40">
+          <label class="block text-xs text-slate-400 mb-1">Case Subtype</label>
+          <select id="filter-subtype" class="w-full bg-slate-800 border border-slate-700 text-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-indigo-500">
+            <option value="">All Subtypes</option>
+          </select>
+        </div>
+        <div class="flex-1 min-w-40">
+          <label class="block text-xs text-slate-400 mb-1">Motion Type</label>
+          <select id="filter-motion" class="w-full bg-slate-800 border border-slate-700 text-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-indigo-500">
+            <option value="">All Motion Types</option>
+          </select>
+        </div>
+        <div class="flex-1 min-w-40">
+          <label class="block text-xs text-slate-400 mb-1">Sort By</label>
+          <select id="sort-by" class="w-full bg-slate-800 border border-slate-700 text-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-indigo-500">
+            <option value="grant_rate_desc">Grant Rate ↓</option>
+            <option value="grant_rate_asc">Grant Rate ↑</option>
+            <option value="n_total_desc">N Total ↓</option>
+            <option value="officer_name">Judge A–Z</option>
+            <option value="motion_type">Motion Type A–Z</option>
+          </select>
+        </div>
+        <button id="reset-filters" class="px-4 py-2 bg-slate-700 hover:bg-slate-600 text-slate-300 rounded-lg text-sm transition-colors">
+          Reset
+        </button>
+      </div>
+    </div>
+
+    <!-- Row count -->
+    <div class="flex items-center justify-between mb-3">
+      <p id="row-count" class="text-xs text-slate-500"></p>
+      <p class="text-xs text-slate-600">Hover grant rate cells for details &nbsp;·&nbsp; Hover RCW badges for citations</p>
+    </div>
+
+    <!-- ── Table ── -->
+    <div class="bg-slate-900 border border-slate-800 rounded-xl overflow-hidden">
+      <div class="overflow-x-auto">
+        <table class="data-table w-full text-xs">
+          <thead>
+            <tr class="text-slate-400 text-left">
+              <th class="px-4 py-3 font-medium">Judge</th>
+              <th class="px-4 py-3 font-medium">Motion Type</th>
+              <th class="px-4 py-3 font-medium">Case Subtype</th>
+              <th class="px-4 py-3 font-medium text-right">N Total</th>
+              <th class="px-4 py-3 font-medium text-right">Grant Rate</th>
+              <th class="px-4 py-3 font-medium text-right">Avg Days<br/>Before Hrg</th>
+              <th class="px-4 py-3 font-medium text-right">Avg Pages<br/>(Granted)</th>
+              <th class="px-4 py-3 font-medium text-right">Avg Pages<br/>(Denied)</th>
+              <th class="px-4 py-3 font-medium text-center">Top RCWs</th>
+            </tr>
+          </thead>
+          <tbody id="motion-rows" class="text-slate-300">
+            <!-- Populated by JS -->
+          </tbody>
+        </table>
+      </div>
+      <div id="no-results" class="hidden text-slate-500 text-sm text-center py-12">
+        No motion records match the current filters.
+      </div>
+    </div>
+
+    <!-- ── Phrase comparison panel ── -->
+    <div id="phrase-panel" class="hidden mt-6 bg-slate-900 border border-slate-800 rounded-xl p-5">
+      <div class="flex items-center justify-between mb-4">
+        <div>
+          <p class="section-label mb-0.5">Top Phrases</p>
+          <p id="phrase-panel-title" class="text-slate-300 text-sm font-medium"></p>
+        </div>
+        <button id="phrase-panel-close" class="text-slate-500 hover:text-slate-300 text-xs">Close</button>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <div>
+          <p class="text-xs text-emerald-400 font-semibold uppercase tracking-wide mb-2">In Granted Motions</p>
+          <ul id="phrase-granted" class="space-y-1"></ul>
+        </div>
+        <div>
+          <p class="text-xs text-red-400 font-semibold uppercase tracking-wide mb-2">In Denied Motions</p>
+          <ul id="phrase-denied" class="space-y-1"></ul>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ── Footer ── -->
+  <footer class="border-t border-slate-800 mt-16 py-8 text-center text-xs text-slate-500">
+    <p>Data: Spokane County Superior Court public records, 2023 &nbsp;·&nbsp;
+       <a href="methodology.html" class="hover:text-slate-300 underline">Methodology</a> &nbsp;·&nbsp;
+       For research purposes only — not legal advice</p>
+  </footer>
+
+  <script src="js/charts.js"></script>
+  <script>
+  (async function () {
+    const motionStats = await fetch('data/motion_stats.json').then(r => r.json());
+
+    // ── Populate filter dropdowns ─────────────────────────────────────────
+    const judges   = [...new Set(motionStats.map(m => m.officer_name))].sort();
+    const subtypes = [...new Set(motionStats.map(m => m.case_subtype))].sort();
+    const motions  = [...new Set(motionStats.map(m => m.motion_type))].sort();
+
+    const judgeSelect   = document.getElementById('filter-judge');
+    const subtypeSelect = document.getElementById('filter-subtype');
+    const motionSelect  = document.getElementById('filter-motion');
+
+    judges.forEach(n => judgeSelect.insertAdjacentHTML('beforeend', `<option value="${n}">${n}</option>`));
+    subtypes.forEach(s => subtypeSelect.insertAdjacentHTML('beforeend',
+      `<option value="${s}">${s.replace(/_/g,' ')}</option>`));
+    motions.forEach(m => motionSelect.insertAdjacentHTML('beforeend',
+      `<option value="${m}">${m.replace(/_/g,' ')}</option>`));
+
+    // ── Render table ──────────────────────────────────────────────────────
+    let activePhraseRow = null;
+
+    function render() {
+      let data = [...motionStats];
+      const jv = judgeSelect.value;
+      const sv = subtypeSelect.value;
+      const mv = motionSelect.value;
+      const so = document.getElementById('sort-by').value;
+
+      if (jv) data = data.filter(r => r.officer_name === jv);
+      if (sv) data = data.filter(r => r.case_subtype === sv);
+      if (mv) data = data.filter(r => r.motion_type  === mv);
+
+      data.sort((a, b) => {
+        switch (so) {
+          case 'grant_rate_desc': {
+            const av = a.grant_rate ?? -1, bv = b.grant_rate ?? -1;
+            return bv - av;
+          }
+          case 'grant_rate_asc': {
+            const av = a.grant_rate ?? 2, bv = b.grant_rate ?? 2;
+            return av - bv;
+          }
+          case 'n_total_desc':  return b.n_total - a.n_total;
+          case 'officer_name':  return a.officer_name.localeCompare(b.officer_name);
+          case 'motion_type':   return a.motion_type.localeCompare(b.motion_type);
+          default: return 0;
+        }
+      });
+
+      document.getElementById('row-count').textContent = `${data.length} record${data.length !== 1 ? 's' : ''}`;
+      document.getElementById('no-results').classList.toggle('hidden', data.length > 0);
+
+      const tbody = document.getElementById('motion-rows');
+      tbody.innerHTML = data.map((r, i) => {
+        const rate = r.grant_rate;
+        const rateClass = rate == null ? 'text-slate-500' : rate >= 0.8 ? 'rate-high' : rate >= 0.5 ? 'rate-mid' : 'rate-low';
+        const rateStr = rate != null ? (rate * 100).toFixed(0) + '%' : 'N/A';
+
+        const days  = r.median_days_before_hearing != null ? r.median_days_before_hearing.toFixed(0) : '—';
+        const pgG   = r.mean_pages_granted  != null ? r.mean_pages_granted.toFixed(1)  : '—';
+        const pgD   = r.mean_pages_denied   != null ? r.mean_pages_denied.toFixed(1)   : '—';
+
+        // RCW badges
+        let rcwHtml = '<span class="text-slate-600">—</span>';
+        if (r.top_rcws_granted && r.top_rcws_granted.length > 0) {
+          rcwHtml = r.top_rcws_granted.slice(0, 3).map(rcw =>
+            `<span class="inline-block bg-indigo-900/40 text-indigo-300 border border-indigo-800/50 text-xs px-1.5 py-0.5 rounded mr-1 mb-0.5" data-tooltip="${rcw}">${rcw}</span>`
+          ).join('');
+        }
+
+        // Phrase expand button
+        const hasPhrase = r.top_phrases_granted || r.top_phrases_denied;
+        const phraseBtn = hasPhrase
+          ? `<button class="phrase-btn ml-1 text-xs text-indigo-400 hover:text-indigo-300 underline" data-idx="${i}">phrases</button>`
+          : '';
+
+        return `
+          <tr data-idx="${i}" class="cursor-default">
+            <td class="px-4 py-2.5 font-medium text-slate-200">${r.officer_name}</td>
+            <td class="px-4 py-2.5 text-slate-300">${r.motion_type.replace(/_/g,' ')}</td>
+            <td class="px-4 py-2.5 text-slate-400">${r.case_subtype.replace(/_/g,' ')}</td>
+            <td class="px-4 py-2.5 text-right text-slate-300">${r.n_total}</td>
+            <td class="px-4 py-2.5 text-right ${rateClass}">${rateStr}${phraseBtn}</td>
+            <td class="px-4 py-2.5 text-right text-slate-400">${days}</td>
+            <td class="px-4 py-2.5 text-right text-slate-400">${pgG}</td>
+            <td class="px-4 py-2.5 text-right text-slate-400">${pgD}</td>
+            <td class="px-4 py-2.5 text-center">${rcwHtml}</td>
+          </tr>`;
+      }).join('');
+
+      // Phrase button listeners
+      tbody.querySelectorAll('.phrase-btn').forEach(btn => {
+        btn.addEventListener('click', e => {
+          e.stopPropagation();
+          const idx = parseInt(btn.dataset.idx);
+          showPhrases(data[idx]);
+        });
+      });
+
+      // Store data for phrase panel
+      tbody._data = data;
+    }
+
+    // ── Phrase panel ──────────────────────────────────────────────────────
+    function showPhrases(row) {
+      const panel = document.getElementById('phrase-panel');
+      document.getElementById('phrase-panel-title').textContent =
+        `${row.officer_name} · ${row.motion_type.replace(/_/g,' ')} · ${row.case_subtype.replace(/_/g,' ')}`;
+
+      const grantedList = document.getElementById('phrase-granted');
+      const deniedList  = document.getElementById('phrase-denied');
+
+      function renderPhraseList(el, phrases) {
+        if (!phrases || phrases.length === 0) {
+          el.innerHTML = '<li class="text-slate-600 text-xs italic">No data</li>';
+          return;
+        }
+        el.innerHTML = phrases.slice(0, 8).map(p =>
+          `<li class="flex items-center justify-between gap-2 text-xs">
+            <span class="text-slate-300 truncate">${p.phrase}</span>
+            <span class="text-slate-500 shrink-0">freq: ${p.freq}</span>
+          </li>`
+        ).join('');
+      }
+
+      renderPhraseList(grantedList, row.top_phrases_granted);
+      renderPhraseList(deniedList,  row.top_phrases_denied);
+      panel.classList.remove('hidden');
+      panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    document.getElementById('phrase-panel-close').addEventListener('click', () => {
+      document.getElementById('phrase-panel').classList.add('hidden');
+    });
+
+    // ── Event listeners ───────────────────────────────────────────────────
+    [judgeSelect, subtypeSelect, motionSelect, document.getElementById('sort-by')].forEach(el => {
+      el.addEventListener('change', render);
+    });
+
+    document.getElementById('reset-filters').addEventListener('click', () => {
+      judgeSelect.value = '';
+      subtypeSelect.value = '';
+      motionSelect.value = '';
+      document.getElementById('sort-by').value = 'grant_rate_desc';
+      document.getElementById('phrase-panel').classList.add('hidden');
+      render();
+    });
+
+    render();
+  })();
+  </script>
+</body>
+</html>

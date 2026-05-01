@@ -1,0 +1,42 @@
+[
+  {
+    "outcome_normalized": "granted",
+    "link_method": "dispositive_doc",
+    "n": 412
+  },
+  {
+    "outcome_normalized": "granted",
+    "link_method": "title_match",
+    "n": 174
+  },
+  {
+    "outcome_normalized": "granted",
+    "link_method": "sub_num_proximity",
+    "n": 57
+  },
+  {
+    "outcome_normalized": "denied",
+    "link_method": "dispositive_doc",
+    "n": 28
+  },
+  {
+    "outcome_normalized": "denied",
+    "link_method": "title_match",
+    "n": 12
+  },
+  {
+    "outcome_normalized": "denied",
+    "link_method": "sub_num_proximity",
+    "n": 6
+  },
+  {
+    "outcome_normalized": "granted_in_part",
+    "link_method": "title_match",
+    "n": 4
+  },
+  {
+    "outcome_normalized": "other",
+    "link_method": "title_match",
+    "n": 4
+  }
+]

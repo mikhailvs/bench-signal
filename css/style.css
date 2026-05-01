@@ -1,0 +1,134 @@
+/* style.css — Minor overrides beyond Tailwind for Bench Signal */
+
+/* ── Base ── */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #0f172a;
+  color: #e2e8f0;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── KPI card hover glow ── */
+.kpi-card {
+  transition: box-shadow 0.2s ease, transform 0.15s ease;
+}
+.kpi-card:hover {
+  box-shadow: 0 0 0 1px #6366f1, 0 4px 24px rgba(99,102,241,0.18);
+  transform: translateY(-2px);
+}
+
+/* ── Judge card ── */
+.judge-card {
+  transition: box-shadow 0.2s ease, transform 0.15s ease;
+  cursor: pointer;
+}
+.judge-card:hover {
+  box-shadow: 0 0 0 1px #6366f1, 0 4px 20px rgba(99,102,241,0.2);
+  transform: translateY(-2px);
+}
+.judge-card.active {
+  box-shadow: 0 0 0 2px #6366f1, 0 4px 20px rgba(99,102,241,0.3);
+}
+
+/* ── Grant rate badges ── */
+.badge-high   { background: rgba(52,211,153,0.15); color: #34d399; border: 1px solid rgba(52,211,153,0.3);  }
+.badge-mid    { background: rgba(251,191,36,0.12); color: #fbbf24; border: 1px solid rgba(251,191,36,0.3);  }
+.badge-low    { background: rgba(248,113,113,0.12); color:#f87171; border: 1px solid rgba(248,113,113,0.3); }
+.badge-none   { background: rgba(100,116,139,0.15); color:#64748b; border: 1px solid rgba(100,116,139,0.3); }
+
+/* ── Table ── */
+.data-table th {
+  background: #1e293b;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+.data-table tr:hover td {
+  background: rgba(99,102,241,0.06);
+}
+.data-table td, .data-table th {
+  border-bottom: 1px solid #1e293b;
+}
+
+/* ── Grant rate cell colors ── */
+.rate-high { color: #34d399; font-weight: 600; }
+.rate-mid  { color: #fbbf24; font-weight: 600; }
+.rate-low  { color: #f87171; font-weight: 600; }
+
+/* ── Modal ── */
+#judge-modal {
+  backdrop-filter: blur(4px);
+}
+#judge-modal-panel {
+  animation: modalIn 0.18s ease-out;
+}
+@keyframes modalIn {
+  from { opacity: 0; transform: scale(0.96) translateY(8px); }
+  to   { opacity: 1; transform: scale(1)    translateY(0);    }
+}
+
+/* ── Chart containers ── */
+.chart-container {
+  position: relative;
+}
+
+/* ── Section headings ── */
+.section-label {
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #6366f1;
+}
+
+/* ── Tooltip ── */
+[data-tooltip] {
+  position: relative;
+}
+[data-tooltip]::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: #1e293b;
+  color: #cbd5e1;
+  font-size: 0.7rem;
+  padding: 4px 8px;
+  border-radius: 4px;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  border: 1px solid #334155;
+  transition: opacity 0.15s;
+  z-index: 100;
+}
+[data-tooltip]:hover::after {
+  opacity: 1;
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar         { width: 6px; height: 6px; }
+::-webkit-scrollbar-track   { background: #0f172a; }
+::-webkit-scrollbar-thumb   { background: #334155; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #475569; }
+
+/* ── Footer ── */
+footer a { color: #64748b; }
+footer a:hover { color: #94a3b8; }
+
+/* ── Insight bullet ── */
+.insight-item::before {
+  content: '→';
+  color: #6366f1;
+  font-weight: 700;
+  margin-right: 0.5rem;
+}
+
+/* ── Responsive chart height ── */
+@media (max-width: 768px) {
+  .chart-container { min-height: 220px; }
+}

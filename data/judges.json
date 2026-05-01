@@ -1,0 +1,262 @@
+[
+  {
+    "id": 16,
+    "name": "Jerry Scharosch",
+    "n_cases": 26,
+    "n_hearings": 133,
+    "n_outcomes": 59,
+    "n_granted": 32,
+    "n_denied": 3,
+    "grant_rate": 0.9143
+  },
+  {
+    "id": 9,
+    "name": "Tami Chavez",
+    "n_cases": 24,
+    "n_hearings": 126,
+    "n_outcomes": 55,
+    "n_granted": 37,
+    "n_denied": 5,
+    "grant_rate": 0.881
+  },
+  {
+    "id": 1,
+    "name": "Breean Beggs",
+    "n_cases": 35,
+    "n_hearings": 146,
+    "n_outcomes": 46,
+    "n_granted": 31,
+    "n_denied": 2,
+    "grant_rate": 0.9394
+  },
+  {
+    "id": 12,
+    "name": "Nichole Swennumson",
+    "n_cases": 21,
+    "n_hearings": 165,
+    "n_outcomes": 45,
+    "n_granted": 29,
+    "n_denied": 3,
+    "grant_rate": 0.9062
+  },
+  {
+    "id": 7,
+    "name": "Michelle Ressa",
+    "n_cases": 22,
+    "n_hearings": 124,
+    "n_outcomes": 40,
+    "n_granted": 25,
+    "n_denied": 2,
+    "grant_rate": 0.9259
+  },
+  {
+    "id": 6,
+    "name": "Anthony Rugel",
+    "n_cases": 27,
+    "n_hearings": 185,
+    "n_outcomes": 39,
+    "n_granted": 28,
+    "n_denied": 1,
+    "grant_rate": 0.9655
+  },
+  {
+    "id": 11,
+    "name": "Marla Polin",
+    "n_cases": 47,
+    "n_hearings": 159,
+    "n_outcomes": 39,
+    "n_granted": 24,
+    "n_denied": 2,
+    "grant_rate": 0.9231
+  },
+  {
+    "id": 2,
+    "name": "Kevin Stewart",
+    "n_cases": 17,
+    "n_hearings": 94,
+    "n_outcomes": 36,
+    "n_granted": 24,
+    "n_denied": 0,
+    "grant_rate": 1.0
+  },
+  {
+    "id": 17,
+    "name": "Julia Pelc",
+    "n_cases": 21,
+    "n_hearings": 118,
+    "n_outcomes": 33,
+    "n_granted": 27,
+    "n_denied": 1,
+    "grant_rate": 0.9643
+  },
+  {
+    "id": 5,
+    "name": "Michael Price",
+    "n_cases": 21,
+    "n_hearings": 36,
+    "n_outcomes": 17,
+    "n_granted": 15,
+    "n_denied": 0,
+    "grant_rate": 1.0
+  },
+  {
+    "id": 3,
+    "name": "Jacquelyn High-Edward",
+    "n_cases": 17,
+    "n_hearings": 53,
+    "n_outcomes": 16,
+    "n_granted": 12,
+    "n_denied": 0,
+    "grant_rate": 1.0
+  },
+  {
+    "id": 13,
+    "name": "Julie Mckay",
+    "n_cases": 3,
+    "n_hearings": 51,
+    "n_outcomes": 8,
+    "n_granted": 0,
+    "n_denied": 0,
+    "grant_rate": null
+  },
+  {
+    "id": 23,
+    "name": "Andrew Van Winkle",
+    "n_cases": 3,
+    "n_hearings": 16,
+    "n_outcomes": 6,
+    "n_granted": 0,
+    "n_denied": 0,
+    "grant_rate": null
+  },
+  {
+    "id": 8,
+    "name": "Annette Plese",
+    "n_cases": 2,
+    "n_hearings": 26,
+    "n_outcomes": 5,
+    "n_granted": 2,
+    "n_denied": 0,
+    "grant_rate": 1.0
+  },
+  {
+    "id": 18,
+    "name": "Dean Chuang",
+    "n_cases": 3,
+    "n_hearings": 50,
+    "n_outcomes": 3,
+    "n_granted": 0,
+    "n_denied": 0,
+    "grant_rate": null
+  },
+  {
+    "id": 22,
+    "name": "Jeremy Schmidt",
+    "n_cases": 2,
+    "n_hearings": 14,
+    "n_outcomes": 2,
+    "n_granted": 0,
+    "n_denied": 0,
+    "grant_rate": null
+  },
+  {
+    "id": 20,
+    "name": "John Stine",
+    "n_cases": 1,
+    "n_hearings": 3,
+    "n_outcomes": 1,
+    "n_granted": 0,
+    "n_denied": 0,
+    "grant_rate": null
+  },
+  {
+    "id": 4,
+    "name": "Jacquelyn High-Edward-Comm",
+    "n_cases": 0,
+    "n_hearings": 32,
+    "n_outcomes": 0,
+    "n_granted": 0,
+    "n_denied": 0,
+    "grant_rate": null
+  },
+  {
+    "id": 10,
+    "name": "Charnelle Bjelkengren",
+    "n_cases": 0,
+    "n_hearings": 6,
+    "n_outcomes": 0,
+    "n_granted": 0,
+    "n_denied": 0,
+    "grant_rate": null
+  },
+  {
+    "id": 14,
+    "name": "Michelle Szambelan",
+    "n_cases": 0,
+    "n_hearings": 1,
+    "n_outcomes": 0,
+    "n_granted": 0,
+    "n_denied": 0,
+    "grant_rate": null
+  },
+  {
+    "id": 15,
+    "name": "Candie Dibble",
+    "n_cases": 0,
+    "n_hearings": 11,
+    "n_outcomes": 0,
+    "n_granted": 0,
+    "n_denied": 0,
+    "grant_rate": null
+  },
+  {
+    "id": 19,
+    "name": "Rachelle Anderson",
+    "n_cases": 0,
+    "n_hearings": 11,
+    "n_outcomes": 0,
+    "n_granted": 0,
+    "n_denied": 0,
+    "grant_rate": null
+  },
+  {
+    "id": 21,
+    "name": "Eugene Cruz",
+    "n_cases": 1,
+    "n_hearings": 3,
+    "n_outcomes": 0,
+    "n_granted": 0,
+    "n_denied": 0,
+    "grant_rate": null
+  },
+  {
+    "id": 24,
+    "name": "Nicole Koyama",
+    "n_cases": 0,
+    "n_hearings": 1,
+    "n_outcomes": 0,
+    "n_granted": 0,
+    "n_denied": 0,
+    "grant_rate": null
+  },
+  {
+    "id": 25,
+    "name": "Tony Hazel",
+    "n_cases": 0,
+    "n_hearings": 1,
+    "n_outcomes": 0,
+    "n_granted": 0,
+    "n_denied": 0,
+    "grant_rate": null
+  },
+  {
+    "id": 26,
+    "name": "Raymond Clary",
+    "n_cases": 0,
+    "n_hearings": 1,
+    "n_outcomes": 0,
+    "n_granted": 0,
+    "n_denied": 0,
+    "grant_rate": null
+  }
+]

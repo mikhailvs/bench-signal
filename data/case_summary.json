@@ -1,0 +1,37 @@
+[
+  {
+    "case_subtype": "dissolution",
+    "n": 396,
+    "n_judges": 15
+  },
+  {
+    "case_subtype": "other_family",
+    "n": 100,
+    "n_judges": 15
+  },
+  {
+    "case_subtype": "contempt",
+    "n": 41,
+    "n_judges": 13
+  },
+  {
+    "case_subtype": "modification",
+    "n": 27,
+    "n_judges": 7
+  },
+  {
+    "case_subtype": "legal_separation",
+    "n": 27,
+    "n_judges": 6
+  },
+  {
+    "case_subtype": "paternity",
+    "n": 4,
+    "n_judges": 1
+  },
+  {
+    "case_subtype": "protection_order",
+    "n": 1,
+    "n_judges": 1
+  }
+]
