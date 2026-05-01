@@ -1,78 +1,168 @@
 [
   {
     "motion_type": "temporary_order",
-    "n_total": 116,
-    "n_granted": 111,
-    "n_denied": 5
+    "n_total": 431,
+    "n_granted": 418,
+    "n_denied": 13
   },
   {
     "motion_type": "order_show_cause",
-    "n_total": 47,
-    "n_granted": 35,
-    "n_denied": 10
+    "n_total": 161,
+    "n_granted": 112,
+    "n_denied": 42
   },
   {
     "motion_type": "adequate_cause_decision",
-    "n_total": 24,
-    "n_granted": 23,
-    "n_denied": 1
+    "n_total": 105,
+    "n_granted": 99,
+    "n_denied": 6
   },
   {
     "motion_type": "petition_parenting_plan_child_support",
-    "n_total": 15,
-    "n_granted": 15,
+    "n_total": 46,
+    "n_granted": 46,
     "n_denied": 0
   },
   {
     "motion_type": "petition_motion_modify",
-    "n_total": 9,
-    "n_granted": 9,
+    "n_total": 39,
+    "n_granted": 39,
     "n_denied": 0
   },
   {
     "motion_type": "amended_petition",
-    "n_total": 9,
-    "n_granted": 8,
-    "n_denied": 1
-  },
-  {
-    "motion_type": "petition_order_protection",
-    "n_total": 6,
-    "n_granted": 4,
+    "n_total": 32,
+    "n_granted": 30,
     "n_denied": 2
   },
   {
     "motion_type": "petition_dissolution_amended",
+    "n_total": 29,
+    "n_granted": 28,
+    "n_denied": 1
+  },
+  {
+    "motion_type": "objection_petition",
+    "n_total": 14,
+    "n_granted": 10,
+    "n_denied": 4
+  },
+  {
+    "motion_type": "petition_order_protection",
+    "n_total": 11,
+    "n_granted": 7,
+    "n_denied": 4
+  },
+  {
+    "motion_type": "copy_petition_w_joinder_signed",
+    "n_total": 10,
+    "n_granted": 10,
+    "n_denied": 0
+  },
+  {
+    "motion_type": "shorten_time",
+    "n_total": 8,
+    "n_granted": 3,
+    "n_denied": 2
+  },
+  {
+    "motion_type": "temporary_order_amended",
+    "n_total": 7,
+    "n_granted": 6,
+    "n_denied": 1
+  },
+  {
+    "motion_type": "summons_petition_dissolution_amended",
+    "n_total": 7,
+    "n_granted": 7,
+    "n_denied": 0
+  },
+  {
+    "motion_type": "petition_writ_habeas_corpus",
+    "n_total": 6,
+    "n_granted": 5,
+    "n_denied": 1
+  },
+  {
+    "motion_type": "petition_committed_intimate_relationship",
+    "n_total": 6,
+    "n_granted": 6,
+    "n_denied": 0
+  },
+  {
+    "motion_type": "objection_petition_&_summons",
+    "n_total": 6,
+    "n_granted": 6,
+    "n_denied": 0
+  },
+  {
+    "motion_type": "dismiss",
+    "n_total": 6,
+    "n_granted": 1,
+    "n_denied": 4
+  },
+  {
+    "motion_type": "continue",
+    "n_total": 6,
+    "n_granted": 0,
+    "n_denied": 2
+  },
+  {
+    "motion_type": "summons_petition_modification_amended",
     "n_total": 4,
     "n_granted": 4,
     "n_denied": 0
   },
   {
-    "motion_type": "temporary_order_amended",
+    "motion_type": "strike",
+    "n_total": 4,
+    "n_granted": 3,
+    "n_denied": 1
+  },
+  {
+    "motion_type": "reconsideration",
+    "n_total": 4,
+    "n_granted": 2,
+    "n_denied": 2
+  },
+  {
+    "motion_type": "petition_committed_intimate_relationship_&_summons",
+    "n_total": 4,
+    "n_granted": 4,
+    "n_denied": 0
+  },
+  {
+    "motion_type": "copy_petition",
+    "n_total": 4,
+    "n_granted": 3,
+    "n_denied": 1
+  },
+  {
+    "motion_type": "temp_ord_allowing_move_children_relocation",
     "n_total": 3,
     "n_granted": 2,
     "n_denied": 1
   },
   {
-    "motion_type": "summons_petition_modification_amended",
+    "motion_type": "summons_petition_parenting_plan_res_schedule_amended",
     "n_total": 3,
     "n_granted": 3,
     "n_denied": 0
   },
   {
-    "motion_type": "summons_petition_dissolution_amended",
+    "motion_type": "revision_amended",
     "n_total": 3,
-    "n_granted": 3,
-    "n_denied": 0
+    "n_granted": 0,
+    "n_denied": 3
   },
   {
-    "motion_type": "petition_committed_intimate_relationship",
+    "motion_type": "revision",
     "n_total": 3,
-    "n_granted": 3,
-    "n_denied": 0
+    "n_granted": 2,
+    "n_denied": 1
   },
   {
-    "motion_type": "objection_petition",
+    "motion_type": "objection_petition_summons",
     "n_total": 3,
     "n_granted": 3,
     "n_denied": 0

@@ -2,41 +2,46 @@
   {
     "outcome_normalized": "granted",
     "link_method": "dispositive_doc",
-    "n": 412
-  },
-  {
-    "outcome_normalized": "granted",
-    "link_method": "title_match",
-    "n": 174
-  },
-  {
-    "outcome_normalized": "granted",
-    "link_method": "sub_num_proximity",
-    "n": 57
-  },
-  {
-    "outcome_normalized": "denied",
-    "link_method": "dispositive_doc",
-    "n": 28
-  },
-  {
-    "outcome_normalized": "denied",
-    "link_method": "title_match",
-    "n": 12
+    "n": 2577
   },
   {
     "outcome_normalized": "denied",
     "link_method": "sub_num_proximity",
+    "n": 200
+  },
+  {
+    "outcome_normalized": "granted",
+    "link_method": "sub_num_proximity",
+    "n": 37
+  },
+  {
+    "outcome_normalized": "continued",
+    "link_method": "sub_num_proximity",
+    "n": 26
+  },
+  {
+    "outcome_normalized": "denied",
+    "link_method": "title_match",
+    "n": 25
+  },
+  {
+    "outcome_normalized": "granted",
+    "link_method": "title_match",
     "n": 6
   },
   {
-    "outcome_normalized": "granted_in_part",
-    "link_method": "title_match",
+    "outcome_normalized": "dismissed",
+    "link_method": "sub_num_proximity",
+    "n": 5
+  },
+  {
+    "outcome_normalized": "taken_under_advisement",
+    "link_method": "sub_num_proximity",
     "n": 4
   },
   {
-    "outcome_normalized": "other",
+    "outcome_normalized": "continued",
     "link_method": "title_match",
-    "n": 4
+    "n": 1
   }
 ]
