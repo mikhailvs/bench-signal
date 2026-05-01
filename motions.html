@@ -97,26 +97,8 @@
       </div>
     </div>
 
-    <!-- ── Phrase comparison panel ── -->
-    <div id="phrase-panel" class="hidden mt-6 bg-slate-900 border border-slate-800 rounded-xl p-5">
-      <div class="flex items-center justify-between mb-4">
-        <div>
-          <p class="section-label mb-0.5">Top Phrases</p>
-          <p id="phrase-panel-title" class="text-slate-300 text-sm font-medium"></p>
-        </div>
-        <button id="phrase-panel-close" class="text-slate-500 hover:text-slate-300 text-xs">Close</button>
-      </div>
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-        <div>
-          <p class="text-xs text-emerald-400 font-semibold uppercase tracking-wide mb-2">In Granted Motions</p>
-          <ul id="phrase-granted" class="space-y-1"></ul>
-        </div>
-        <div>
-          <p class="text-xs text-red-400 font-semibold uppercase tracking-wide mb-2">In Denied Motions</p>
-          <ul id="phrase-denied" class="space-y-1"></ul>
-        </div>
-      </div>
-    </div>
+    <!-- Phrase analysis suppressed: insufficient denied sample size (n<50) -->
+    <div id="phrase-panel" style="display:none" aria-hidden="true"></div>
 
   </main>
 
@@ -199,11 +181,8 @@
           ).join('');
         }
 
-        // Phrase expand button
-        const hasPhrase = r.top_phrases_granted || r.top_phrases_denied;
-        const phraseBtn = hasPhrase
-          ? `<button class="phrase-btn ml-1 text-xs text-indigo-400 hover:text-indigo-300 underline" data-idx="${i}">phrases</button>`
-          : '';
+        // Phrase expand button suppressed: insufficient denied sample size (n<50)
+        const phraseBtn = '';
 
         return `
           <tr data-idx="${i}" class="cursor-default">
@@ -219,50 +198,9 @@
           </tr>`;
       }).join('');
 
-      // Phrase button listeners
-      tbody.querySelectorAll('.phrase-btn').forEach(btn => {
-        btn.addEventListener('click', e => {
-          e.stopPropagation();
-          const idx = parseInt(btn.dataset.idx);
-          showPhrases(data[idx]);
-        });
-      });
-
       // Store data for phrase panel
       tbody._data = data;
     }
-
-    // ── Phrase panel ──────────────────────────────────────────────────────
-    function showPhrases(row) {
-      const panel = document.getElementById('phrase-panel');
-      document.getElementById('phrase-panel-title').textContent =
-        `${row.officer_name} · ${row.motion_type.replace(/_/g,' ')} · ${row.case_subtype.replace(/_/g,' ')}`;
-
-      const grantedList = document.getElementById('phrase-granted');
-      const deniedList  = document.getElementById('phrase-denied');
-
-      function renderPhraseList(el, phrases) {
-        if (!phrases || phrases.length === 0) {
-          el.innerHTML = '<li class="text-slate-600 text-xs italic">No data</li>';
-          return;
-        }
-        el.innerHTML = phrases.slice(0, 8).map(p =>
-          `<li class="flex items-center justify-between gap-2 text-xs">
-            <span class="text-slate-300 truncate">${p.phrase}</span>
-            <span class="text-slate-500 shrink-0">freq: ${p.freq}</span>
-          </li>`
-        ).join('');
-      }
-
-      renderPhraseList(grantedList, row.top_phrases_granted);
-      renderPhraseList(deniedList,  row.top_phrases_denied);
-      panel.classList.remove('hidden');
-      panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    }
-
-    document.getElementById('phrase-panel-close').addEventListener('click', () => {
-      document.getElementById('phrase-panel').classList.add('hidden');
-    });
 
     // ── Event listeners ───────────────────────────────────────────────────
     [judgeSelect, subtypeSelect, motionSelect, document.getElementById('sort-by')].forEach(el => {
@@ -274,7 +212,6 @@
       subtypeSelect.value = '';
       motionSelect.value = '';
       document.getElementById('sort-by').value = 'grant_rate_desc';
-      document.getElementById('phrase-panel').classList.add('hidden');
       render();
     });
 

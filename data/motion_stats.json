@@ -4,6 +4,7 @@
     "officer_name": "Tami Chavez",
     "motion_type": "temporary_order",
     "case_subtype": "dissolution",
+    "is_contested_type": true,
     "n_total": 15,
     "n_granted": 13,
     "n_denied": 2,
@@ -11,167 +12,13 @@
     "grant_rate": 0.8667,
     "median_days_to_decision": 28.0,
     "median_days_before_hearing": null,
-    "mean_word_count_granted": null,
-    "mean_word_count_denied": null,
-    "mean_pages_granted": null,
-    "mean_pages_denied": null,
-    "mean_rcw_count_granted": null,
-    "mean_rcw_count_denied": null,
+    "mean_word_count_granted": 2073.4615,
+    "mean_word_count_denied": 2269.0,
+    "mean_pages_granted": 6.7692,
+    "mean_pages_denied": 7.0,
+    "mean_rcw_count_granted": 0.9231,
+    "mean_rcw_count_denied": 2.0,
     "top_rcws_granted": null,
-    "top_phrases_granted": [
-      {
-        "phrase": "law office",
-        "lift": 42693783.3284,
-        "freq": 4
-      },
-      {
-        "phrase": "familysoft formpak",
-        "lift": 41996224.9533,
-        "freq": 5
-      },
-      {
-        "phrase": "docusign envelope",
-        "lift": 41143503.3417,
-        "freq": 7
-      },
-      {
-        "phrase": "divorce spokane",
-        "lift": 37909914.0417,
-        "freq": 5
-      },
-      {
-        "phrase": "ifyou asking",
-        "lift": 36926043.2259,
-        "freq": 4
-      },
-      {
-        "phrase": "fax familysoft",
-        "lift": 24377888.7905,
-        "freq": 4
-      },
-      {
-        "phrase": "familysoft formpak docusign",
-        "lift": 23301052.5397,
-        "freq": 4
-      },
-      {
-        "phrase": "formpak docusign",
-        "lift": 23301052.5397,
-        "freq": 4
-      },
-      {
-        "phrase": "form family ifyou asking",
-        "lift": 23075956.8528,
-        "freq": 4
-      },
-      {
-        "phrase": "family ifyou",
-        "lift": 23075956.8528,
-        "freq": 4
-      },
-      {
-        "phrase": "form family ifyou",
-        "lift": 23075956.8528,
-        "freq": 4
-      },
-      {
-        "phrase": "family ifyou asking",
-        "lift": 23075956.8528,
-        "freq": 4
-      },
-      {
-        "phrase": "fax familysoft formpak",
-        "lift": 22077061.4973,
-        "freq": 4
-      },
-      {
-        "phrase": "case number",
-        "lift": 21537357.2293,
-        "freq": 5
-      },
-      {
-        "phrase": "does apply",
-        "lift": 21147396.0541,
-        "freq": 3
-      }
-    ],
-    "top_phrases_denied": [
-      {
-        "phrase": "rcw motionfor temporary",
-        "lift": 11.4426,
-        "freq": 2
-      },
-      {
-        "phrase": "rcw motionfor",
-        "lift": 11.4426,
-        "freq": 2
-      },
-      {
-        "phrase": "motionfor temporary",
-        "lift": 11.4426,
-        "freq": 2
-      },
-      {
-        "phrase": "requests listed rcw",
-        "lift": 10.0478,
-        "freq": 2
-      },
-      {
-        "phrase": "approving requests listed rcw",
-        "lift": 10.0478,
-        "freq": 2
-      },
-      {
-        "phrase": "requests listed rcw motion",
-        "lift": 10.0478,
-        "freq": 2
-      },
-      {
-        "phrase": "guardian litem",
-        "lift": 9.8237,
-        "freq": 2
-      },
-      {
-        "phrase": "health safety",
-        "lift": 7.1724,
-        "freq": 2
-      },
-      {
-        "phrase": "legal papers case check",
-        "lift": 5.9024,
-        "freq": 2
-      },
-      {
-        "phrase": "case check",
-        "lift": 5.9024,
-        "freq": 2
-      },
-      {
-        "phrase": "papers case check",
-        "lift": 5.9024,
-        "freq": 2
-      },
-      {
-        "phrase": "papers case check lawyer",
-        "lift": 5.9024,
-        "freq": 2
-      },
-      {
-        "phrase": "case check lawyer",
-        "lift": 5.9024,
-        "freq": 2
-      },
-      {
-        "phrase": "check lawyer",
-        "lift": 5.9024,
-        "freq": 2
-      },
-      {
-        "phrase": "children check",
-        "lift": 5.9024,
-        "freq": 2
-      }
-    ],
     "model_auc": null
   },
   {
@@ -179,6 +26,7 @@
     "officer_name": "Breean Beggs",
     "motion_type": "summons_petition_dissolution",
     "case_subtype": "dissolution",
+    "is_contested_type": false,
     "n_total": 13,
     "n_granted": 13,
     "n_denied": 0,
@@ -193,8 +41,6 @@
     "mean_rcw_count_granted": null,
     "mean_rcw_count_denied": null,
     "top_rcws_granted": null,
-    "top_phrases_granted": null,
-    "top_phrases_denied": null,
     "model_auc": null
   },
   {
@@ -202,6 +48,7 @@
     "officer_name": "Marla Polin",
     "motion_type": "petition_dissolution",
     "case_subtype": "dissolution",
+    "is_contested_type": false,
     "n_total": 13,
     "n_granted": 12,
     "n_denied": 1,
@@ -216,8 +63,6 @@
     "mean_rcw_count_granted": null,
     "mean_rcw_count_denied": null,
     "top_rcws_granted": null,
-    "top_phrases_granted": null,
-    "top_phrases_denied": null,
     "model_auc": null
   },
   {
@@ -225,6 +70,7 @@
     "officer_name": "Anthony Rugel",
     "motion_type": "summons_petition_dissolution",
     "case_subtype": "dissolution",
+    "is_contested_type": false,
     "n_total": 10,
     "n_granted": 10,
     "n_denied": 0,
@@ -239,8 +85,6 @@
     "mean_rcw_count_granted": null,
     "mean_rcw_count_denied": null,
     "top_rcws_granted": null,
-    "top_phrases_granted": null,
-    "top_phrases_denied": null,
     "model_auc": null
   },
   {
@@ -248,6 +92,7 @@
     "officer_name": "Tami Chavez",
     "motion_type": "summons_petition_dissolution",
     "case_subtype": "dissolution",
+    "is_contested_type": false,
     "n_total": 10,
     "n_granted": 10,
     "n_denied": 0,
@@ -262,8 +107,6 @@
     "mean_rcw_count_granted": null,
     "mean_rcw_count_denied": null,
     "top_rcws_granted": null,
-    "top_phrases_granted": null,
-    "top_phrases_denied": null,
     "model_auc": null
   },
   {
@@ -271,6 +114,7 @@
     "officer_name": "Nichole Swennumson",
     "motion_type": "temporary_order",
     "case_subtype": "dissolution",
+    "is_contested_type": true,
     "n_total": 10,
     "n_granted": 10,
     "n_denied": 0,
@@ -278,167 +122,13 @@
     "grant_rate": 1.0,
     "median_days_to_decision": 38.5,
     "median_days_before_hearing": null,
-    "mean_word_count_granted": null,
-    "mean_word_count_denied": null,
-    "mean_pages_granted": null,
-    "mean_pages_denied": null,
-    "mean_rcw_count_granted": null,
-    "mean_rcw_count_denied": null,
+    "mean_word_count_granted": 1342.4,
+    "mean_word_count_denied": 0.0,
+    "mean_pages_granted": 4.7,
+    "mean_pages_denied": 0.0,
+    "mean_rcw_count_granted": 1.1,
+    "mean_rcw_count_denied": 0.0,
     "top_rcws_granted": null,
-    "top_phrases_granted": [
-      {
-        "phrase": "form family",
-        "lift": 125247319.8958,
-        "freq": 12
-      },
-      {
-        "phrase": "family law",
-        "lift": 114179194.416,
-        "freq": 15
-      },
-      {
-        "phrase": "law order",
-        "lift": 107337316.2295,
-        "freq": 15
-      },
-      {
-        "phrase": "family law order",
-        "lift": 106352388.7215,
-        "freq": 15
-      },
-      {
-        "phrase": "court rules",
-        "lift": 92743940.3857,
-        "freq": 11
-      },
-      {
-        "phrase": "mandatory form",
-        "lift": 70318849.7697,
-        "freq": 12
-      },
-      {
-        "phrase": "form family law order",
-        "lift": 67442252.8969,
-        "freq": 11
-      },
-      {
-        "phrase": "form family law",
-        "lift": 67442252.8969,
-        "freq": 11
-      },
-      {
-        "phrase": "mandatory form family",
-        "lift": 67442252.8969,
-        "freq": 11
-      },
-      {
-        "phrase": "mandatory form family law",
-        "lift": 67442252.8969,
-        "freq": 11
-      },
-      {
-        "phrase": "child support",
-        "lift": 66835482.9989,
-        "freq": 12
-      },
-      {
-        "phrase": "local court",
-        "lift": 62684415.9035,
-        "freq": 11
-      },
-      {
-        "phrase": "local court rules",
-        "lift": 60740790.2326,
-        "freq": 11
-      },
-      {
-        "phrase": "county local court",
-        "lift": 60218730.4606,
-        "freq": 11
-      },
-      {
-        "phrase": "county local",
-        "lift": 60218730.4606,
-        "freq": 11
-      }
-    ],
-    "top_phrases_denied": [
-      {
-        "phrase": "temporary parenting plan",
-        "lift": 41.0719,
-        "freq": 1
-      },
-      {
-        "phrase": "temporary parenting",
-        "lift": 41.0719,
-        "freq": 1
-      },
-      {
-        "phrase": "temporary order",
-        "lift": 35.1575,
-        "freq": 1
-      },
-      {
-        "phrase": "request court",
-        "lift": 17.844,
-        "freq": 1
-      },
-      {
-        "phrase": "docusign envelope",
-        "lift": 14.5819,
-        "freq": 1
-      },
-      {
-        "phrase": "parenting plan",
-        "lift": 10.4073,
-        "freq": 1
-      },
-      {
-        "phrase": "gmail com",
-        "lift": 9.0341,
-        "freq": 1
-      },
-      {
-        "phrase": "true signed spokane",
-        "lift": 8.6283,
-        "freq": 1
-      },
-      {
-        "phrase": "form true signed spokane",
-        "lift": 8.6283,
-        "freq": 1
-      },
-      {
-        "phrase": "legal papers case lawyer",
-        "lift": 8.3563,
-        "freq": 1
-      },
-      {
-        "phrase": "papers case lawyer",
-        "lift": 8.3563,
-        "freq": 1
-      },
-      {
-        "phrase": "papers case lawyer address",
-        "lift": 8.3563,
-        "freq": 1
-      },
-      {
-        "phrase": "case lawyer",
-        "lift": 7.0394,
-        "freq": 1
-      },
-      {
-        "phrase": "case lawyer address",
-        "lift": 7.0394,
-        "freq": 1
-      },
-      {
-        "phrase": "signed spokane",
-        "lift": 6.9185,
-        "freq": 1
-      }
-    ],
     "model_auc": null
   },
   {
@@ -446,6 +136,7 @@
     "officer_name": "Jerry Scharosch",
     "motion_type": "temporary_order",
     "case_subtype": "dissolution",
+    "is_contested_type": true,
     "n_total": 10,
     "n_granted": 10,
     "n_denied": 0,
@@ -453,167 +144,13 @@
     "grant_rate": 1.0,
     "median_days_to_decision": 33.5,
     "median_days_before_hearing": null,
-    "mean_word_count_granted": null,
-    "mean_word_count_denied": null,
-    "mean_pages_granted": null,
-    "mean_pages_denied": null,
-    "mean_rcw_count_granted": null,
-    "mean_rcw_count_denied": null,
+    "mean_word_count_granted": 1341.8,
+    "mean_word_count_denied": 0.0,
+    "mean_pages_granted": 4.8,
+    "mean_pages_denied": 0.0,
+    "mean_rcw_count_granted": 1.0,
+    "mean_rcw_count_denied": 0.0,
     "top_rcws_granted": null,
-    "top_phrases_granted": [
-      {
-        "phrase": "form family",
-        "lift": 106442387.9921,
-        "freq": 15
-      },
-      {
-        "phrase": "motion temporary",
-        "lift": 102784807.6046,
-        "freq": 19
-      },
-      {
-        "phrase": "law order",
-        "lift": 101289107.599,
-        "freq": 19
-      },
-      {
-        "phrase": "family law",
-        "lift": 98451573.4102,
-        "freq": 19
-      },
-      {
-        "phrase": "family law order",
-        "lift": 97409592.3055,
-        "freq": 19
-      },
-      {
-        "phrase": "court rules",
-        "lift": 82647956.4023,
-        "freq": 12
-      },
-      {
-        "phrase": "mandatory form",
-        "lift": 58907021.2716,
-        "freq": 15
-      },
-      {
-        "phrase": "form family law",
-        "lift": 56303012.8945,
-        "freq": 14
-      },
-      {
-        "phrase": "form family law order",
-        "lift": 56303012.8945,
-        "freq": 14
-      },
-      {
-        "phrase": "mandatory form family",
-        "lift": 56303012.8945,
-        "freq": 14
-      },
-      {
-        "phrase": "mandatory form family law",
-        "lift": 56303012.8945,
-        "freq": 14
-      },
-      {
-        "phrase": "rcw motion temporary",
-        "lift": 55912525.4235,
-        "freq": 14
-      },
-      {
-        "phrase": "rcw motion",
-        "lift": 55912525.4235,
-        "freq": 14
-      },
-      {
-        "phrase": "temporary family",
-        "lift": 55868707.2282,
-        "freq": 19
-      },
-      {
-        "phrase": "local court",
-        "lift": 55098637.6015,
-        "freq": 12
-      }
-    ],
-    "top_phrases_denied": [
-      {
-        "phrase": "schedule order",
-        "lift": 0.0,
-        "freq": 0
-      },
-      {
-        "phrase": "child support schedule order",
-        "lift": 0.0,
-        "freq": 0
-      },
-      {
-        "phrase": "support schedule order",
-        "lift": 0.0,
-        "freq": 0
-      },
-      {
-        "phrase": "apply approve parenting",
-        "lift": 0.0,
-        "freq": 0
-      },
-      {
-        "phrase": "apply approve parenting plan",
-        "lift": 0.0,
-        "freq": 0
-      },
-      {
-        "phrase": "respondent mttmo",
-        "lift": 0.0,
-        "freq": 0
-      },
-      {
-        "phrase": "required financial records asking",
-        "lift": 0.0,
-        "freq": 0
-      },
-      {
-        "phrase": "parenting plan information temporary",
-        "lift": 0.0,
-        "freq": 0
-      },
-      {
-        "phrase": "plan information",
-        "lift": 0.0,
-        "freq": 0
-      },
-      {
-        "phrase": "parenting plan information",
-        "lift": 0.0,
-        "freq": 0
-      },
-      {
-        "phrase": "money including",
-        "lift": 0.0,
-        "freq": 0
-      },
-      {
-        "phrase": "money including child",
-        "lift": 0.0,
-        "freq": 0
-      },
-      {
-        "phrase": "section asking change",
-        "lift": 0.0,
-        "freq": 0
-      },
-      {
-        "phrase": "order involving money",
-        "lift": 0.0,
-        "freq": 0
-      },
-      {
-        "phrase": "records asking",
-        "lift": 0.0,
-        "freq": 0
-      }
-    ],
     "model_auc": null
   },
   {
@@ -621,6 +158,7 @@
     "officer_name": "Kevin Stewart",
     "motion_type": "temporary_order",
     "case_subtype": "dissolution",
+    "is_contested_type": true,
     "n_total": 9,
     "n_granted": 9,
     "n_denied": 0,
@@ -628,167 +166,13 @@
     "grant_rate": 1.0,
     "median_days_to_decision": 37.0,
     "median_days_before_hearing": null,
-    "mean_word_count_granted": null,
-    "mean_word_count_denied": null,
-    "mean_pages_granted": null,
-    "mean_pages_denied": null,
-    "mean_rcw_count_granted": null,
-    "mean_rcw_count_denied": null,
+    "mean_word_count_granted": 1584.2222,
+    "mean_word_count_denied": 0.0,
+    "mean_pages_granted": 5.7778,
+    "mean_pages_denied": 0.0,
+    "mean_rcw_count_granted": 1.5556,
+    "mean_rcw_count_denied": 0.0,
     "top_rcws_granted": null,
-    "top_phrases_granted": [
-      {
-        "phrase": "form family",
-        "lift": 153590677.7772,
-        "freq": 11
-      },
-      {
-        "phrase": "family law",
-        "lift": 117874762.7276,
-        "freq": 11
-      },
-      {
-        "phrase": "family law order",
-        "lift": 109567785.5389,
-        "freq": 11
-      },
-      {
-        "phrase": "law order",
-        "lift": 109567785.5389,
-        "freq": 11
-      },
-      {
-        "phrase": "motion temporary",
-        "lift": 109439460.9037,
-        "freq": 11
-      },
-      {
-        "phrase": "court rules",
-        "lift": 89479194.0311,
-        "freq": 10
-      },
-      {
-        "phrase": "mandatory form",
-        "lift": 73391480.1741,
-        "freq": 11
-      },
-      {
-        "phrase": "mandatory form family law",
-        "lift": 70826139.6048,
-        "freq": 10
-      },
-      {
-        "phrase": "mandatory form family",
-        "lift": 70826139.6048,
-        "freq": 10
-      },
-      {
-        "phrase": "form family law order",
-        "lift": 70826139.6048,
-        "freq": 10
-      },
-      {
-        "phrase": "form family law",
-        "lift": 70826139.6048,
-        "freq": 10
-      },
-      {
-        "phrase": "spouse domestic",
-        "lift": 68826242.8468,
-        "freq": 7
-      },
-      {
-        "phrase": "domestic partner",
-        "lift": 67619580.8292,
-        "freq": 7
-      },
-      {
-        "phrase": "spouse domestic partner",
-        "lift": 67619580.8292,
-        "freq": 7
-      },
-      {
-        "phrase": "rcw motion",
-        "lift": 62827300.65,
-        "freq": 11
-      }
-    ],
-    "top_phrases_denied": [
-      {
-        "phrase": "act persons covered state",
-        "lift": 0.0,
-        "freq": 0
-      },
-      {
-        "phrase": "address does",
-        "lift": 0.0,
-        "freq": 0
-      },
-      {
-        "phrase": "address street",
-        "lift": 0.0,
-        "freq": 0
-      },
-      {
-        "phrase": "address street address",
-        "lift": 0.0,
-        "freq": 0
-      },
-      {
-        "phrase": "address street address box",
-        "lift": 0.0,
-        "freq": 0
-      },
-      {
-        "phrase": "act persons covered",
-        "lift": 0.0,
-        "freq": 0
-      },
-      {
-        "phrase": "apply used",
-        "lift": 0.0,
-        "freq": 0
-      },
-      {
-        "phrase": "apply used displayed",
-        "lift": 0.0,
-        "freq": 0
-      },
-      {
-        "phrase": "restraining order follows",
-        "lift": 0.0,
-        "freq": 0
-      },
-      {
-        "phrase": "restraining order date case",
-        "lift": 0.0,
-        "freq": 0
-      },
-      {
-        "phrase": "restraining order date",
-        "lift": 0.0,
-        "freq": 0
-      },
-      {
-        "phrase": "specify ask court restraining",
-        "lift": 0.0,
-        "freq": 0
-      },
-      {
-        "phrase": "specify ask court",
-        "lift": 0.0,
-        "freq": 0
-      },
-      {
-        "phrase": "specify ask",
-        "lift": 0.0,
-        "freq": 0
-      },
-      {
-        "phrase": "responding coming hearing motion",
-        "lift": 0.0,
-        "freq": 0
-      }
-    ],
     "model_auc": null
   },
   {
@@ -796,6 +180,7 @@
     "officer_name": "Anthony Rugel",
     "motion_type": "temporary_order",
     "case_subtype": "dissolution",
+    "is_contested_type": true,
     "n_total": 9,
     "n_granted": 9,
     "n_denied": 0,
@@ -803,167 +188,13 @@
     "grant_rate": 1.0,
     "median_days_to_decision": 50.0,
     "median_days_before_hearing": null,
-    "mean_word_count_granted": null,
-    "mean_word_count_denied": null,
-    "mean_pages_granted": null,
-    "mean_pages_denied": null,
-    "mean_rcw_count_granted": null,
-    "mean_rcw_count_denied": null,
+    "mean_word_count_granted": 1457.4444,
+    "mean_word_count_denied": 0.0,
+    "mean_pages_granted": 5.0,
+    "mean_pages_denied": 0.0,
+    "mean_rcw_count_granted": 1.3333,
+    "mean_rcw_count_denied": 0.0,
     "top_rcws_granted": null,
-    "top_phrases_granted": [
-      {
-        "phrase": "form family",
-        "lift": 116955251.8334,
-        "freq": 11
-      },
-      {
-        "phrase": "court rules",
-        "lift": 114680539.1264,
-        "freq": 9
-      },
-      {
-        "phrase": "family law",
-        "lift": 112138306.3855,
-        "freq": 11
-      },
-      {
-        "phrase": "motion temporary",
-        "lift": 105460094.4961,
-        "freq": 11
-      },
-      {
-        "phrase": "law order",
-        "lift": 97924835.909,
-        "freq": 11
-      },
-      {
-        "phrase": "family law order",
-        "lift": 97924835.909,
-        "freq": 11
-      },
-      {
-        "phrase": "local court",
-        "lift": 75943485.1105,
-        "freq": 9
-      },
-      {
-        "phrase": "local court rules",
-        "lift": 75943485.1105,
-        "freq": 9
-      },
-      {
-        "phrase": "county local",
-        "lift": 75943485.1105,
-        "freq": 9
-      },
-      {
-        "phrase": "county local court rules",
-        "lift": 75943485.1105,
-        "freq": 9
-      },
-      {
-        "phrase": "county local court",
-        "lift": 75943485.1105,
-        "freq": 9
-      },
-      {
-        "phrase": "mandatory form",
-        "lift": 70764184.0118,
-        "freq": 11
-      },
-      {
-        "phrase": "form family law",
-        "lift": 67694732.378,
-        "freq": 9
-      },
-      {
-        "phrase": "form family law order",
-        "lift": 67694732.378,
-        "freq": 9
-      },
-      {
-        "phrase": "mandatory form family law",
-        "lift": 66405906.3419,
-        "freq": 9
-      }
-    ],
-    "top_phrases_denied": [
-      {
-        "phrase": "dudley rcw motion temporary",
-        "lift": 0.0,
-        "freq": 0
-      },
-      {
-        "phrase": "dudley rcw motion",
-        "lift": 0.0,
-        "freq": 0
-      },
-      {
-        "phrase": "dudley rcw",
-        "lift": 0.0,
-        "freq": 0
-      },
-      {
-        "phrase": "duty military spouse",
-        "lift": 0.0,
-        "freq": 0
-      },
-      {
-        "phrase": "duty military spouse covered",
-        "lift": 0.0,
-        "freq": 0
-      },
-      {
-        "phrase": "military spouse covered",
-        "lift": 0.0,
-        "freq": 0
-      },
-      {
-        "phrase": "military spouse",
-        "lift": 0.0,
-        "freq": 0
-      },
-      {
-        "phrase": "military spouse covered state",
-        "lift": 0.0,
-        "freq": 0
-      },
-      {
-        "phrase": "review file",
-        "lift": 0.0,
-        "freq": 0
-      },
-      {
-        "phrase": "request review file",
-        "lift": 0.0,
-        "freq": 0
-      },
-      {
-        "phrase": "request review",
-        "lift": 0.0,
-        "freq": 0
-      },
-      {
-        "phrase": "separated january",
-        "lift": 0.0,
-        "freq": 0
-      },
-      {
-        "phrase": "active duty military spouse",
-        "lift": 0.0,
-        "freq": 0
-      },
-      {
-        "phrase": "matthew dudley rcw",
-        "lift": 0.0,
-        "freq": 0
-      },
-      {
-        "phrase": "matthew dudley",
-        "lift": 0.0,
-        "freq": 0
-      }
-    ],
     "model_auc": null
   },
   {
@@ -971,6 +202,7 @@
     "officer_name": "Julia Pelc",
     "motion_type": "summons_petition_dissolution",
     "case_subtype": "dissolution",
+    "is_contested_type": false,
     "n_total": 9,
     "n_granted": 9,
     "n_denied": 0,
@@ -985,8 +217,6 @@
     "mean_rcw_count_granted": null,
     "mean_rcw_count_denied": null,
     "top_rcws_granted": null,
-    "top_phrases_granted": null,
-    "top_phrases_denied": null,
     "model_auc": null
   },
   {
@@ -994,6 +224,7 @@
     "officer_name": "Jacquelyn High-Edward",
     "motion_type": "petition_dissolution",
     "case_subtype": "dissolution",
+    "is_contested_type": false,
     "n_total": 7,
     "n_granted": 7,
     "n_denied": 0,
@@ -1008,8 +239,6 @@
     "mean_rcw_count_granted": null,
     "mean_rcw_count_denied": null,
     "top_rcws_granted": null,
-    "top_phrases_granted": null,
-    "top_phrases_denied": null,
     "model_auc": null
   },
   {
@@ -1017,6 +246,7 @@
     "officer_name": "Michelle Ressa",
     "motion_type": "temporary_order",
     "case_subtype": "other_family",
+    "is_contested_type": true,
     "n_total": 7,
     "n_granted": 7,
     "n_denied": 0,
@@ -1024,167 +254,13 @@
     "grant_rate": 1.0,
     "median_days_to_decision": 38.0,
     "median_days_before_hearing": null,
-    "mean_word_count_granted": null,
-    "mean_word_count_denied": null,
-    "mean_pages_granted": null,
-    "mean_pages_denied": null,
-    "mean_rcw_count_granted": null,
-    "mean_rcw_count_denied": null,
+    "mean_word_count_granted": 1346.0,
+    "mean_word_count_denied": 0.0,
+    "mean_pages_granted": 4.5714,
+    "mean_pages_denied": 0.0,
+    "mean_rcw_count_granted": 1.4286,
+    "mean_rcw_count_denied": 0.0,
     "top_rcws_granted": null,
-    "top_phrases_granted": [
-      {
-        "phrase": "form family",
-        "lift": 167177636.3426,
-        "freq": 12
-      },
-      {
-        "phrase": "family law",
-        "lift": 126874539.2649,
-        "freq": 12
-      },
-      {
-        "phrase": "motion temporary",
-        "lift": 124598077.5209,
-        "freq": 12
-      },
-      {
-        "phrase": "law order",
-        "lift": 123535200.6062,
-        "freq": 12
-      },
-      {
-        "phrase": "family law order",
-        "lift": 121987125.2047,
-        "freq": 12
-      },
-      {
-        "phrase": "court rules",
-        "lift": 109675261.0829,
-        "freq": 11
-      },
-      {
-        "phrase": "mandatory form",
-        "lift": 73946597.3595,
-        "freq": 12
-      },
-      {
-        "phrase": "parenting plan",
-        "lift": 73512185.8151,
-        "freq": 11
-      },
-      {
-        "phrase": "local court rules",
-        "lift": 73116840.722,
-        "freq": 11
-      },
-      {
-        "phrase": "county local court",
-        "lift": 73116840.722,
-        "freq": 11
-      },
-      {
-        "phrase": "county local",
-        "lift": 73116840.722,
-        "freq": 11
-      },
-      {
-        "phrase": "local court",
-        "lift": 73116840.722,
-        "freq": 11
-      },
-      {
-        "phrase": "county local court rules",
-        "lift": 73116840.722,
-        "freq": 11
-      },
-      {
-        "phrase": "riverside ave",
-        "lift": 70369482.7704,
-        "freq": 6
-      },
-      {
-        "phrase": "law office",
-        "lift": 68866527.0129,
-        "freq": 5
-      }
-    ],
-    "top_phrases_denied": [
-      {
-        "phrase": "wsba lawyer signs print",
-        "lift": 0.0,
-        "freq": 0
-      },
-      {
-        "phrase": "wsba lawyer signs",
-        "lift": 0.0,
-        "freq": 0
-      },
-      {
-        "phrase": "goto hearing court",
-        "lift": 0.0,
-        "freq": 0
-      },
-      {
-        "phrase": "goto hearing court allow",
-        "lift": 0.0,
-        "freq": 0
-      },
-      {
-        "phrase": "lawyers goto hearing court",
-        "lift": 0.0,
-        "freq": 0
-      },
-      {
-        "phrase": "care safety children check",
-        "lift": 0.0,
-        "freq": 0
-      },
-      {
-        "phrase": "children check apply approve",
-        "lift": 0.0,
-        "freq": 0
-      },
-      {
-        "phrase": "children check",
-        "lift": 0.0,
-        "freq": 0
-      },
-      {
-        "phrase": "check apply approve parenting",
-        "lift": 0.0,
-        "freq": 0
-      },
-      {
-        "phrase": "children check apply",
-        "lift": 0.0,
-        "freq": 0
-      },
-      {
-        "phrase": "apply approve parenting",
-        "lift": 0.0,
-        "freq": 0
-      },
-      {
-        "phrase": "safety children check apply",
-        "lift": 0.0,
-        "freq": 0
-      },
-      {
-        "phrase": "safety children check",
-        "lift": 0.0,
-        "freq": 0
-      },
-      {
-        "phrase": "check apply approve",
-        "lift": 0.0,
-        "freq": 0
-      },
-      {
-        "phrase": "apply approve",
-        "lift": 0.0,
-        "freq": 0
-      }
-    ],
     "model_auc": null
   },
   {
@@ -1192,6 +268,7 @@
     "officer_name": "Marla Polin",
     "motion_type": "summons_petition_dissolution",
     "case_subtype": "dissolution",
+    "is_contested_type": false,
     "n_total": 7,
     "n_granted": 7,
     "n_denied": 0,
@@ -1206,8 +283,6 @@
     "mean_rcw_count_granted": null,
     "mean_rcw_count_denied": null,
     "top_rcws_granted": null,
-    "top_phrases_granted": null,
-    "top_phrases_denied": null,
     "model_auc": null
   },
   {
@@ -1215,6 +290,7 @@
     "officer_name": "Jerry Scharosch",
     "motion_type": "temporary_order",
     "case_subtype": "other_family",
+    "is_contested_type": true,
     "n_total": 7,
     "n_granted": 7,
     "n_denied": 0,
@@ -1222,167 +298,13 @@
     "grant_rate": 1.0,
     "median_days_to_decision": 32.0,
     "median_days_before_hearing": null,
-    "mean_word_count_granted": null,
-    "mean_word_count_denied": null,
-    "mean_pages_granted": null,
-    "mean_pages_denied": null,
-    "mean_rcw_count_granted": null,
-    "mean_rcw_count_denied": null,
+    "mean_word_count_granted": 514.5714,
+    "mean_word_count_denied": 0.0,
+    "mean_pages_granted": 2.4286,
+    "mean_pages_denied": 0.0,
+    "mean_rcw_count_granted": 0.5714,
+    "mean_rcw_count_denied": 0.0,
     "top_rcws_granted": null,
-    "top_phrases_granted": [
-      {
-        "phrase": "form family",
-        "lift": 106442387.9921,
-        "freq": 15
-      },
-      {
-        "phrase": "motion temporary",
-        "lift": 102784807.6046,
-        "freq": 19
-      },
-      {
-        "phrase": "law order",
-        "lift": 101289107.599,
-        "freq": 19
-      },
-      {
-        "phrase": "family law",
-        "lift": 98451573.4102,
-        "freq": 19
-      },
-      {
-        "phrase": "family law order",
-        "lift": 97409592.3055,
-        "freq": 19
-      },
-      {
-        "phrase": "court rules",
-        "lift": 82647956.4023,
-        "freq": 12
-      },
-      {
-        "phrase": "mandatory form",
-        "lift": 58907021.2716,
-        "freq": 15
-      },
-      {
-        "phrase": "form family law",
-        "lift": 56303012.8945,
-        "freq": 14
-      },
-      {
-        "phrase": "form family law order",
-        "lift": 56303012.8945,
-        "freq": 14
-      },
-      {
-        "phrase": "mandatory form family",
-        "lift": 56303012.8945,
-        "freq": 14
-      },
-      {
-        "phrase": "mandatory form family law",
-        "lift": 56303012.8945,
-        "freq": 14
-      },
-      {
-        "phrase": "rcw motion temporary",
-        "lift": 55912525.4235,
-        "freq": 14
-      },
-      {
-        "phrase": "rcw motion",
-        "lift": 55912525.4235,
-        "freq": 14
-      },
-      {
-        "phrase": "temporary family",
-        "lift": 55868707.2282,
-        "freq": 19
-      },
-      {
-        "phrase": "local court",
-        "lift": 55098637.6015,
-        "freq": 12
-      }
-    ],
-    "top_phrases_denied": [
-      {
-        "phrase": "schedule order",
-        "lift": 0.0,
-        "freq": 0
-      },
-      {
-        "phrase": "child support schedule order",
-        "lift": 0.0,
-        "freq": 0
-      },
-      {
-        "phrase": "support schedule order",
-        "lift": 0.0,
-        "freq": 0
-      },
-      {
-        "phrase": "apply approve parenting",
-        "lift": 0.0,
-        "freq": 0
-      },
-      {
-        "phrase": "apply approve parenting plan",
-        "lift": 0.0,
-        "freq": 0
-      },
-      {
-        "phrase": "respondent mttmo",
-        "lift": 0.0,
-        "freq": 0
-      },
-      {
-        "phrase": "required financial records asking",
-        "lift": 0.0,
-        "freq": 0
-      },
-      {
-        "phrase": "parenting plan information temporary",
-        "lift": 0.0,
-        "freq": 0
-      },
-      {
-        "phrase": "plan information",
-        "lift": 0.0,
-        "freq": 0
-      },
-      {
-        "phrase": "parenting plan information",
-        "lift": 0.0,
-        "freq": 0
-      },
-      {
-        "phrase": "money including",
-        "lift": 0.0,
-        "freq": 0
-      },
-      {
-        "phrase": "money including child",
-        "lift": 0.0,
-        "freq": 0
-      },
-      {
-        "phrase": "section asking change",
-        "lift": 0.0,
-        "freq": 0
-      },
-      {
-        "phrase": "order involving money",
-        "lift": 0.0,
-        "freq": 0
-      },
-      {
-        "phrase": "records asking",
-        "lift": 0.0,
-        "freq": 0
-      }
-    ],
     "model_auc": null
   },
   {
@@ -1390,6 +312,7 @@
     "officer_name": "Breean Beggs",
     "motion_type": "summons_petition_parenting_plan_res_schedule",
     "case_subtype": "other_family",
+    "is_contested_type": false,
     "n_total": 6,
     "n_granted": 6,
     "n_denied": 0,
@@ -1404,8 +327,6 @@
     "mean_rcw_count_granted": null,
     "mean_rcw_count_denied": null,
     "top_rcws_granted": null,
-    "top_phrases_granted": null,
-    "top_phrases_denied": null,
     "model_auc": null
   },
   {
@@ -1413,6 +334,7 @@
     "officer_name": "Kevin Stewart",
     "motion_type": "summons_petition_dissolution",
     "case_subtype": "dissolution",
+    "is_contested_type": false,
     "n_total": 6,
     "n_granted": 6,
     "n_denied": 0,
@@ -1427,8 +349,6 @@
     "mean_rcw_count_granted": null,
     "mean_rcw_count_denied": null,
     "top_rcws_granted": null,
-    "top_phrases_granted": null,
-    "top_phrases_denied": null,
     "model_auc": null
   },
   {
@@ -1436,6 +356,7 @@
     "officer_name": "Nichole Swennumson",
     "motion_type": "summons_petition_dissolution",
     "case_subtype": "dissolution",
+    "is_contested_type": false,
     "n_total": 6,
     "n_granted": 6,
     "n_denied": 0,
@@ -1450,8 +371,6 @@
     "mean_rcw_count_granted": null,
     "mean_rcw_count_denied": null,
     "top_rcws_granted": null,
-    "top_phrases_granted": null,
-    "top_phrases_denied": null,
     "model_auc": null
   },
   {
@@ -1459,6 +378,7 @@
     "officer_name": "Julia Pelc",
     "motion_type": "order_show_cause",
     "case_subtype": "dissolution",
+    "is_contested_type": true,
     "n_total": 6,
     "n_granted": 6,
     "n_denied": 0,
@@ -1466,15 +386,13 @@
     "grant_rate": 1.0,
     "median_days_to_decision": 0.0,
     "median_days_before_hearing": null,
-    "mean_word_count_granted": null,
-    "mean_word_count_denied": null,
-    "mean_pages_granted": null,
-    "mean_pages_denied": null,
-    "mean_rcw_count_granted": null,
-    "mean_rcw_count_denied": null,
+    "mean_word_count_granted": 2069.5,
+    "mean_word_count_denied": 0.0,
+    "mean_pages_granted": 6.8333,
+    "mean_pages_denied": 0.0,
+    "mean_rcw_count_granted": 1.3333,
+    "mean_rcw_count_denied": 0.0,
     "top_rcws_granted": null,
-    "top_phrases_granted": null,
-    "top_phrases_denied": null,
     "model_auc": null
   },
   {
@@ -1482,6 +400,7 @@
     "officer_name": "Julia Pelc",
     "motion_type": "temporary_order",
     "case_subtype": "dissolution",
+    "is_contested_type": true,
     "n_total": 6,
     "n_granted": 6,
     "n_denied": 0,
@@ -1489,167 +408,13 @@
     "grant_rate": 1.0,
     "median_days_to_decision": 44.5,
     "median_days_before_hearing": null,
-    "mean_word_count_granted": null,
-    "mean_word_count_denied": null,
-    "mean_pages_granted": null,
-    "mean_pages_denied": null,
-    "mean_rcw_count_granted": null,
-    "mean_rcw_count_denied": null,
+    "mean_word_count_granted": 1409.1667,
+    "mean_word_count_denied": 0.0,
+    "mean_pages_granted": 5.5,
+    "mean_pages_denied": 0.0,
+    "mean_rcw_count_granted": 1.6667,
+    "mean_rcw_count_denied": 0.0,
     "top_rcws_granted": null,
-    "top_phrases_granted": [
-      {
-        "phrase": "law office",
-        "lift": 70445775.4231,
-        "freq": 6
-      },
-      {
-        "phrase": "order university",
-        "lift": 59390307.6212,
-        "freq": 4
-      },
-      {
-        "phrase": "family law order university",
-        "lift": 59390307.6212,
-        "freq": 4
-      },
-      {
-        "phrase": "law order university",
-        "lift": 59390307.6212,
-        "freq": 4
-      },
-      {
-        "phrase": "divorce spokane",
-        "lift": 57668253.3992,
-        "freq": 5
-      },
-      {
-        "phrase": "divorce spokane valley",
-        "lift": 51661918.8637,
-        "freq": 4
-      },
-      {
-        "phrase": "ave ste",
-        "lift": 48509343.602,
-        "freq": 3
-      },
-      {
-        "phrase": "gallagher law",
-        "lift": 48509343.602,
-        "freq": 3
-      },
-      {
-        "phrase": "familysoft formpak",
-        "lift": 45499300.398,
-        "freq": 3
-      },
-      {
-        "phrase": "gallagher law office",
-        "lift": 45267000.1937,
-        "freq": 3
-      },
-      {
-        "phrase": "spouse domestic",
-        "lift": 45177083.8497,
-        "freq": 5
-      },
-      {
-        "phrase": "domestic partner",
-        "lift": 45177083.8497,
-        "freq": 5
-      },
-      {
-        "phrase": "spouse domestic partner",
-        "lift": 45177083.8497,
-        "freq": 5
-      },
-      {
-        "phrase": "suite divorce",
-        "lift": 39812984.0613,
-        "freq": 3
-      },
-      {
-        "phrase": "law office mandatory form",
-        "lift": 38046946.8007,
-        "freq": 3
-      }
-    ],
-    "top_phrases_denied": [
-      {
-        "phrase": "parenting plan residential schedule",
-        "lift": 6.5528,
-        "freq": 1
-      },
-      {
-        "phrase": "parenting plan residential",
-        "lift": 6.5528,
-        "freq": 1
-      },
-      {
-        "phrase": "plan residential",
-        "lift": 6.5528,
-        "freq": 1
-      },
-      {
-        "phrase": "plan residential schedule",
-        "lift": 6.5528,
-        "freq": 1
-      },
-      {
-        "phrase": "suite spokane",
-        "lift": 5.9739,
-        "freq": 1
-      },
-      {
-        "phrase": "suite spokane valley",
-        "lift": 5.9739,
-        "freq": 1
-      },
-      {
-        "phrase": "parentage asking",
-        "lift": 5.8473,
-        "freq": 1
-      },
-      {
-        "phrase": "records received public assistance",
-        "lift": 5.8473,
-        "freq": 1
-      },
-      {
-        "phrase": "noaa parties",
-        "lift": 5.8473,
-        "freq": 1
-      },
-      {
-        "phrase": "parentage asking child",
-        "lift": 5.8473,
-        "freq": 1
-      },
-      {
-        "phrase": "parentage asking child support",
-        "lift": 5.8473,
-        "freq": 1
-      },
-      {
-        "phrase": "form parentage asking",
-        "lift": 5.8473,
-        "freq": 1
-      },
-      {
-        "phrase": "records received",
-        "lift": 5.8473,
-        "freq": 1
-      },
-      {
-        "phrase": "form parentage asking child",
-        "lift": 5.8473,
-        "freq": 1
-      },
-      {
-        "phrase": "health service noaa parties",
-        "lift": 5.8473,
-        "freq": 1
-      }
-    ],
     "model_auc": null
   },
   {
@@ -1657,6 +422,7 @@
     "officer_name": "Breean Beggs",
     "motion_type": "temporary_order",
     "case_subtype": "other_family",
+    "is_contested_type": true,
     "n_total": 5,
     "n_granted": 5,
     "n_denied": 0,
@@ -1664,167 +430,13 @@
     "grant_rate": 1.0,
     "median_days_to_decision": 35.0,
     "median_days_before_hearing": null,
-    "mean_word_count_granted": null,
-    "mean_word_count_denied": null,
-    "mean_pages_granted": null,
-    "mean_pages_denied": null,
-    "mean_rcw_count_granted": null,
-    "mean_rcw_count_denied": null,
+    "mean_word_count_granted": 1452.2,
+    "mean_word_count_denied": 0.0,
+    "mean_pages_granted": 5.0,
+    "mean_pages_denied": 0.0,
+    "mean_rcw_count_granted": 2.2,
+    "mean_rcw_count_denied": 0.0,
     "top_rcws_granted": null,
-    "top_phrases_granted": [
-      {
-        "phrase": "form family",
-        "lift": 130214732.4499,
-        "freq": 10
-      },
-      {
-        "phrase": "family law order",
-        "lift": 108141302.3716,
-        "freq": 10
-      },
-      {
-        "phrase": "law order",
-        "lift": 108141302.3716,
-        "freq": 10
-      },
-      {
-        "phrase": "family law",
-        "lift": 108141302.3716,
-        "freq": 10
-      },
-      {
-        "phrase": "motion temporary",
-        "lift": 103166218.3311,
-        "freq": 10
-      },
-      {
-        "phrase": "court rules",
-        "lift": 88691693.5061,
-        "freq": 7
-      },
-      {
-        "phrase": "mandatory form",
-        "lift": 69956115.4105,
-        "freq": 10
-      },
-      {
-        "phrase": "child support",
-        "lift": 69018729.5885,
-        "freq": 10
-      },
-      {
-        "phrase": "temporary family",
-        "lift": 68673273.895,
-        "freq": 10
-      },
-      {
-        "phrase": "temporary family law order",
-        "lift": 68673273.895,
-        "freq": 10
-      },
-      {
-        "phrase": "temporary family law",
-        "lift": 68673273.895,
-        "freq": 10
-      },
-      {
-        "phrase": "motion temporary family law",
-        "lift": 66915759.5936,
-        "freq": 10
-      },
-      {
-        "phrase": "motion temporary family",
-        "lift": 66915759.5936,
-        "freq": 10
-      },
-      {
-        "phrase": "mandatory form family",
-        "lift": 63391013.6326,
-        "freq": 5
-      },
-      {
-        "phrase": "form family law",
-        "lift": 63391013.6326,
-        "freq": 5
-      }
-    ],
-    "top_phrases_denied": [
-      {
-        "phrase": "page disturb disturb peace",
-        "lift": 0.0,
-        "freq": 0
-      },
-      {
-        "phrase": "papers case check",
-        "lift": 0.0,
-        "freq": 0
-      },
-      {
-        "phrase": "papers case check lawyer",
-        "lift": 0.0,
-        "freq": 0
-      },
-      {
-        "phrase": "date case",
-        "lift": 0.0,
-        "freq": 0
-      },
-      {
-        "phrase": "date case asking",
-        "lift": 0.0,
-        "freq": 0
-      },
-      {
-        "phrase": "date case asking court",
-        "lift": 0.0,
-        "freq": 0
-      },
-      {
-        "phrase": "custody control",
-        "lift": 0.0,
-        "freq": 0
-      },
-      {
-        "phrase": "custody control purchase",
-        "lift": 0.0,
-        "freq": 0
-      },
-      {
-        "phrase": "custody control purchase receive",
-        "lift": 0.0,
-        "freq": 0
-      },
-      {
-        "phrase": "dangerous weapon",
-        "lift": 0.0,
-        "freq": 0
-      },
-      {
-        "phrase": "dangerous weapon felony",
-        "lift": 0.0,
-        "freq": 0
-      },
-      {
-        "phrase": "warning court",
-        "lift": 0.0,
-        "freq": 0
-      },
-      {
-        "phrase": "apply check",
-        "lift": 0.0,
-        "freq": 0
-      },
-      {
-        "phrase": "apply check restraining",
-        "lift": 0.0,
-        "freq": 0
-      },
-      {
-        "phrase": "apply check restraining order",
-        "lift": 0.0,
-        "freq": 0
-      }
-    ],
     "model_auc": null
   },
   {
@@ -1832,6 +444,7 @@
     "officer_name": "Jacquelyn High-Edward",
     "motion_type": "summons_petition_dissolution",
     "case_subtype": "dissolution",
+    "is_contested_type": false,
     "n_total": 5,
     "n_granted": 5,
     "n_denied": 0,
@@ -1846,8 +459,6 @@
     "mean_rcw_count_granted": null,
     "mean_rcw_count_denied": null,
     "top_rcws_granted": null,
-    "top_phrases_granted": null,
-    "top_phrases_denied": null,
     "model_auc": null
   },
   {
@@ -1855,6 +466,7 @@
     "officer_name": "Michael Price",
     "motion_type": "petition_parenting_plan_child_support",
     "case_subtype": "other_family",
+    "is_contested_type": true,
     "n_total": 5,
     "n_granted": 5,
     "n_denied": 0,
@@ -1869,8 +481,6 @@
     "mean_rcw_count_granted": null,
     "mean_rcw_count_denied": null,
     "top_rcws_granted": null,
-    "top_phrases_granted": null,
-    "top_phrases_denied": null,
     "model_auc": null
   },
   {
@@ -1878,6 +488,7 @@
     "officer_name": "Michael Price",
     "motion_type": "summons_petition_parenting_plan_res_schedule",
     "case_subtype": "other_family",
+    "is_contested_type": false,
     "n_total": 5,
     "n_granted": 5,
     "n_denied": 0,
@@ -1892,8 +503,6 @@
     "mean_rcw_count_granted": null,
     "mean_rcw_count_denied": null,
     "top_rcws_granted": null,
-    "top_phrases_granted": null,
-    "top_phrases_denied": null,
     "model_auc": null
   },
   {
@@ -1901,6 +510,7 @@
     "officer_name": "Michelle Ressa",
     "motion_type": "summons_petition_parenting_plan_res_schedule",
     "case_subtype": "other_family",
+    "is_contested_type": false,
     "n_total": 5,
     "n_granted": 5,
     "n_denied": 0,
@@ -1915,8 +525,6 @@
     "mean_rcw_count_granted": null,
     "mean_rcw_count_denied": null,
     "top_rcws_granted": null,
-    "top_phrases_granted": null,
-    "top_phrases_denied": null,
     "model_auc": null
   },
   {
@@ -1924,6 +532,7 @@
     "officer_name": "Michelle Ressa",
     "motion_type": "temporary_order",
     "case_subtype": "dissolution",
+    "is_contested_type": true,
     "n_total": 5,
     "n_granted": 5,
     "n_denied": 0,
@@ -1931,167 +540,13 @@
     "grant_rate": 1.0,
     "median_days_to_decision": 21.0,
     "median_days_before_hearing": null,
-    "mean_word_count_granted": null,
-    "mean_word_count_denied": null,
-    "mean_pages_granted": null,
-    "mean_pages_denied": null,
-    "mean_rcw_count_granted": null,
-    "mean_rcw_count_denied": null,
+    "mean_word_count_granted": 1335.8,
+    "mean_word_count_denied": 0.0,
+    "mean_pages_granted": 4.8,
+    "mean_pages_denied": 0.0,
+    "mean_rcw_count_granted": 1.0,
+    "mean_rcw_count_denied": 0.0,
     "top_rcws_granted": null,
-    "top_phrases_granted": [
-      {
-        "phrase": "form family",
-        "lift": 167177636.3426,
-        "freq": 12
-      },
-      {
-        "phrase": "family law",
-        "lift": 126874539.2649,
-        "freq": 12
-      },
-      {
-        "phrase": "motion temporary",
-        "lift": 124598077.5209,
-        "freq": 12
-      },
-      {
-        "phrase": "law order",
-        "lift": 123535200.6062,
-        "freq": 12
-      },
-      {
-        "phrase": "family law order",
-        "lift": 121987125.2047,
-        "freq": 12
-      },
-      {
-        "phrase": "court rules",
-        "lift": 109675261.0829,
-        "freq": 11
-      },
-      {
-        "phrase": "mandatory form",
-        "lift": 73946597.3595,
-        "freq": 12
-      },
-      {
-        "phrase": "parenting plan",
-        "lift": 73512185.8151,
-        "freq": 11
-      },
-      {
-        "phrase": "local court rules",
-        "lift": 73116840.722,
-        "freq": 11
-      },
-      {
-        "phrase": "county local court",
-        "lift": 73116840.722,
-        "freq": 11
-      },
-      {
-        "phrase": "county local",
-        "lift": 73116840.722,
-        "freq": 11
-      },
-      {
-        "phrase": "local court",
-        "lift": 73116840.722,
-        "freq": 11
-      },
-      {
-        "phrase": "county local court rules",
-        "lift": 73116840.722,
-        "freq": 11
-      },
-      {
-        "phrase": "riverside ave",
-        "lift": 70369482.7704,
-        "freq": 6
-      },
-      {
-        "phrase": "law office",
-        "lift": 68866527.0129,
-        "freq": 5
-      }
-    ],
-    "top_phrases_denied": [
-      {
-        "phrase": "wsba lawyer signs print",
-        "lift": 0.0,
-        "freq": 0
-      },
-      {
-        "phrase": "wsba lawyer signs",
-        "lift": 0.0,
-        "freq": 0
-      },
-      {
-        "phrase": "goto hearing court",
-        "lift": 0.0,
-        "freq": 0
-      },
-      {
-        "phrase": "goto hearing court allow",
-        "lift": 0.0,
-        "freq": 0
-      },
-      {
-        "phrase": "lawyers goto hearing court",
-        "lift": 0.0,
-        "freq": 0
-      },
-      {
-        "phrase": "care safety children check",
-        "lift": 0.0,
-        "freq": 0
-      },
-      {
-        "phrase": "children check apply approve",
-        "lift": 0.0,
-        "freq": 0
-      },
-      {
-        "phrase": "children check",
-        "lift": 0.0,
-        "freq": 0
-      },
-      {
-        "phrase": "check apply approve parenting",
-        "lift": 0.0,
-        "freq": 0
-      },
-      {
-        "phrase": "children check apply",
-        "lift": 0.0,
-        "freq": 0
-      },
-      {
-        "phrase": "apply approve parenting",
-        "lift": 0.0,
-        "freq": 0
-      },
-      {
-        "phrase": "safety children check apply",
-        "lift": 0.0,
-        "freq": 0
-      },
-      {
-        "phrase": "safety children check",
-        "lift": 0.0,
-        "freq": 0
-      },
-      {
-        "phrase": "check apply approve",
-        "lift": 0.0,
-        "freq": 0
-      },
-      {
-        "phrase": "apply approve",
-        "lift": 0.0,
-        "freq": 0
-      }
-    ],
     "model_auc": null
   },
   {
@@ -2099,6 +554,7 @@
     "officer_name": "Nichole Swennumson",
     "motion_type": "summons_petition_parenting_plan_res_schedule",
     "case_subtype": "other_family",
+    "is_contested_type": false,
     "n_total": 5,
     "n_granted": 5,
     "n_denied": 0,
@@ -2113,8 +569,6 @@
     "mean_rcw_count_granted": null,
     "mean_rcw_count_denied": null,
     "top_rcws_granted": null,
-    "top_phrases_granted": null,
-    "top_phrases_denied": null,
     "model_auc": null
   },
   {
@@ -2122,6 +576,7 @@
     "officer_name": "Breean Beggs",
     "motion_type": "temporary_order",
     "case_subtype": "dissolution",
+    "is_contested_type": true,
     "n_total": 4,
     "n_granted": 4,
     "n_denied": 0,
@@ -2129,167 +584,13 @@
     "grant_rate": 1.0,
     "median_days_to_decision": 40.5,
     "median_days_before_hearing": null,
-    "mean_word_count_granted": null,
-    "mean_word_count_denied": null,
-    "mean_pages_granted": null,
-    "mean_pages_denied": null,
-    "mean_rcw_count_granted": null,
-    "mean_rcw_count_denied": null,
+    "mean_word_count_granted": 1301.75,
+    "mean_word_count_denied": 0.0,
+    "mean_pages_granted": 4.75,
+    "mean_pages_denied": 0.0,
+    "mean_rcw_count_granted": 1.25,
+    "mean_rcw_count_denied": 0.0,
     "top_rcws_granted": null,
-    "top_phrases_granted": [
-      {
-        "phrase": "form family",
-        "lift": 130214732.4499,
-        "freq": 10
-      },
-      {
-        "phrase": "family law order",
-        "lift": 108141302.3716,
-        "freq": 10
-      },
-      {
-        "phrase": "law order",
-        "lift": 108141302.3716,
-        "freq": 10
-      },
-      {
-        "phrase": "family law",
-        "lift": 108141302.3716,
-        "freq": 10
-      },
-      {
-        "phrase": "motion temporary",
-        "lift": 103166218.3311,
-        "freq": 10
-      },
-      {
-        "phrase": "court rules",
-        "lift": 88691693.5061,
-        "freq": 7
-      },
-      {
-        "phrase": "mandatory form",
-        "lift": 69956115.4105,
-        "freq": 10
-      },
-      {
-        "phrase": "child support",
-        "lift": 69018729.5885,
-        "freq": 10
-      },
-      {
-        "phrase": "temporary family",
-        "lift": 68673273.895,
-        "freq": 10
-      },
-      {
-        "phrase": "temporary family law order",
-        "lift": 68673273.895,
-        "freq": 10
-      },
-      {
-        "phrase": "temporary family law",
-        "lift": 68673273.895,
-        "freq": 10
-      },
-      {
-        "phrase": "motion temporary family law",
-        "lift": 66915759.5936,
-        "freq": 10
-      },
-      {
-        "phrase": "motion temporary family",
-        "lift": 66915759.5936,
-        "freq": 10
-      },
-      {
-        "phrase": "mandatory form family",
-        "lift": 63391013.6326,
-        "freq": 5
-      },
-      {
-        "phrase": "form family law",
-        "lift": 63391013.6326,
-        "freq": 5
-      }
-    ],
-    "top_phrases_denied": [
-      {
-        "phrase": "page disturb disturb peace",
-        "lift": 0.0,
-        "freq": 0
-      },
-      {
-        "phrase": "papers case check",
-        "lift": 0.0,
-        "freq": 0
-      },
-      {
-        "phrase": "papers case check lawyer",
-        "lift": 0.0,
-        "freq": 0
-      },
-      {
-        "phrase": "date case",
-        "lift": 0.0,
-        "freq": 0
-      },
-      {
-        "phrase": "date case asking",
-        "lift": 0.0,
-        "freq": 0
-      },
-      {
-        "phrase": "date case asking court",
-        "lift": 0.0,
-        "freq": 0
-      },
-      {
-        "phrase": "custody control",
-        "lift": 0.0,
-        "freq": 0
-      },
-      {
-        "phrase": "custody control purchase",
-        "lift": 0.0,
-        "freq": 0
-      },
-      {
-        "phrase": "custody control purchase receive",
-        "lift": 0.0,
-        "freq": 0
-      },
-      {
-        "phrase": "dangerous weapon",
-        "lift": 0.0,
-        "freq": 0
-      },
-      {
-        "phrase": "dangerous weapon felony",
-        "lift": 0.0,
-        "freq": 0
-      },
-      {
-        "phrase": "warning court",
-        "lift": 0.0,
-        "freq": 0
-      },
-      {
-        "phrase": "apply check",
-        "lift": 0.0,
-        "freq": 0
-      },
-      {
-        "phrase": "apply check restraining",
-        "lift": 0.0,
-        "freq": 0
-      },
-      {
-        "phrase": "apply check restraining order",
-        "lift": 0.0,
-        "freq": 0
-      }
-    ],
     "model_auc": null
   },
   {
@@ -2297,6 +598,7 @@
     "officer_name": "Anthony Rugel",
     "motion_type": "summons_petition_parenting_plan_res_schedule",
     "case_subtype": "other_family",
+    "is_contested_type": false,
     "n_total": 4,
     "n_granted": 4,
     "n_denied": 0,
@@ -2311,8 +613,6 @@
     "mean_rcw_count_granted": null,
     "mean_rcw_count_denied": null,
     "top_rcws_granted": null,
-    "top_phrases_granted": null,
-    "top_phrases_denied": null,
     "model_auc": null
   },
   {
@@ -2320,6 +620,7 @@
     "officer_name": "Michelle Ressa",
     "motion_type": "order_show_cause",
     "case_subtype": "other_family",
+    "is_contested_type": true,
     "n_total": 4,
     "n_granted": 2,
     "n_denied": 2,
@@ -2327,15 +628,13 @@
     "grant_rate": 0.5,
     "median_days_to_decision": 3.5,
     "median_days_before_hearing": null,
-    "mean_word_count_granted": null,
-    "mean_word_count_denied": null,
-    "mean_pages_granted": null,
-    "mean_pages_denied": null,
-    "mean_rcw_count_granted": null,
-    "mean_rcw_count_denied": null,
+    "mean_word_count_granted": 1727.5,
+    "mean_word_count_denied": 1517.0,
+    "mean_pages_granted": 5.5,
+    "mean_pages_denied": 5.0,
+    "mean_rcw_count_granted": 2.0,
+    "mean_rcw_count_denied": 1.5,
     "top_rcws_granted": null,
-    "top_phrases_granted": null,
-    "top_phrases_denied": null,
     "model_auc": null
   },
   {
@@ -2343,6 +642,7 @@
     "officer_name": "Michelle Ressa",
     "motion_type": "summons_petition_dissolution",
     "case_subtype": "dissolution",
+    "is_contested_type": false,
     "n_total": 4,
     "n_granted": 4,
     "n_denied": 0,
@@ -2357,8 +657,6 @@
     "mean_rcw_count_granted": null,
     "mean_rcw_count_denied": null,
     "top_rcws_granted": null,
-    "top_phrases_granted": null,
-    "top_phrases_denied": null,
     "model_auc": null
   },
   {
@@ -2366,6 +664,7 @@
     "officer_name": "Jerry Scharosch",
     "motion_type": "order_show_cause",
     "case_subtype": "modification",
+    "is_contested_type": true,
     "n_total": 4,
     "n_granted": 2,
     "n_denied": 1,
@@ -2373,15 +672,13 @@
     "grant_rate": 0.6667,
     "median_days_to_decision": 1.0,
     "median_days_before_hearing": null,
-    "mean_word_count_granted": null,
-    "mean_word_count_denied": null,
-    "mean_pages_granted": null,
-    "mean_pages_denied": null,
-    "mean_rcw_count_granted": null,
-    "mean_rcw_count_denied": null,
+    "mean_word_count_granted": 1827.0,
+    "mean_word_count_denied": 847.0,
+    "mean_pages_granted": 5.5,
+    "mean_pages_denied": 3.0,
+    "mean_rcw_count_granted": 3.0,
+    "mean_rcw_count_denied": 2.0,
     "top_rcws_granted": null,
-    "top_phrases_granted": null,
-    "top_phrases_denied": null,
     "model_auc": null
   },
   {
@@ -2389,6 +686,7 @@
     "officer_name": "Jerry Scharosch",
     "motion_type": "summons_petition_dissolution",
     "case_subtype": "dissolution",
+    "is_contested_type": false,
     "n_total": 4,
     "n_granted": 4,
     "n_denied": 0,
@@ -2403,8 +701,6 @@
     "mean_rcw_count_granted": null,
     "mean_rcw_count_denied": null,
     "top_rcws_granted": null,
-    "top_phrases_granted": null,
-    "top_phrases_denied": null,
     "model_auc": null
   },
   {
@@ -2412,6 +708,7 @@
     "officer_name": "Breean Beggs",
     "motion_type": "petition_dissolution",
     "case_subtype": "dissolution",
+    "is_contested_type": false,
     "n_total": 3,
     "n_granted": 3,
     "n_denied": 0,
@@ -2426,8 +723,6 @@
     "mean_rcw_count_granted": null,
     "mean_rcw_count_denied": null,
     "top_rcws_granted": null,
-    "top_phrases_granted": null,
-    "top_phrases_denied": null,
     "model_auc": null
   },
   {
@@ -2435,6 +730,7 @@
     "officer_name": "Kevin Stewart",
     "motion_type": "petition_dissolution",
     "case_subtype": "dissolution",
+    "is_contested_type": false,
     "n_total": 3,
     "n_granted": 3,
     "n_denied": 0,
@@ -2449,8 +745,6 @@
     "mean_rcw_count_granted": null,
     "mean_rcw_count_denied": null,
     "top_rcws_granted": null,
-    "top_phrases_granted": null,
-    "top_phrases_denied": null,
     "model_auc": null
   },
   {
@@ -2458,6 +752,7 @@
     "officer_name": "Michael Price",
     "motion_type": "petition_dissolution",
     "case_subtype": "dissolution",
+    "is_contested_type": false,
     "n_total": 3,
     "n_granted": 3,
     "n_denied": 0,
@@ -2472,8 +767,6 @@
     "mean_rcw_count_granted": null,
     "mean_rcw_count_denied": null,
     "top_rcws_granted": null,
-    "top_phrases_granted": null,
-    "top_phrases_denied": null,
     "model_auc": null
   },
   {
@@ -2481,6 +774,7 @@
     "officer_name": "Tami Chavez",
     "motion_type": "order_show_cause",
     "case_subtype": "dissolution",
+    "is_contested_type": true,
     "n_total": 3,
     "n_granted": 3,
     "n_denied": 0,
@@ -2488,15 +782,13 @@
     "grant_rate": 1.0,
     "median_days_to_decision": 0.0,
     "median_days_before_hearing": null,
-    "mean_word_count_granted": null,
-    "mean_word_count_denied": null,
-    "mean_pages_granted": null,
-    "mean_pages_denied": null,
-    "mean_rcw_count_granted": null,
-    "mean_rcw_count_denied": null,
+    "mean_word_count_granted": 2576.6667,
+    "mean_word_count_denied": 0.0,
+    "mean_pages_granted": 7.6667,
+    "mean_pages_denied": 0.0,
+    "mean_rcw_count_granted": 1.6667,
+    "mean_rcw_count_denied": 0.0,
     "top_rcws_granted": null,
-    "top_phrases_granted": null,
-    "top_phrases_denied": null,
     "model_auc": null
   },
   {
@@ -2504,6 +796,7 @@
     "officer_name": "Tami Chavez",
     "motion_type": "order_show_cause",
     "case_subtype": "other_family",
+    "is_contested_type": true,
     "n_total": 3,
     "n_granted": 1,
     "n_denied": 2,
@@ -2511,15 +804,13 @@
     "grant_rate": 0.3333,
     "median_days_to_decision": 0.0,
     "median_days_before_hearing": null,
-    "mean_word_count_granted": null,
-    "mean_word_count_denied": null,
-    "mean_pages_granted": null,
-    "mean_pages_denied": null,
-    "mean_rcw_count_granted": null,
-    "mean_rcw_count_denied": null,
+    "mean_word_count_granted": 3629.0,
+    "mean_word_count_denied": 2539.0,
+    "mean_pages_granted": 11.0,
+    "mean_pages_denied": 7.5,
+    "mean_rcw_count_granted": 4.0,
+    "mean_rcw_count_denied": 4.0,
     "top_rcws_granted": null,
-    "top_phrases_granted": null,
-    "top_phrases_denied": null,
     "model_auc": null
   },
   {
@@ -2527,6 +818,7 @@
     "officer_name": "Tami Chavez",
     "motion_type": "temporary_order",
     "case_subtype": "other_family",
+    "is_contested_type": true,
     "n_total": 3,
     "n_granted": 2,
     "n_denied": 1,
@@ -2534,167 +826,13 @@
     "grant_rate": 0.6667,
     "median_days_to_decision": 24.0,
     "median_days_before_hearing": null,
-    "mean_word_count_granted": null,
-    "mean_word_count_denied": null,
-    "mean_pages_granted": null,
-    "mean_pages_denied": null,
-    "mean_rcw_count_granted": null,
-    "mean_rcw_count_denied": null,
+    "mean_word_count_granted": 1102.0,
+    "mean_word_count_denied": 1994.0,
+    "mean_pages_granted": 3.5,
+    "mean_pages_denied": 6.0,
+    "mean_rcw_count_granted": 2.0,
+    "mean_rcw_count_denied": 4.0,
     "top_rcws_granted": null,
-    "top_phrases_granted": [
-      {
-        "phrase": "law office",
-        "lift": 42693783.3284,
-        "freq": 4
-      },
-      {
-        "phrase": "familysoft formpak",
-        "lift": 41996224.9533,
-        "freq": 5
-      },
-      {
-        "phrase": "docusign envelope",
-        "lift": 41143503.3417,
-        "freq": 7
-      },
-      {
-        "phrase": "divorce spokane",
-        "lift": 37909914.0417,
-        "freq": 5
-      },
-      {
-        "phrase": "ifyou asking",
-        "lift": 36926043.2259,
-        "freq": 4
-      },
-      {
-        "phrase": "fax familysoft",
-        "lift": 24377888.7905,
-        "freq": 4
-      },
-      {
-        "phrase": "familysoft formpak docusign",
-        "lift": 23301052.5397,
-        "freq": 4
-      },
-      {
-        "phrase": "formpak docusign",
-        "lift": 23301052.5397,
-        "freq": 4
-      },
-      {
-        "phrase": "form family ifyou asking",
-        "lift": 23075956.8528,
-        "freq": 4
-      },
-      {
-        "phrase": "family ifyou",
-        "lift": 23075956.8528,
-        "freq": 4
-      },
-      {
-        "phrase": "form family ifyou",
-        "lift": 23075956.8528,
-        "freq": 4
-      },
-      {
-        "phrase": "family ifyou asking",
-        "lift": 23075956.8528,
-        "freq": 4
-      },
-      {
-        "phrase": "fax familysoft formpak",
-        "lift": 22077061.4973,
-        "freq": 4
-      },
-      {
-        "phrase": "case number",
-        "lift": 21537357.2293,
-        "freq": 5
-      },
-      {
-        "phrase": "does apply",
-        "lift": 21147396.0541,
-        "freq": 3
-      }
-    ],
-    "top_phrases_denied": [
-      {
-        "phrase": "rcw motionfor temporary",
-        "lift": 11.4426,
-        "freq": 2
-      },
-      {
-        "phrase": "rcw motionfor",
-        "lift": 11.4426,
-        "freq": 2
-      },
-      {
-        "phrase": "motionfor temporary",
-        "lift": 11.4426,
-        "freq": 2
-      },
-      {
-        "phrase": "requests listed rcw",
-        "lift": 10.0478,
-        "freq": 2
-      },
-      {
-        "phrase": "approving requests listed rcw",
-        "lift": 10.0478,
-        "freq": 2
-      },
-      {
-        "phrase": "requests listed rcw motion",
-        "lift": 10.0478,
-        "freq": 2
-      },
-      {
-        "phrase": "guardian litem",
-        "lift": 9.8237,
-        "freq": 2
-      },
-      {
-        "phrase": "health safety",
-        "lift": 7.1724,
-        "freq": 2
-      },
-      {
-        "phrase": "legal papers case check",
-        "lift": 5.9024,
-        "freq": 2
-      },
-      {
-        "phrase": "case check",
-        "lift": 5.9024,
-        "freq": 2
-      },
-      {
-        "phrase": "papers case check",
-        "lift": 5.9024,
-        "freq": 2
-      },
-      {
-        "phrase": "papers case check lawyer",
-        "lift": 5.9024,
-        "freq": 2
-      },
-      {
-        "phrase": "case check lawyer",
-        "lift": 5.9024,
-        "freq": 2
-      },
-      {
-        "phrase": "check lawyer",
-        "lift": 5.9024,
-        "freq": 2
-      },
-      {
-        "phrase": "children check",
-        "lift": 5.9024,
-        "freq": 2
-      }
-    ],
     "model_auc": null
   },
   {
@@ -2702,6 +840,7 @@
     "officer_name": "Nichole Swennumson",
     "motion_type": "temporary_order",
     "case_subtype": "other_family",
+    "is_contested_type": true,
     "n_total": 3,
     "n_granted": 3,
     "n_denied": 0,
@@ -2709,167 +848,13 @@
     "grant_rate": 1.0,
     "median_days_to_decision": 42.0,
     "median_days_before_hearing": null,
-    "mean_word_count_granted": null,
-    "mean_word_count_denied": null,
-    "mean_pages_granted": null,
-    "mean_pages_denied": null,
-    "mean_rcw_count_granted": null,
-    "mean_rcw_count_denied": null,
+    "mean_word_count_granted": 1040.6667,
+    "mean_word_count_denied": 0.0,
+    "mean_pages_granted": 3.6667,
+    "mean_pages_denied": 0.0,
+    "mean_rcw_count_granted": 1.0,
+    "mean_rcw_count_denied": 0.0,
     "top_rcws_granted": null,
-    "top_phrases_granted": [
-      {
-        "phrase": "form family",
-        "lift": 125247319.8958,
-        "freq": 12
-      },
-      {
-        "phrase": "family law",
-        "lift": 114179194.416,
-        "freq": 15
-      },
-      {
-        "phrase": "law order",
-        "lift": 107337316.2295,
-        "freq": 15
-      },
-      {
-        "phrase": "family law order",
-        "lift": 106352388.7215,
-        "freq": 15
-      },
-      {
-        "phrase": "court rules",
-        "lift": 92743940.3857,
-        "freq": 11
-      },
-      {
-        "phrase": "mandatory form",
-        "lift": 70318849.7697,
-        "freq": 12
-      },
-      {
-        "phrase": "form family law order",
-        "lift": 67442252.8969,
-        "freq": 11
-      },
-      {
-        "phrase": "form family law",
-        "lift": 67442252.8969,
-        "freq": 11
-      },
-      {
-        "phrase": "mandatory form family",
-        "lift": 67442252.8969,
-        "freq": 11
-      },
-      {
-        "phrase": "mandatory form family law",
-        "lift": 67442252.8969,
-        "freq": 11
-      },
-      {
-        "phrase": "child support",
-        "lift": 66835482.9989,
-        "freq": 12
-      },
-      {
-        "phrase": "local court",
-        "lift": 62684415.9035,
-        "freq": 11
-      },
-      {
-        "phrase": "local court rules",
-        "lift": 60740790.2326,
-        "freq": 11
-      },
-      {
-        "phrase": "county local court",
-        "lift": 60218730.4606,
-        "freq": 11
-      },
-      {
-        "phrase": "county local",
-        "lift": 60218730.4606,
-        "freq": 11
-      }
-    ],
-    "top_phrases_denied": [
-      {
-        "phrase": "temporary parenting plan",
-        "lift": 41.0719,
-        "freq": 1
-      },
-      {
-        "phrase": "temporary parenting",
-        "lift": 41.0719,
-        "freq": 1
-      },
-      {
-        "phrase": "temporary order",
-        "lift": 35.1575,
-        "freq": 1
-      },
-      {
-        "phrase": "request court",
-        "lift": 17.844,
-        "freq": 1
-      },
-      {
-        "phrase": "docusign envelope",
-        "lift": 14.5819,
-        "freq": 1
-      },
-      {
-        "phrase": "parenting plan",
-        "lift": 10.4073,
-        "freq": 1
-      },
-      {
-        "phrase": "gmail com",
-        "lift": 9.0341,
-        "freq": 1
-      },
-      {
-        "phrase": "true signed spokane",
-        "lift": 8.6283,
-        "freq": 1
-      },
-      {
-        "phrase": "form true signed spokane",
-        "lift": 8.6283,
-        "freq": 1
-      },
-      {
-        "phrase": "legal papers case lawyer",
-        "lift": 8.3563,
-        "freq": 1
-      },
-      {
-        "phrase": "papers case lawyer",
-        "lift": 8.3563,
-        "freq": 1
-      },
-      {
-        "phrase": "papers case lawyer address",
-        "lift": 8.3563,
-        "freq": 1
-      },
-      {
-        "phrase": "case lawyer",
-        "lift": 7.0394,
-        "freq": 1
-      },
-      {
-        "phrase": "case lawyer address",
-        "lift": 7.0394,
-        "freq": 1
-      },
-      {
-        "phrase": "signed spokane",
-        "lift": 6.9185,
-        "freq": 1
-      }
-    ],
     "model_auc": null
   },
   {
@@ -2877,6 +862,7 @@
     "officer_name": "Jerry Scharosch",
     "motion_type": "order_show_cause",
     "case_subtype": "other_family",
+    "is_contested_type": true,
     "n_total": 3,
     "n_granted": 2,
     "n_denied": 1,
@@ -2884,15 +870,13 @@
     "grant_rate": 0.6667,
     "median_days_to_decision": 0.0,
     "median_days_before_hearing": null,
-    "mean_word_count_granted": null,
-    "mean_word_count_denied": null,
-    "mean_pages_granted": null,
-    "mean_pages_denied": null,
-    "mean_rcw_count_granted": null,
-    "mean_rcw_count_denied": null,
+    "mean_word_count_granted": 2550.0,
+    "mean_word_count_denied": 388.0,
+    "mean_pages_granted": 7.0,
+    "mean_pages_denied": 2.0,
+    "mean_rcw_count_granted": 3.5,
+    "mean_rcw_count_denied": 1.0,
     "top_rcws_granted": null,
-    "top_phrases_granted": null,
-    "top_phrases_denied": null,
     "model_auc": null
   },
   {
@@ -2900,6 +884,7 @@
     "officer_name": "Jerry Scharosch",
     "motion_type": "petition_dissolution",
     "case_subtype": "dissolution",
+    "is_contested_type": false,
     "n_total": 3,
     "n_granted": 3,
     "n_denied": 0,
@@ -2914,8 +899,6 @@
     "mean_rcw_count_granted": null,
     "mean_rcw_count_denied": null,
     "top_rcws_granted": null,
-    "top_phrases_granted": null,
-    "top_phrases_denied": null,
     "model_auc": null
   },
   {
@@ -2923,6 +906,7 @@
     "officer_name": "Jerry Scharosch",
     "motion_type": "summons_petition_parenting_plan_res_schedule",
     "case_subtype": "other_family",
+    "is_contested_type": false,
     "n_total": 3,
     "n_granted": 2,
     "n_denied": 1,
@@ -2937,8 +921,6 @@
     "mean_rcw_count_granted": null,
     "mean_rcw_count_denied": null,
     "top_rcws_granted": null,
-    "top_phrases_granted": null,
-    "top_phrases_denied": null,
     "model_auc": null
   },
   {
@@ -2946,6 +928,7 @@
     "officer_name": "Julia Pelc",
     "motion_type": "temporary_order",
     "case_subtype": "other_family",
+    "is_contested_type": true,
     "n_total": 3,
     "n_granted": 3,
     "n_denied": 0,
@@ -2953,167 +936,13 @@
     "grant_rate": 1.0,
     "median_days_to_decision": 47.0,
     "median_days_before_hearing": null,
-    "mean_word_count_granted": null,
-    "mean_word_count_denied": null,
-    "mean_pages_granted": null,
-    "mean_pages_denied": null,
-    "mean_rcw_count_granted": null,
-    "mean_rcw_count_denied": null,
+    "mean_word_count_granted": 1014.6667,
+    "mean_word_count_denied": 0.0,
+    "mean_pages_granted": 3.3333,
+    "mean_pages_denied": 0.0,
+    "mean_rcw_count_granted": 1.3333,
+    "mean_rcw_count_denied": 0.0,
     "top_rcws_granted": null,
-    "top_phrases_granted": [
-      {
-        "phrase": "law office",
-        "lift": 70445775.4231,
-        "freq": 6
-      },
-      {
-        "phrase": "order university",
-        "lift": 59390307.6212,
-        "freq": 4
-      },
-      {
-        "phrase": "family law order university",
-        "lift": 59390307.6212,
-        "freq": 4
-      },
-      {
-        "phrase": "law order university",
-        "lift": 59390307.6212,
-        "freq": 4
-      },
-      {
-        "phrase": "divorce spokane",
-        "lift": 57668253.3992,
-        "freq": 5
-      },
-      {
-        "phrase": "divorce spokane valley",
-        "lift": 51661918.8637,
-        "freq": 4
-      },
-      {
-        "phrase": "ave ste",
-        "lift": 48509343.602,
-        "freq": 3
-      },
-      {
-        "phrase": "gallagher law",
-        "lift": 48509343.602,
-        "freq": 3
-      },
-      {
-        "phrase": "familysoft formpak",
-        "lift": 45499300.398,
-        "freq": 3
-      },
-      {
-        "phrase": "gallagher law office",
-        "lift": 45267000.1937,
-        "freq": 3
-      },
-      {
-        "phrase": "spouse domestic",
-        "lift": 45177083.8497,
-        "freq": 5
-      },
-      {
-        "phrase": "domestic partner",
-        "lift": 45177083.8497,
-        "freq": 5
-      },
-      {
-        "phrase": "spouse domestic partner",
-        "lift": 45177083.8497,
-        "freq": 5
-      },
-      {
-        "phrase": "suite divorce",
-        "lift": 39812984.0613,
-        "freq": 3
-      },
-      {
-        "phrase": "law office mandatory form",
-        "lift": 38046946.8007,
-        "freq": 3
-      }
-    ],
-    "top_phrases_denied": [
-      {
-        "phrase": "parenting plan residential schedule",
-        "lift": 6.5528,
-        "freq": 1
-      },
-      {
-        "phrase": "parenting plan residential",
-        "lift": 6.5528,
-        "freq": 1
-      },
-      {
-        "phrase": "plan residential",
-        "lift": 6.5528,
-        "freq": 1
-      },
-      {
-        "phrase": "plan residential schedule",
-        "lift": 6.5528,
-        "freq": 1
-      },
-      {
-        "phrase": "suite spokane",
-        "lift": 5.9739,
-        "freq": 1
-      },
-      {
-        "phrase": "suite spokane valley",
-        "lift": 5.9739,
-        "freq": 1
-      },
-      {
-        "phrase": "parentage asking",
-        "lift": 5.8473,
-        "freq": 1
-      },
-      {
-        "phrase": "records received public assistance",
-        "lift": 5.8473,
-        "freq": 1
-      },
-      {
-        "phrase": "noaa parties",
-        "lift": 5.8473,
-        "freq": 1
-      },
-      {
-        "phrase": "parentage asking child",
-        "lift": 5.8473,
-        "freq": 1
-      },
-      {
-        "phrase": "parentage asking child support",
-        "lift": 5.8473,
-        "freq": 1
-      },
-      {
-        "phrase": "form parentage asking",
-        "lift": 5.8473,
-        "freq": 1
-      },
-      {
-        "phrase": "records received",
-        "lift": 5.8473,
-        "freq": 1
-      },
-      {
-        "phrase": "form parentage asking child",
-        "lift": 5.8473,
-        "freq": 1
-      },
-      {
-        "phrase": "health service noaa parties",
-        "lift": 5.8473,
-        "freq": 1
-      }
-    ],
     "model_auc": null
   },
   {
@@ -3121,6 +950,7 @@
     "officer_name": "Breean Beggs",
     "motion_type": "waiver_fees",
     "case_subtype": "other_family",
+    "is_contested_type": false,
     "n_total": 2,
     "n_granted": 0,
     "n_denied": 2,
@@ -3128,15 +958,13 @@
     "grant_rate": 0.0,
     "median_days_to_decision": 42.0,
     "median_days_before_hearing": null,
-    "mean_word_count_granted": null,
-    "mean_word_count_denied": null,
-    "mean_pages_granted": null,
-    "mean_pages_denied": null,
-    "mean_rcw_count_granted": null,
-    "mean_rcw_count_denied": null,
+    "mean_word_count_granted": 0.0,
+    "mean_word_count_denied": 463.5,
+    "mean_pages_granted": 0.0,
+    "mean_pages_denied": 2.5,
+    "mean_rcw_count_granted": 0.0,
+    "mean_rcw_count_denied": 0.0,
     "top_rcws_granted": null,
-    "top_phrases_granted": null,
-    "top_phrases_denied": null,
     "model_auc": null
   },
   {
@@ -3144,6 +972,7 @@
     "officer_name": "Kevin Stewart",
     "motion_type": "adequate_cause_decision",
     "case_subtype": "dissolution",
+    "is_contested_type": true,
     "n_total": 2,
     "n_granted": 2,
     "n_denied": 0,
@@ -3151,15 +980,13 @@
     "grant_rate": 1.0,
     "median_days_to_decision": 24.0,
     "median_days_before_hearing": null,
-    "mean_word_count_granted": null,
-    "mean_word_count_denied": null,
-    "mean_pages_granted": null,
-    "mean_pages_denied": null,
-    "mean_rcw_count_granted": null,
-    "mean_rcw_count_denied": null,
+    "mean_word_count_granted": 623.0,
+    "mean_word_count_denied": 0.0,
+    "mean_pages_granted": 2.5,
+    "mean_pages_denied": 0.0,
+    "mean_rcw_count_granted": 1.5,
+    "mean_rcw_count_denied": 0.0,
     "top_rcws_granted": null,
-    "top_phrases_granted": null,
-    "top_phrases_denied": null,
     "model_auc": null
   },
   {
@@ -3167,6 +994,7 @@
     "officer_name": "Kevin Stewart",
     "motion_type": "order_show_cause",
     "case_subtype": "dissolution",
+    "is_contested_type": true,
     "n_total": 2,
     "n_granted": 2,
     "n_denied": 0,
@@ -3174,15 +1002,13 @@
     "grant_rate": 1.0,
     "median_days_to_decision": 49.0,
     "median_days_before_hearing": null,
-    "mean_word_count_granted": null,
-    "mean_word_count_denied": null,
-    "mean_pages_granted": null,
-    "mean_pages_denied": null,
-    "mean_rcw_count_granted": null,
-    "mean_rcw_count_denied": null,
+    "mean_word_count_granted": 1589.5,
+    "mean_word_count_denied": 0.0,
+    "mean_pages_granted": 6.0,
+    "mean_pages_denied": 0.0,
+    "mean_rcw_count_granted": 1.5,
+    "mean_rcw_count_denied": 0.0,
     "top_rcws_granted": null,
-    "top_phrases_granted": null,
-    "top_phrases_denied": null,
     "model_auc": null
   },
   {
@@ -3190,6 +1016,7 @@
     "officer_name": "Kevin Stewart",
     "motion_type": "summons_petition_parenting_plan_res_schedule",
     "case_subtype": "other_family",
+    "is_contested_type": false,
     "n_total": 2,
     "n_granted": 2,
     "n_denied": 0,
@@ -3204,8 +1031,6 @@
     "mean_rcw_count_granted": null,
     "mean_rcw_count_denied": null,
     "top_rcws_granted": null,
-    "top_phrases_granted": null,
-    "top_phrases_denied": null,
     "model_auc": null
   },
   {
@@ -3213,6 +1038,7 @@
     "officer_name": "Michael Price",
     "motion_type": "summons_petition_dissolution",
     "case_subtype": "dissolution",
+    "is_contested_type": false,
     "n_total": 2,
     "n_granted": 2,
     "n_denied": 0,
@@ -3227,8 +1053,6 @@
     "mean_rcw_count_granted": null,
     "mean_rcw_count_denied": null,
     "top_rcws_granted": null,
-    "top_phrases_granted": null,
-    "top_phrases_denied": null,
     "model_auc": null
   },
   {
@@ -3236,6 +1060,7 @@
     "officer_name": "Anthony Rugel",
     "motion_type": "adequate_cause_decision",
     "case_subtype": "other_family",
+    "is_contested_type": true,
     "n_total": 2,
     "n_granted": 1,
     "n_denied": 1,
@@ -3243,15 +1068,13 @@
     "grant_rate": 0.5,
     "median_days_to_decision": 36.0,
     "median_days_before_hearing": null,
-    "mean_word_count_granted": null,
-    "mean_word_count_denied": null,
-    "mean_pages_granted": null,
-    "mean_pages_denied": null,
-    "mean_rcw_count_granted": null,
-    "mean_rcw_count_denied": null,
+    "mean_word_count_granted": 735.0,
+    "mean_word_count_denied": 732.0,
+    "mean_pages_granted": 3.0,
+    "mean_pages_denied": 3.0,
+    "mean_rcw_count_granted": 1.0,
+    "mean_rcw_count_denied": 1.0,
     "top_rcws_granted": null,
-    "top_phrases_granted": null,
-    "top_phrases_denied": null,
     "model_auc": null
   },
   {
@@ -3259,6 +1082,7 @@
     "officer_name": "Anthony Rugel",
     "motion_type": "petition_dissolution",
     "case_subtype": "dissolution",
+    "is_contested_type": false,
     "n_total": 2,
     "n_granted": 2,
     "n_denied": 0,
@@ -3273,8 +1097,6 @@
     "mean_rcw_count_granted": null,
     "mean_rcw_count_denied": null,
     "top_rcws_granted": null,
-    "top_phrases_granted": null,
-    "top_phrases_denied": null,
     "model_auc": null
   },
   {
@@ -3282,6 +1104,7 @@
     "officer_name": "Anthony Rugel",
     "motion_type": "temporary_order",
     "case_subtype": "other_family",
+    "is_contested_type": true,
     "n_total": 2,
     "n_granted": 2,
     "n_denied": 0,
@@ -3289,167 +1112,13 @@
     "grant_rate": 1.0,
     "median_days_to_decision": 56.5,
     "median_days_before_hearing": null,
-    "mean_word_count_granted": null,
-    "mean_word_count_denied": null,
-    "mean_pages_granted": null,
-    "mean_pages_denied": null,
-    "mean_rcw_count_granted": null,
-    "mean_rcw_count_denied": null,
+    "mean_word_count_granted": 1036.5,
+    "mean_word_count_denied": 0.0,
+    "mean_pages_granted": 4.0,
+    "mean_pages_denied": 0.0,
+    "mean_rcw_count_granted": 1.5,
+    "mean_rcw_count_denied": 0.0,
     "top_rcws_granted": null,
-    "top_phrases_granted": [
-      {
-        "phrase": "form family",
-        "lift": 116955251.8334,
-        "freq": 11
-      },
-      {
-        "phrase": "court rules",
-        "lift": 114680539.1264,
-        "freq": 9
-      },
-      {
-        "phrase": "family law",
-        "lift": 112138306.3855,
-        "freq": 11
-      },
-      {
-        "phrase": "motion temporary",
-        "lift": 105460094.4961,
-        "freq": 11
-      },
-      {
-        "phrase": "law order",
-        "lift": 97924835.909,
-        "freq": 11
-      },
-      {
-        "phrase": "family law order",
-        "lift": 97924835.909,
-        "freq": 11
-      },
-      {
-        "phrase": "local court",
-        "lift": 75943485.1105,
-        "freq": 9
-      },
-      {
-        "phrase": "local court rules",
-        "lift": 75943485.1105,
-        "freq": 9
-      },
-      {
-        "phrase": "county local",
-        "lift": 75943485.1105,
-        "freq": 9
-      },
-      {
-        "phrase": "county local court rules",
-        "lift": 75943485.1105,
-        "freq": 9
-      },
-      {
-        "phrase": "county local court",
-        "lift": 75943485.1105,
-        "freq": 9
-      },
-      {
-        "phrase": "mandatory form",
-        "lift": 70764184.0118,
-        "freq": 11
-      },
-      {
-        "phrase": "form family law",
-        "lift": 67694732.378,
-        "freq": 9
-      },
-      {
-        "phrase": "form family law order",
-        "lift": 67694732.378,
-        "freq": 9
-      },
-      {
-        "phrase": "mandatory form family law",
-        "lift": 66405906.3419,
-        "freq": 9
-      }
-    ],
-    "top_phrases_denied": [
-      {
-        "phrase": "dudley rcw motion temporary",
-        "lift": 0.0,
-        "freq": 0
-      },
-      {
-        "phrase": "dudley rcw motion",
-        "lift": 0.0,
-        "freq": 0
-      },
-      {
-        "phrase": "dudley rcw",
-        "lift": 0.0,
-        "freq": 0
-      },
-      {
-        "phrase": "duty military spouse",
-        "lift": 0.0,
-        "freq": 0
-      },
-      {
-        "phrase": "duty military spouse covered",
-        "lift": 0.0,
-        "freq": 0
-      },
-      {
-        "phrase": "military spouse covered",
-        "lift": 0.0,
-        "freq": 0
-      },
-      {
-        "phrase": "military spouse",
-        "lift": 0.0,
-        "freq": 0
-      },
-      {
-        "phrase": "military spouse covered state",
-        "lift": 0.0,
-        "freq": 0
-      },
-      {
-        "phrase": "review file",
-        "lift": 0.0,
-        "freq": 0
-      },
-      {
-        "phrase": "request review file",
-        "lift": 0.0,
-        "freq": 0
-      },
-      {
-        "phrase": "request review",
-        "lift": 0.0,
-        "freq": 0
-      },
-      {
-        "phrase": "separated january",
-        "lift": 0.0,
-        "freq": 0
-      },
-      {
-        "phrase": "active duty military spouse",
-        "lift": 0.0,
-        "freq": 0
-      },
-      {
-        "phrase": "matthew dudley rcw",
-        "lift": 0.0,
-        "freq": 0
-      },
-      {
-        "phrase": "matthew dudley",
-        "lift": 0.0,
-        "freq": 0
-      }
-    ],
     "model_auc": null
   },
   {
@@ -3457,6 +1126,7 @@
     "officer_name": "Michelle Ressa",
     "motion_type": "petition_dissolution",
     "case_subtype": "dissolution",
+    "is_contested_type": false,
     "n_total": 2,
     "n_granted": 2,
     "n_denied": 0,
@@ -3471,8 +1141,6 @@
     "mean_rcw_count_granted": null,
     "mean_rcw_count_denied": null,
     "top_rcws_granted": null,
-    "top_phrases_granted": null,
-    "top_phrases_denied": null,
     "model_auc": null
   },
   {
@@ -3480,6 +1148,7 @@
     "officer_name": "Annette Plese",
     "motion_type": "temporary_order",
     "case_subtype": "other_family",
+    "is_contested_type": true,
     "n_total": 2,
     "n_granted": 2,
     "n_denied": 0,
@@ -3487,15 +1156,13 @@
     "grant_rate": 1.0,
     "median_days_to_decision": 45.5,
     "median_days_before_hearing": null,
-    "mean_word_count_granted": null,
-    "mean_word_count_denied": null,
-    "mean_pages_granted": null,
-    "mean_pages_denied": null,
-    "mean_rcw_count_granted": null,
-    "mean_rcw_count_denied": null,
+    "mean_word_count_granted": 1097.0,
+    "mean_word_count_denied": 0.0,
+    "mean_pages_granted": 4.0,
+    "mean_pages_denied": 0.0,
+    "mean_rcw_count_granted": 1.5,
+    "mean_rcw_count_denied": 0.0,
     "top_rcws_granted": null,
-    "top_phrases_granted": null,
-    "top_phrases_denied": null,
     "model_auc": null
   },
   {
@@ -3503,6 +1170,7 @@
     "officer_name": "Tami Chavez",
     "motion_type": "adequate_cause_decision",
     "case_subtype": "dissolution",
+    "is_contested_type": true,
     "n_total": 2,
     "n_granted": 2,
     "n_denied": 0,
@@ -3510,15 +1178,13 @@
     "grant_rate": 1.0,
     "median_days_to_decision": 42.0,
     "median_days_before_hearing": null,
-    "mean_word_count_granted": null,
-    "mean_word_count_denied": null,
-    "mean_pages_granted": null,
-    "mean_pages_denied": null,
-    "mean_rcw_count_granted": null,
-    "mean_rcw_count_denied": null,
+    "mean_word_count_granted": 367.5,
+    "mean_word_count_denied": 0.0,
+    "mean_pages_granted": 1.5,
+    "mean_pages_denied": 0.0,
+    "mean_rcw_count_granted": 0.0,
+    "mean_rcw_count_denied": 0.0,
     "top_rcws_granted": null,
-    "top_phrases_granted": null,
-    "top_phrases_denied": null,
     "model_auc": null
   },
   {
@@ -3526,6 +1192,7 @@
     "officer_name": "Tami Chavez",
     "motion_type": "petition_dissolution",
     "case_subtype": "dissolution",
+    "is_contested_type": false,
     "n_total": 2,
     "n_granted": 2,
     "n_denied": 0,
@@ -3540,8 +1207,6 @@
     "mean_rcw_count_granted": null,
     "mean_rcw_count_denied": null,
     "top_rcws_granted": null,
-    "top_phrases_granted": null,
-    "top_phrases_denied": null,
     "model_auc": null
   },
   {
@@ -3549,6 +1214,7 @@
     "officer_name": "Tami Chavez",
     "motion_type": "petition_motion_modify",
     "case_subtype": "dissolution",
+    "is_contested_type": true,
     "n_total": 2,
     "n_granted": 2,
     "n_denied": 0,
@@ -3556,15 +1222,13 @@
     "grant_rate": 1.0,
     "median_days_to_decision": 162.5,
     "median_days_before_hearing": null,
-    "mean_word_count_granted": null,
-    "mean_word_count_denied": null,
-    "mean_pages_granted": null,
-    "mean_pages_denied": null,
-    "mean_rcw_count_granted": null,
-    "mean_rcw_count_denied": null,
+    "mean_word_count_granted": 1414.0,
+    "mean_word_count_denied": 0.0,
+    "mean_pages_granted": 5.0,
+    "mean_pages_denied": 0.0,
+    "mean_rcw_count_granted": 8.0,
+    "mean_rcw_count_denied": 0.0,
     "top_rcws_granted": null,
-    "top_phrases_granted": null,
-    "top_phrases_denied": null,
     "model_auc": null
   },
   {
@@ -3572,6 +1236,7 @@
     "officer_name": "Tami Chavez",
     "motion_type": "summons_petition_parenting_plan_res_schedule",
     "case_subtype": "other_family",
+    "is_contested_type": false,
     "n_total": 2,
     "n_granted": 2,
     "n_denied": 0,
@@ -3586,8 +1251,6 @@
     "mean_rcw_count_granted": null,
     "mean_rcw_count_denied": null,
     "top_rcws_granted": null,
-    "top_phrases_granted": null,
-    "top_phrases_denied": null,
     "model_auc": null
   },
   {
@@ -3595,6 +1258,7 @@
     "officer_name": "Marla Polin",
     "motion_type": "order_show_cause",
     "case_subtype": "dissolution",
+    "is_contested_type": true,
     "n_total": 2,
     "n_granted": 1,
     "n_denied": 1,
@@ -3602,15 +1266,13 @@
     "grant_rate": 0.5,
     "median_days_to_decision": 0.5,
     "median_days_before_hearing": null,
-    "mean_word_count_granted": null,
-    "mean_word_count_denied": null,
-    "mean_pages_granted": null,
-    "mean_pages_denied": null,
-    "mean_rcw_count_granted": null,
-    "mean_rcw_count_denied": null,
+    "mean_word_count_granted": 1152.0,
+    "mean_word_count_denied": 2817.0,
+    "mean_pages_granted": 5.0,
+    "mean_pages_denied": 9.0,
+    "mean_rcw_count_granted": 1.0,
+    "mean_rcw_count_denied": 1.0,
     "top_rcws_granted": null,
-    "top_phrases_granted": null,
-    "top_phrases_denied": null,
     "model_auc": null
   },
   {
@@ -3618,6 +1280,7 @@
     "officer_name": "Marla Polin",
     "motion_type": "petition_parenting_plan_child_support",
     "case_subtype": "contempt",
+    "is_contested_type": true,
     "n_total": 2,
     "n_granted": 2,
     "n_denied": 0,
@@ -3632,8 +1295,6 @@
     "mean_rcw_count_granted": null,
     "mean_rcw_count_denied": null,
     "top_rcws_granted": null,
-    "top_phrases_granted": null,
-    "top_phrases_denied": null,
     "model_auc": null
   },
   {
@@ -3641,6 +1302,7 @@
     "officer_name": "Marla Polin",
     "motion_type": "summons_petition_parenting_plan_res_schedule",
     "case_subtype": "other_family",
+    "is_contested_type": false,
     "n_total": 2,
     "n_granted": 2,
     "n_denied": 0,
@@ -3655,8 +1317,6 @@
     "mean_rcw_count_granted": null,
     "mean_rcw_count_denied": null,
     "top_rcws_granted": null,
-    "top_phrases_granted": null,
-    "top_phrases_denied": null,
     "model_auc": null
   },
   {
@@ -3664,6 +1324,7 @@
     "officer_name": "Nichole Swennumson",
     "motion_type": "order_show_cause",
     "case_subtype": "dissolution",
+    "is_contested_type": true,
     "n_total": 2,
     "n_granted": 2,
     "n_denied": 0,
@@ -3671,15 +1332,13 @@
     "grant_rate": 1.0,
     "median_days_to_decision": 0.0,
     "median_days_before_hearing": null,
-    "mean_word_count_granted": null,
-    "mean_word_count_denied": null,
-    "mean_pages_granted": null,
-    "mean_pages_denied": null,
-    "mean_rcw_count_granted": null,
-    "mean_rcw_count_denied": null,
+    "mean_word_count_granted": 1264.0,
+    "mean_word_count_denied": 0.0,
+    "mean_pages_granted": 4.0,
+    "mean_pages_denied": 0.0,
+    "mean_rcw_count_granted": 1.0,
+    "mean_rcw_count_denied": 0.0,
     "top_rcws_granted": null,
-    "top_phrases_granted": null,
-    "top_phrases_denied": null,
     "model_auc": null
   },
   {
@@ -3687,6 +1346,7 @@
     "officer_name": "Nichole Swennumson",
     "motion_type": "order_show_cause",
     "case_subtype": "legal_separation",
+    "is_contested_type": true,
     "n_total": 2,
     "n_granted": 1,
     "n_denied": 1,
@@ -3694,15 +1354,13 @@
     "grant_rate": 0.5,
     "median_days_to_decision": 0.0,
     "median_days_before_hearing": null,
-    "mean_word_count_granted": null,
-    "mean_word_count_denied": null,
-    "mean_pages_granted": null,
-    "mean_pages_denied": null,
-    "mean_rcw_count_granted": null,
-    "mean_rcw_count_denied": null,
+    "mean_word_count_granted": 2820.0,
+    "mean_word_count_denied": 2466.0,
+    "mean_pages_granted": 9.0,
+    "mean_pages_denied": 19.0,
+    "mean_rcw_count_granted": 4.0,
+    "mean_rcw_count_denied": 1.0,
     "top_rcws_granted": null,
-    "top_phrases_granted": null,
-    "top_phrases_denied": null,
     "model_auc": null
   },
   {
@@ -3710,6 +1368,7 @@
     "officer_name": "Nichole Swennumson",
     "motion_type": "order_show_cause",
     "case_subtype": "other_family",
+    "is_contested_type": true,
     "n_total": 2,
     "n_granted": 1,
     "n_denied": 1,
@@ -3717,15 +1376,13 @@
     "grant_rate": 0.5,
     "median_days_to_decision": 87.0,
     "median_days_before_hearing": null,
-    "mean_word_count_granted": null,
-    "mean_word_count_denied": null,
-    "mean_pages_granted": null,
-    "mean_pages_denied": null,
-    "mean_rcw_count_granted": null,
-    "mean_rcw_count_denied": null,
+    "mean_word_count_granted": 944.0,
+    "mean_word_count_denied": 1561.0,
+    "mean_pages_granted": 4.0,
+    "mean_pages_denied": 5.0,
+    "mean_rcw_count_granted": 2.0,
+    "mean_rcw_count_denied": 2.0,
     "top_rcws_granted": null,
-    "top_phrases_granted": null,
-    "top_phrases_denied": null,
     "model_auc": null
   },
   {
@@ -3733,6 +1390,7 @@
     "officer_name": "Nichole Swennumson",
     "motion_type": "temporary_order",
     "case_subtype": "legal_separation",
+    "is_contested_type": true,
     "n_total": 2,
     "n_granted": 1,
     "n_denied": 1,
@@ -3740,167 +1398,13 @@
     "grant_rate": 0.5,
     "median_days_to_decision": 64.0,
     "median_days_before_hearing": null,
-    "mean_word_count_granted": null,
-    "mean_word_count_denied": null,
-    "mean_pages_granted": null,
-    "mean_pages_denied": null,
-    "mean_rcw_count_granted": null,
-    "mean_rcw_count_denied": null,
+    "mean_word_count_granted": 698.0,
+    "mean_word_count_denied": 426.0,
+    "mean_pages_granted": 4.0,
+    "mean_pages_denied": 2.0,
+    "mean_rcw_count_granted": 0.0,
+    "mean_rcw_count_denied": 0.0,
     "top_rcws_granted": null,
-    "top_phrases_granted": [
-      {
-        "phrase": "form family",
-        "lift": 125247319.8958,
-        "freq": 12
-      },
-      {
-        "phrase": "family law",
-        "lift": 114179194.416,
-        "freq": 15
-      },
-      {
-        "phrase": "law order",
-        "lift": 107337316.2295,
-        "freq": 15
-      },
-      {
-        "phrase": "family law order",
-        "lift": 106352388.7215,
-        "freq": 15
-      },
-      {
-        "phrase": "court rules",
-        "lift": 92743940.3857,
-        "freq": 11
-      },
-      {
-        "phrase": "mandatory form",
-        "lift": 70318849.7697,
-        "freq": 12
-      },
-      {
-        "phrase": "form family law order",
-        "lift": 67442252.8969,
-        "freq": 11
-      },
-      {
-        "phrase": "form family law",
-        "lift": 67442252.8969,
-        "freq": 11
-      },
-      {
-        "phrase": "mandatory form family",
-        "lift": 67442252.8969,
-        "freq": 11
-      },
-      {
-        "phrase": "mandatory form family law",
-        "lift": 67442252.8969,
-        "freq": 11
-      },
-      {
-        "phrase": "child support",
-        "lift": 66835482.9989,
-        "freq": 12
-      },
-      {
-        "phrase": "local court",
-        "lift": 62684415.9035,
-        "freq": 11
-      },
-      {
-        "phrase": "local court rules",
-        "lift": 60740790.2326,
-        "freq": 11
-      },
-      {
-        "phrase": "county local court",
-        "lift": 60218730.4606,
-        "freq": 11
-      },
-      {
-        "phrase": "county local",
-        "lift": 60218730.4606,
-        "freq": 11
-      }
-    ],
-    "top_phrases_denied": [
-      {
-        "phrase": "temporary parenting plan",
-        "lift": 41.0719,
-        "freq": 1
-      },
-      {
-        "phrase": "temporary parenting",
-        "lift": 41.0719,
-        "freq": 1
-      },
-      {
-        "phrase": "temporary order",
-        "lift": 35.1575,
-        "freq": 1
-      },
-      {
-        "phrase": "request court",
-        "lift": 17.844,
-        "freq": 1
-      },
-      {
-        "phrase": "docusign envelope",
-        "lift": 14.5819,
-        "freq": 1
-      },
-      {
-        "phrase": "parenting plan",
-        "lift": 10.4073,
-        "freq": 1
-      },
-      {
-        "phrase": "gmail com",
-        "lift": 9.0341,
-        "freq": 1
-      },
-      {
-        "phrase": "true signed spokane",
-        "lift": 8.6283,
-        "freq": 1
-      },
-      {
-        "phrase": "form true signed spokane",
-        "lift": 8.6283,
-        "freq": 1
-      },
-      {
-        "phrase": "legal papers case lawyer",
-        "lift": 8.3563,
-        "freq": 1
-      },
-      {
-        "phrase": "papers case lawyer",
-        "lift": 8.3563,
-        "freq": 1
-      },
-      {
-        "phrase": "papers case lawyer address",
-        "lift": 8.3563,
-        "freq": 1
-      },
-      {
-        "phrase": "case lawyer",
-        "lift": 7.0394,
-        "freq": 1
-      },
-      {
-        "phrase": "case lawyer address",
-        "lift": 7.0394,
-        "freq": 1
-      },
-      {
-        "phrase": "signed spokane",
-        "lift": 6.9185,
-        "freq": 1
-      }
-    ],
     "model_auc": null
   },
   {
@@ -3908,6 +1412,7 @@
     "officer_name": "Jerry Scharosch",
     "motion_type": "summons_petition_parenting_plan_res_schedule",
     "case_subtype": "contempt",
+    "is_contested_type": false,
     "n_total": 2,
     "n_granted": 2,
     "n_denied": 0,
@@ -3922,8 +1427,6 @@
     "mean_rcw_count_granted": null,
     "mean_rcw_count_denied": null,
     "top_rcws_granted": null,
-    "top_phrases_granted": null,
-    "top_phrases_denied": null,
     "model_auc": null
   },
   {
@@ -3931,6 +1434,7 @@
     "officer_name": "Julia Pelc",
     "motion_type": "adequate_cause_decision",
     "case_subtype": "modification",
+    "is_contested_type": true,
     "n_total": 2,
     "n_granted": 2,
     "n_denied": 0,
@@ -3938,15 +1442,13 @@
     "grant_rate": 1.0,
     "median_days_to_decision": 74.5,
     "median_days_before_hearing": null,
-    "mean_word_count_granted": null,
-    "mean_word_count_denied": null,
-    "mean_pages_granted": null,
-    "mean_pages_denied": null,
-    "mean_rcw_count_granted": null,
-    "mean_rcw_count_denied": null,
+    "mean_word_count_granted": 375.0,
+    "mean_word_count_denied": 0.0,
+    "mean_pages_granted": 2.0,
+    "mean_pages_denied": 0.0,
+    "mean_rcw_count_granted": 1.0,
+    "mean_rcw_count_denied": 0.0,
     "top_rcws_granted": null,
-    "top_phrases_granted": null,
-    "top_phrases_denied": null,
     "model_auc": null
   },
   {
@@ -3954,6 +1456,7 @@
     "officer_name": "Julia Pelc",
     "motion_type": "temporary_order",
     "case_subtype": "modification",
+    "is_contested_type": true,
     "n_total": 2,
     "n_granted": 1,
     "n_denied": 1,
@@ -3961,167 +1464,13 @@
     "grant_rate": 0.5,
     "median_days_to_decision": 292.5,
     "median_days_before_hearing": null,
-    "mean_word_count_granted": null,
-    "mean_word_count_denied": null,
-    "mean_pages_granted": null,
-    "mean_pages_denied": null,
-    "mean_rcw_count_granted": null,
-    "mean_rcw_count_denied": null,
+    "mean_word_count_granted": 519.0,
+    "mean_word_count_denied": 1044.0,
+    "mean_pages_granted": 2.0,
+    "mean_pages_denied": 3.0,
+    "mean_rcw_count_granted": 1.0,
+    "mean_rcw_count_denied": 1.0,
     "top_rcws_granted": null,
-    "top_phrases_granted": [
-      {
-        "phrase": "law office",
-        "lift": 70445775.4231,
-        "freq": 6
-      },
-      {
-        "phrase": "order university",
-        "lift": 59390307.6212,
-        "freq": 4
-      },
-      {
-        "phrase": "family law order university",
-        "lift": 59390307.6212,
-        "freq": 4
-      },
-      {
-        "phrase": "law order university",
-        "lift": 59390307.6212,
-        "freq": 4
-      },
-      {
-        "phrase": "divorce spokane",
-        "lift": 57668253.3992,
-        "freq": 5
-      },
-      {
-        "phrase": "divorce spokane valley",
-        "lift": 51661918.8637,
-        "freq": 4
-      },
-      {
-        "phrase": "ave ste",
-        "lift": 48509343.602,
-        "freq": 3
-      },
-      {
-        "phrase": "gallagher law",
-        "lift": 48509343.602,
-        "freq": 3
-      },
-      {
-        "phrase": "familysoft formpak",
-        "lift": 45499300.398,
-        "freq": 3
-      },
-      {
-        "phrase": "gallagher law office",
-        "lift": 45267000.1937,
-        "freq": 3
-      },
-      {
-        "phrase": "spouse domestic",
-        "lift": 45177083.8497,
-        "freq": 5
-      },
-      {
-        "phrase": "domestic partner",
-        "lift": 45177083.8497,
-        "freq": 5
-      },
-      {
-        "phrase": "spouse domestic partner",
-        "lift": 45177083.8497,
-        "freq": 5
-      },
-      {
-        "phrase": "suite divorce",
-        "lift": 39812984.0613,
-        "freq": 3
-      },
-      {
-        "phrase": "law office mandatory form",
-        "lift": 38046946.8007,
-        "freq": 3
-      }
-    ],
-    "top_phrases_denied": [
-      {
-        "phrase": "parenting plan residential schedule",
-        "lift": 6.5528,
-        "freq": 1
-      },
-      {
-        "phrase": "parenting plan residential",
-        "lift": 6.5528,
-        "freq": 1
-      },
-      {
-        "phrase": "plan residential",
-        "lift": 6.5528,
-        "freq": 1
-      },
-      {
-        "phrase": "plan residential schedule",
-        "lift": 6.5528,
-        "freq": 1
-      },
-      {
-        "phrase": "suite spokane",
-        "lift": 5.9739,
-        "freq": 1
-      },
-      {
-        "phrase": "suite spokane valley",
-        "lift": 5.9739,
-        "freq": 1
-      },
-      {
-        "phrase": "parentage asking",
-        "lift": 5.8473,
-        "freq": 1
-      },
-      {
-        "phrase": "records received public assistance",
-        "lift": 5.8473,
-        "freq": 1
-      },
-      {
-        "phrase": "noaa parties",
-        "lift": 5.8473,
-        "freq": 1
-      },
-      {
-        "phrase": "parentage asking child",
-        "lift": 5.8473,
-        "freq": 1
-      },
-      {
-        "phrase": "parentage asking child support",
-        "lift": 5.8473,
-        "freq": 1
-      },
-      {
-        "phrase": "form parentage asking",
-        "lift": 5.8473,
-        "freq": 1
-      },
-      {
-        "phrase": "records received",
-        "lift": 5.8473,
-        "freq": 1
-      },
-      {
-        "phrase": "form parentage asking child",
-        "lift": 5.8473,
-        "freq": 1
-      },
-      {
-        "phrase": "health service noaa parties",
-        "lift": 5.8473,
-        "freq": 1
-      }
-    ],
     "model_auc": null
   }
 ]

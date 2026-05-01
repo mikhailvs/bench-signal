@@ -69,42 +69,15 @@
     </div>
 
     <!-- ── Days Before Hearing ── -->
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-
-      <div class="bg-slate-900 border border-slate-800 rounded-xl p-5">
-        <p class="section-label mb-1">Days Before Hearing vs. Grant Rate</p>
-        <p class="text-slate-400 text-xs mb-4">Filing timing buckets · grant rate %</p>
-        <div class="chart-container" style="height:260px;">
-          <canvas id="chart-timing"></canvas>
-        </div>
-        <p class="text-slate-500 text-xs mt-3">
-          Motions filed 15–60 days before hearing have the highest volume. Very early filers (60+ days) maintain a similar grant rate to last-minute filers.
-        </p>
+    <div class="bg-slate-900 border border-slate-800 rounded-xl p-5">
+      <p class="section-label mb-1">Days Before Hearing vs. Grant Rate</p>
+      <p class="text-slate-400 text-xs mb-4">Filing timing buckets · grant rate %</p>
+      <div class="chart-container" style="height:260px;">
+        <canvas id="chart-timing"></canvas>
       </div>
-
-      <!-- Weather correlation table -->
-      <div class="bg-slate-900 border border-slate-800 rounded-xl p-5">
-        <p class="section-label mb-1">Weather Correlation</p>
-        <p class="text-slate-400 text-xs mb-4">Grant rate by weather condition on hearing day · Spokane 2023</p>
-        <div class="overflow-x-auto">
-          <table class="data-table w-full text-sm">
-            <thead>
-              <tr class="text-slate-400">
-                <th class="px-4 py-2.5 text-left font-medium">Condition</th>
-                <th class="px-4 py-2.5 text-right font-medium">Granted</th>
-                <th class="px-4 py-2.5 text-right font-medium">Denied</th>
-                <th class="px-4 py-2.5 text-right font-medium">Grant Rate</th>
-              </tr>
-            </thead>
-            <tbody id="weather-rows" class="text-slate-300">
-              <!-- Populated by JS -->
-            </tbody>
-          </table>
-        </div>
-        <p class="text-slate-500 text-xs mt-4">
-          Weather conditions sourced from NOAA Spokane Airport daily summaries. No statistically significant correlation detected (p &gt; 0.4, Mann-Whitney U test). Displayed for exploratory completeness.
-        </p>
-      </div>
+      <p class="text-slate-500 text-xs mt-3">
+        Motions filed 15–60 days before hearing have the highest volume. Very early filers (60+ days) maintain a similar grant rate to last-minute filers.
+      </p>
     </div>
 
     <!-- ── Grant rate by month trend line ── -->
@@ -129,9 +102,8 @@
   <script src="js/charts.js"></script>
   <script>
   (async function () {
-    const [temporal, weather, timing] = await Promise.all([
+    const [temporal, timing] = await Promise.all([
       fetch('data/temporal.json').then(r => r.json()),
-      fetch('data/weather.json').then(r => r.json()),
       fetch('data/timing.json').then(r => r.json()),
     ]);
 
@@ -173,22 +145,6 @@
       return g + d > 0 ? +((g / (g + d)) * 100).toFixed(1) : 0;
     });
     createGrantRateBar('chart-timing', timingKeys, timingRates, 'Grant Rate (%)');
-
-    // ── Weather table ─────────────────────────────────────────────────────
-    const weatherIcons = { rainy: '🌧', dry: '☀️', cold: '❄️', hot: '🌡️', snowy: '🌨', normal: '🌤' };
-    const tbody = document.getElementById('weather-rows');
-    tbody.innerHTML = Object.entries(weather).map(([cond, {g, d}]) => {
-      const total = g + d;
-      const rate  = total > 0 ? (g / total * 100).toFixed(1) : 'N/A';
-      const rateClass = total > 0 ? (g/total >= 0.9 ? 'rate-high' : g/total >= 0.8 ? 'rate-high' : 'rate-mid') : '';
-      const icon  = weatherIcons[cond] || '';
-      return `<tr>
-        <td class="px-4 py-2.5 capitalize">${icon} ${cond}</td>
-        <td class="px-4 py-2.5 text-right text-emerald-400">${g}</td>
-        <td class="px-4 py-2.5 text-right text-red-400">${d}</td>
-        <td class="px-4 py-2.5 text-right ${rateClass}">${rate}%</td>
-      </tr>`;
-    }).join('');
 
     // ── Monthly grant rate trend line ──────────────────────────────────────
     const monthRates = monthKeys.map(k => {

@@ -108,17 +108,36 @@
     let sortAsc = true;
     let filterText = '';
 
+    // ── Wilson score 95% confidence interval ─────────────────────────────
+    function wilsonCI(k, n, z = 1.96) {
+      if (n === 0) return { lo: 0, hi: 0 };
+      const p = k / n;
+      const denom = 1 + z * z / n;
+      const center = p + z * z / (2 * n);
+      const margin = z * Math.sqrt(p * (1 - p) / n + z * z / (4 * n * n));
+      return { lo: Math.max(0, (center - margin) / denom), hi: Math.min(1, (center + margin) / denom) };
+    }
+
     // ── Badge class helper ────────────────────────────────────────────────
-    function badgeClass(rate) {
-      if (rate == null) return 'badge-none';
+    function badgeClass(rate, n) {
+      if (rate == null || n < 30) return 'badge-none';
       if (rate >= 0.8)  return 'badge-high';
       if (rate >= 0.5)  return 'badge-mid';
       return 'badge-low';
     }
 
-    function rateLabel(rate) {
+    function rateLabel(judge) {
+      const n = (judge.n_granted || 0) + (judge.n_denied || 0);
+      const rate = judge.grant_rate;
       if (rate == null) return 'N/A';
-      return (rate * 100).toFixed(1) + '%';
+      if (n < 30) {
+        return `${judge.n_granted || 0}G / ${judge.n_denied || 0}D (n<30)`;
+      }
+      const ci = wilsonCI(judge.n_granted || 0, n);
+      const pct = (rate * 100).toFixed(0);
+      const lo  = (ci.lo * 100).toFixed(0);
+      const hi  = (ci.hi * 100).toFixed(0);
+      return `${pct}% [${lo}–${hi}]`;
     }
 
     // ── Render cards ──────────────────────────────────────────────────────
@@ -148,7 +167,10 @@
 
       grid.innerHTML = data.map(j => {
         const hasData = j.n_outcomes > 0;
-        const badge = badgeClass(j.grant_rate);
+        const n = (j.n_granted || 0) + (j.n_denied || 0);
+        const isSmallN = j.grant_rate != null && n < 30;
+        const badge = badgeClass(j.grant_rate, n);
+        const badgeStyle = isSmallN ? 'text-slate-500 italic text-xs' : `text-xs px-2 py-0.5 rounded-full font-semibold ${badge}`;
         return `
           <div class="judge-card bg-slate-900 border ${hasData ? 'border-slate-700' : 'border-slate-800'} rounded-xl p-4"
                data-id="${j.id}" role="button" tabindex="0" aria-label="View details for ${j.name}">
@@ -156,7 +178,7 @@
               <div class="flex-1 min-w-0">
                 <h3 class="font-semibold text-sm ${hasData ? 'text-slate-100' : 'text-slate-500'} truncate">${j.name}</h3>
               </div>
-              <span class="shrink-0 text-xs px-2 py-0.5 rounded-full font-semibold ${badge}">${rateLabel(j.grant_rate)}</span>
+              <span class="shrink-0 ${badgeStyle}">${rateLabel(j)}</span>
             </div>
             <div class="mt-3 grid grid-cols-3 gap-2 text-center">
               <div>
@@ -199,7 +221,7 @@
       // Stats row
       const statsEl = document.getElementById('modal-stats');
       statsEl.innerHTML = [
-        { label: 'Grant Rate', value: rateLabel(j.grant_rate) },
+        { label: 'Grant Rate', value: rateLabel(j) },
         { label: 'Granted',    value: j.n_granted },
         { label: 'Denied',     value: j.n_denied  },
       ].map(s => `

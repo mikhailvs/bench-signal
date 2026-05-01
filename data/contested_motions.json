@@ -1,0 +1,80 @@
+[
+  {
+    "motion_type": "temporary_order",
+    "n_total": 116,
+    "n_granted": 111,
+    "n_denied": 5
+  },
+  {
+    "motion_type": "order_show_cause",
+    "n_total": 47,
+    "n_granted": 35,
+    "n_denied": 10
+  },
+  {
+    "motion_type": "adequate_cause_decision",
+    "n_total": 24,
+    "n_granted": 23,
+    "n_denied": 1
+  },
+  {
+    "motion_type": "petition_parenting_plan_child_support",
+    "n_total": 15,
+    "n_granted": 15,
+    "n_denied": 0
+  },
+  {
+    "motion_type": "petition_motion_modify",
+    "n_total": 9,
+    "n_granted": 9,
+    "n_denied": 0
+  },
+  {
+    "motion_type": "amended_petition",
+    "n_total": 9,
+    "n_granted": 8,
+    "n_denied": 1
+  },
+  {
+    "motion_type": "petition_order_protection",
+    "n_total": 6,
+    "n_granted": 4,
+    "n_denied": 2
+  },
+  {
+    "motion_type": "petition_dissolution_amended",
+    "n_total": 4,
+    "n_granted": 4,
+    "n_denied": 0
+  },
+  {
+    "motion_type": "temporary_order_amended",
+    "n_total": 3,
+    "n_granted": 2,
+    "n_denied": 1
+  },
+  {
+    "motion_type": "summons_petition_modification_amended",
+    "n_total": 3,
+    "n_granted": 3,
+    "n_denied": 0
+  },
+  {
+    "motion_type": "summons_petition_dissolution_amended",
+    "n_total": 3,
+    "n_granted": 3,
+    "n_denied": 0
+  },
+  {
+    "motion_type": "petition_committed_intimate_relationship",
+    "n_total": 3,
+    "n_granted": 3,
+    "n_denied": 0
+  },
+  {
+    "motion_type": "objection_petition",
+    "n_total": 3,
+    "n_granted": 3,
+    "n_denied": 0
+  }
+]

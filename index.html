@@ -41,6 +41,12 @@
     </div>
   </header>
 
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
+    <div class="bg-amber-900/30 border border-amber-700/50 rounded-lg px-4 py-3 text-sm text-amber-300">
+      <strong>Data note:</strong> Grant rate statistics include all linked outcomes (contested and uncontested). Ministerial filings (fee waivers, default petitions, summons) inflate the overall rate. Contested-motion-only filtering is coming in a future update. All figures reflect 2023 data only.
+    </div>
+  </div>
+
   <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-14">
 
     <!-- ── KPI Cards ── -->
@@ -145,7 +151,7 @@
     const kpis = [
       { label: 'Total Cases',     value: totalCases.toLocaleString(),    sub: '2023 family law', color: 'text-indigo-400' },
       { label: 'Linked Outcomes', value: totalOutcomes.toLocaleString(), sub: '~11.7% of docs',  color: 'text-cyan-400'   },
-      { label: 'Overall Grant Rate', value: overallRate + '%',           sub: 'of linked outcomes', color: 'text-emerald-400' },
+      { label: 'Overall Grant Rate', value: overallRate + '%',           sub: 'All outcomes incl. uncontested', color: 'text-emerald-400' },
       { label: 'Judges Covered', value: judges.length.toString(),        sub: 'officers of record', color: 'text-violet-400' },
     ];
 
