@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en" class="bg-slate-950">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Motion Prep — Bench Signal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body class="bg-slate-950 text-slate-200 min-h-screen">
+  <script src="js/nav.js"></script>
+
+  <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+
+    <!-- Disclaimer -->
+    <div class="bg-amber-900/30 border border-amber-700/50 rounded-lg px-4 py-3 text-sm text-amber-300 mb-8">
+      <strong>Research tool only.</strong> These patterns reflect 2023 Spokane County public records.
+      They do not predict outcomes and are not legal advice. Sample sizes are small —
+      interpret all findings with caution.
+    </div>
+
+    <h1 class="text-3xl font-bold text-white mb-2">Motion Prep</h1>
+    <p class="text-slate-400 mb-8">Select a judge and motion type to see filing patterns from 2023 contested outcomes.</p>
+
+    <!-- Screen 1: Selector -->
+    <div id="screen-selector" class="space-y-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <label class="block text-sm font-medium text-slate-300 mb-2">Judge / Commissioner</label>
+          <select id="judge-select" class="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2 text-slate-200 focus:outline-none focus:border-indigo-500">
+            <option value="">Select a judge...</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-slate-300 mb-2">Motion Type</label>
+          <select id="motion-select" class="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2 text-slate-200 focus:outline-none focus:border-indigo-500">
+            <option value="">Select motion type...</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Baseline rate card (shown immediately on selection) -->
+      <div id="baseline-card" class="hidden bg-slate-900 border border-slate-800 rounded-xl p-5">
+        <div class="flex items-start justify-between">
+          <div>
+            <p class="text-sm text-slate-400 mb-1">2023 contested grant rate</p>
+            <div class="flex items-baseline gap-3">
+              <span id="baseline-rate" class="text-4xl font-bold text-white"></span>
+              <span id="baseline-ci" class="text-slate-400 text-sm"></span>
+            </div>
+            <p id="baseline-meta" class="text-xs text-slate-500 mt-1"></p>
+          </div>
+          <span id="confidence-badge" class="text-xs px-2 py-1 rounded-full font-medium"></span>
+        </div>
+        <div id="insufficient-warning" class="hidden mt-3 text-amber-400 text-sm">
+          ⚠ Fewer than 5 contested denials — showing raw count only. Not enough data for a reliable percentage.
+        </div>
+      </div>
+
+      <button id="show-checklist-btn" class="hidden w-full md:w-auto px-6 py-3 bg-indigo-600 hover:bg-indigo-500 text-white rounded-lg font-medium transition-colors">
+        View Filing Checklist →
+      </button>
+    </div>
+
+    <!-- Screen 2: Checklist -->
+    <div id="screen-checklist" class="hidden space-y-6">
+      <div class="flex items-center gap-4 mb-2">
+        <button id="back-btn" class="text-slate-400 hover:text-white text-sm">← Back</button>
+        <h2 id="checklist-title" class="text-xl font-semibold text-white"></h2>
+      </div>
+
+      <div id="checklist-items" class="space-y-3"></div>
+
+      <div id="no-checklist" class="hidden text-slate-400 text-sm py-4">
+        Not enough data to surface specific filing patterns for this combination yet.
+        As more 2023 documents are processed, patterns may emerge.
+      </div>
+
+      <!-- Model insights section -->
+      <div class="bg-slate-900 border border-indigo-800/50 rounded-xl p-5 mt-4">
+        <h3 class="font-semibold text-indigo-300 mb-3">Cross-judge finding (2023 data, n=97)</h3>
+        <div class="space-y-2 text-sm text-slate-300">
+          <div class="flex items-start gap-2">
+            <span class="text-orange-400 mt-0.5">→</span>
+            <span><strong>Page count:</strong> More pages is associated with <em>lower</em> grant probability across all judges and motion types (OR=0.57, 95% CI [0.33–0.99], p=0.047). The only statistically significant finding in the current dataset.</span>
+          </div>
+          <div class="flex items-start gap-2">
+            <span class="text-slate-500 mt-0.5">→</span>
+            <span><strong>Longer motions:</strong> Motions with more RCW citations and case citations trend positive but results are not yet statistically significant (n too small).</span>
+          </div>
+          <div class="flex items-start gap-2">
+            <span class="text-slate-500 mt-0.5">→</span>
+            <span><strong>Filing lead time:</strong> Directionally positive (earlier = higher grant rate) but high variance at current sample sizes.</span>
+          </div>
+        </div>
+        <p class="text-xs text-slate-500 mt-3">Based on logistic regression across all contested outcomes with complete features. All findings are correlational, not causal. Wide confidence intervals reflect small sample.</p>
+      </div>
+    </div>
+
+  </main>
+
+  <script>
+  // ── Data loading ──────────────────────────────────────────────────────────
+  let judges = [], checklistIndex = [], motionStats = [];
+
+  async function loadData() {
+    [judges, checklistIndex, motionStats] = await Promise.all([
+      fetch('data/judges.json').then(r => r.json()),
+      fetch('data/checklist_index.json').then(r => r.json()).catch(() => []),
+      fetch('data/judge_motion_stats.json').then(r => r.json()).catch(() => []),
+    ]);
+    populateJudgeDropdown();
+  }
+
+  function populateJudgeDropdown() {
+    const sel = document.getElementById('judge-select');
+    // Only show judges with contested outcomes
+    const withData = judges.filter(j => j.n_contested > 0)
+      .sort((a,b) => b.n_contested - a.n_contested);
+    withData.forEach(j => {
+      const o = document.createElement('option');
+      o.value = j.id;
+      o.textContent = j.name;
+      sel.appendChild(o);
+    });
+  }
+
+  function populateMotionDropdown(judgeId) {
+    const sel = document.getElementById('motion-select');
+    sel.innerHTML = '<option value="">Select motion type...</option>';
+
+    // Get motion types for this judge that have contested outcomes
+    const judgeStats = checklistIndex.filter(c => c.officer_id == judgeId);
+    if (judgeStats.length === 0) {
+      // Fall back to all motion stats for this judge
+      const ms = motionStats.filter(m => m.officer_id == judgeId && m.is_contested_type);
+      const types = [...new Set(ms.map(m => m.motion_type))].sort();
+      types.forEach(t => {
+        const o = document.createElement('option');
+        o.value = t;
+        o.textContent = formatMotionType(t);
+        sel.appendChild(o);
+      });
+    } else {
+      judgeStats.sort((a,b) => b.n_denied - a.n_denied).forEach(c => {
+        const o = document.createElement('option');
+        o.value = c.motion_type;
+        o.textContent = `${formatMotionType(c.motion_type)} (${c.n_denied} denied)`;
+        sel.appendChild(o);
+      });
+    }
+  }
+
+  function formatMotionType(t) {
+    return t.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+  }
+
+  function showBaseline() {
+    const judgeId = parseInt(document.getElementById('judge-select').value);
+    const motionType = document.getElementById('motion-select').value;
+    if (!judgeId || !motionType) return;
+
+    // Find matching checklist entry
+    const entry = checklistIndex.find(c => c.officer_id === judgeId && c.motion_type === motionType);
+    const card = document.getElementById('baseline-card');
+    card.classList.remove('hidden');
+
+    if (entry) {
+      const rateEl = document.getElementById('baseline-rate');
+      const ciEl = document.getElementById('baseline-ci');
+      const metaEl = document.getElementById('baseline-meta');
+      const badgeEl = document.getElementById('confidence-badge');
+      const warnEl = document.getElementById('insufficient-warning');
+
+      if (entry.suppress_rate || entry.n_denied < 5) {
+        rateEl.textContent = `${entry.n_granted_contested || entry.n_contested - entry.n_denied}G / ${entry.n_denied}D`;
+        ciEl.textContent = '';
+        warnEl.classList.remove('hidden');
+      } else {
+        rateEl.textContent = entry.baseline_grant_rate ? `${(entry.baseline_grant_rate * 100).toFixed(0)}%` : 'N/A';
+        if (entry.grant_rate_ci) {
+          ciEl.textContent = `95% CI: [${(entry.grant_rate_ci[0]*100).toFixed(0)}%–${(entry.grant_rate_ci[1]*100).toFixed(0)}%]`;
+        }
+        warnEl.classList.add('hidden');
+      }
+
+      metaEl.textContent = `Based on ${entry.n_contested} contested outcomes, 2023 only`;
+
+      const conf = entry.data_confidence;
+      badgeEl.textContent = conf === 'high' ? 'High confidence' : conf === 'medium' ? 'Moderate' : 'Preliminary';
+      badgeEl.className = `text-xs px-2 py-1 rounded-full font-medium ${
+        conf === 'high' ? 'bg-green-900/50 text-green-300' :
+        conf === 'medium' ? 'bg-yellow-900/50 text-yellow-300' :
+        'bg-slate-700 text-slate-400'
+      }`;
+    }
+
+    document.getElementById('show-checklist-btn').classList.remove('hidden');
+  }
+
+  function showChecklist() {
+    const judgeId = parseInt(document.getElementById('judge-select').value);
+    const motionType = document.getElementById('motion-select').value;
+    const judgeName = judges.find(j => j.id === judgeId)?.name || '';
+
+    document.getElementById('screen-selector').classList.add('hidden');
+    document.getElementById('screen-checklist').classList.remove('hidden');
+    document.getElementById('checklist-title').textContent =
+      `${judgeName} — ${formatMotionType(motionType)}`;
+
+    const entry = checklistIndex.find(c => c.officer_id === judgeId && c.motion_type === motionType);
+    const container = document.getElementById('checklist-items');
+    const noData = document.getElementById('no-checklist');
+    container.innerHTML = '';
+
+    if (!entry || !entry.checklist_items || entry.checklist_items.length === 0) {
+      noData.classList.remove('hidden');
+      return;
+    }
+    noData.classList.add('hidden');
+
+    entry.checklist_items.forEach(item => {
+      const evidenceColor = item.evidence_level === 'moderate' ? 'text-yellow-300 bg-yellow-900/30' : 'text-slate-400 bg-slate-800';
+      const arrow = item.direction === 'positive' ? '↑' : '↓';
+      const arrowColor = item.direction === 'positive' ? 'text-green-400' : 'text-red-400';
+
+      container.innerHTML += `
+        <div class="bg-slate-900 border border-slate-800 rounded-lg p-4">
+          <div class="flex items-start justify-between gap-3">
+            <div class="flex items-start gap-3">
+              <span class="${arrowColor} text-lg font-bold mt-0.5">${arrow}</span>
+              <div>
+                <p class="font-medium text-white">${item.item}</p>
+                <p class="text-sm text-slate-400 mt-1">${item.effect_description}</p>
+              </div>
+            </div>
+            <span class="shrink-0 text-xs px-2 py-1 rounded-full ${evidenceColor}">
+              ${item.evidence_level === 'moderate' ? 'Moderate' : 'Low'} evidence
+            </span>
+          </div>
+          <p class="text-xs text-slate-600 mt-2">
+            n=${(item.n_advance || 0) + (item.n_rush || 0)} outcomes with timing data
+          </p>
+        </div>`;
+    });
+  }
+
+  // ── Event listeners ───────────────────────────────────────────────────────
+  document.getElementById('judge-select').addEventListener('change', function() {
+    if (this.value) populateMotionDropdown(this.value);
+    document.getElementById('baseline-card').classList.add('hidden');
+    document.getElementById('show-checklist-btn').classList.add('hidden');
+  });
+
+  document.getElementById('motion-select').addEventListener('change', showBaseline);
+  document.getElementById('show-checklist-btn').addEventListener('click', showChecklist);
+  document.getElementById('back-btn').addEventListener('click', () => {
+    document.getElementById('screen-selector').classList.remove('hidden');
+    document.getElementById('screen-checklist').classList.add('hidden');
+  });
+
+  loadData();
+  </script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+[
+  {
+    "officer_id": 9,
+    "officer_name": "Tami Chavez",
+    "motion_type": "temporary_order",
+    "case_subtype": "dissolution",
+    "n_contested": 15,
+    "n_denied": 2,
+    "baseline_grant_rate": 0.867,
+    "grant_rate_ci": [
+      0.6212,
+      0.9626
+    ],
+    "data_confidence": "preliminary",
+    "checklist_items": [
+      {
+        "item": "Avoid over-citing statutes",
+        "direction": "positive",
+        "granted_avg_rcw": 0.9,
+        "denied_avg_rcw": 2.0,
+        "evidence_level": "low",
+        "effect_description": "Granted: avg 0.9 RCW citations vs denied: avg 2.0"
+      }
+    ],
+    "n_with_features": 15
+  }
+]
