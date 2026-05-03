@@ -1,0 +1,39 @@
+name: Data Freshness Check
+
+on:
+  schedule:
+    - cron: '0 12 * * 1'  # Monday noon UTC
+  workflow_dispatch:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check data file ages
+        run: |
+          python3 - <<'EOF'
+          import json, sys
+          from datetime import datetime, timezone
+          from pathlib import Path
+
+          MAX_AGE_DAYS = 14
+          now = datetime.now(timezone.utc)
+          stale = []
+
+          for f in Path("data").glob("*.json"):
+              mtime = datetime.fromtimestamp(f.stat().st_mtime, tz=timezone.utc)
+              age = (now - mtime).days
+              if age > MAX_AGE_DAYS:
+                  stale.append(f"{f.name}: {age} days old")
+
+          if stale:
+              print("STALE DATA FILES:")
+              for s in stale:
+                  print(f"  {s}")
+              print(f"\nPublish from local machine: python run.py publish")
+              sys.exit(1)
+          else:
+              print("All data files are fresh (within 14 days)")
+          EOF
