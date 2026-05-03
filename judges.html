@@ -126,18 +126,25 @@
       return 'badge-low';
     }
 
-    function rateLabel(judge) {
+    // Prefer contested grant rate (what attorneys care about); fall back to overall
+    function effectiveRate(judge) {
+      const nc = (judge.n_granted_contested || 0) + (judge.n_denied_contested || 0);
+      if (nc >= 5) return { rate: judge.grant_rate_contested, n: nc, label: 'contested' };
       const n = (judge.n_granted || 0) + (judge.n_denied || 0);
-      const rate = judge.grant_rate;
+      return { rate: judge.grant_rate, n: n, label: 'overall' };
+    }
+
+    function rateLabel(judge) {
+      const { rate, n, label } = effectiveRate(judge);
       if (rate == null) return 'N/A';
-      if (n < 30) {
-        return `${judge.n_granted || 0}G / ${judge.n_denied || 0}D (n<30)`;
-      }
-      const ci = wilsonCI(judge.n_granted || 0, n);
+      if (n < 5) return `${judge.n_granted_contested || 0}G / ${judge.n_denied_contested || 0}D`;
       const pct = (rate * 100).toFixed(0);
-      const lo  = (ci.lo * 100).toFixed(0);
-      const hi  = (ci.hi * 100).toFixed(0);
-      return `${pct}% [${lo}–${hi}]`;
+      return `${pct}% <span class="text-slate-500 font-normal">${label}</span>`;
+    }
+
+    function displayRate(judge) {
+      const { rate } = effectiveRate(judge);
+      return rate;
     }
 
     // ── Render cards ──────────────────────────────────────────────────────
@@ -153,6 +160,8 @@
       // Sort
       data.sort((a, b) => {
         let av = a[sortKey], bv = b[sortKey];
+        // For grant_rate sort, use contested rate when available
+        if (sortKey === 'grant_rate') { av = effectiveRate(a).rate; bv = effectiveRate(b).rate; }
         if (av == null) av = sortAsc ? Infinity : -Infinity;
         if (bv == null) bv = sortAsc ? Infinity : -Infinity;
         if (sortKey === 'name') { av = a.name.toLowerCase(); bv = b.name.toLowerCase(); }
@@ -167,9 +176,9 @@
 
       grid.innerHTML = data.map(j => {
         const hasData = j.n_outcomes > 0;
-        const n = (j.n_granted || 0) + (j.n_denied || 0);
-        const isSmallN = j.grant_rate != null && n < 30;
-        const badge = badgeClass(j.grant_rate, n);
+        const { rate: effRate, n } = effectiveRate(j);
+        const isSmallN = effRate != null && n < 5;
+        const badge = badgeClass(effRate, n);
         const badgeStyle = isSmallN ? 'text-slate-500 italic text-xs' : `text-xs px-2 py-0.5 rounded-full font-semibold ${badge}`;
         return `
           <div class="judge-card bg-slate-900 border ${hasData ? 'border-slate-700' : 'border-slate-800'} rounded-xl p-4"
@@ -182,21 +191,21 @@
             </div>
             <div class="mt-3 grid grid-cols-3 gap-2 text-center">
               <div>
-                <p class="text-base font-bold ${hasData ? 'text-slate-100' : 'text-slate-600'}">${j.n_outcomes}</p>
-                <p class="text-xs text-slate-500">outcomes</p>
+                <p class="text-base font-bold ${hasData ? 'text-slate-100' : 'text-slate-600'}">${j.n_contested || 0}</p>
+                <p class="text-xs text-slate-500">contested</p>
               </div>
               <div>
                 <p class="text-base font-bold ${hasData ? 'text-slate-100' : 'text-slate-600'}">${j.n_cases}</p>
                 <p class="text-xs text-slate-500">cases</p>
               </div>
               <div>
-                <p class="text-base font-bold ${hasData ? 'text-slate-100' : 'text-slate-600'}">${j.n_hearings}</p>
-                <p class="text-xs text-slate-500">hearings</p>
+                <p class="text-base font-bold ${hasData ? 'text-slate-100' : 'text-slate-600'}">${j.n_outcomes}</p>
+                <p class="text-xs text-slate-500">outcomes</p>
               </div>
             </div>
-            ${hasData ? `
+            ${hasData && effRate != null ? `
             <div class="mt-3 bg-slate-800 rounded-full h-1.5 overflow-hidden">
-              <div class="h-full rounded-full bg-indigo-500" style="width:${(j.grant_rate*100).toFixed(0)}%"></div>
+              <div class="h-full rounded-full bg-indigo-500" style="width:${(effRate*100).toFixed(0)}%"></div>
             </div>` : `<div class="mt-3 text-xs text-slate-600 italic">No linked outcomes</div>`}
           </div>`;
       }).join('');
