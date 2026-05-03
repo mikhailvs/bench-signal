@@ -1,11 +1,47 @@
 [
   {
+    "officer_id": 7,
+    "officer_name": "Michelle Ressa",
+    "motion_type": "order_show_cause",
+    "case_subtype": "other_family",
+    "n_contested": 7,
+    "n_denied": 5,
+    "baseline_grant_rate": 0.286,
+    "grant_rate_ci": [
+      0.1253,
+      0.5276
+    ],
+    "data_confidence": "medium",
+    "suppress_display": false,
+    "checklist_items": [
+      {
+        "item": "File at least 14 days before hearing",
+        "direction": "positive",
+        "advance_grant_rate": 0.333,
+        "rush_grant_rate": 0.167,
+        "n_advance": 3,
+        "n_rush": 6,
+        "evidence_level": "low",
+        "effect_description": "Motions filed 14+ days before hearing: 33% vs 17% rushed"
+      },
+      {
+        "item": "Write a thorough motion",
+        "direction": "positive",
+        "granted_avg_words": 1728,
+        "denied_avg_words": 1341,
+        "evidence_level": "low",
+        "effect_description": "Granted motions avg 1728 words vs denied avg 1341 words"
+      }
+    ],
+    "n_with_features": 7
+  },
+  {
     "officer_id": 9,
     "officer_name": "Tami Chavez",
     "motion_type": "temporary_order",
     "case_subtype": "dissolution",
-    "n_contested": 15,
-    "n_denied": 2,
+    "n_contested": 17,
+    "n_denied": 4,
     "baseline_grant_rate": null,
     "grant_rate_ci": null,
     "data_confidence": "preliminary",
@@ -20,16 +56,137 @@
         "n_rush": 3,
         "evidence_level": "moderate",
         "effect_description": "Motions filed 14+ days before hearing: 84% vs 0% rushed"
-      },
-      {
-        "item": "Avoid over-citing statutes",
-        "direction": "positive",
-        "granted_avg_rcw": 0.9,
-        "denied_avg_rcw": 2.0,
-        "evidence_level": "low",
-        "effect_description": "Granted: avg 0.9 RCW citations vs denied: avg 2.0"
       }
     ],
-    "n_with_features": 15
+    "n_with_features": 17
+  },
+  {
+    "officer_id": 12,
+    "officer_name": "Nichole Swennumson",
+    "motion_type": "temporary_order",
+    "case_subtype": "other_family",
+    "n_contested": 5,
+    "n_denied": 2,
+    "baseline_grant_rate": null,
+    "grant_rate_ci": null,
+    "data_confidence": "preliminary",
+    "suppress_display": true,
+    "checklist_items": [
+      {
+        "item": "Write a thorough motion",
+        "direction": "positive",
+        "granted_avg_words": 1041,
+        "denied_avg_words": 411,
+        "evidence_level": "low",
+        "effect_description": "Granted motions avg 1041 words vs denied avg 411 words"
+      },
+      {
+        "item": "File more complete briefing",
+        "direction": "positive",
+        "granted_avg_pages": 3.7,
+        "denied_avg_pages": 2.0,
+        "evidence_level": "low",
+        "effect_description": "Granted: avg 3.7 pages vs denied: avg 2.0 pages"
+      }
+    ],
+    "n_with_features": 5
+  },
+  {
+    "officer_id": 16,
+    "officer_name": "Jerry Scharosch",
+    "motion_type": "order_show_cause",
+    "case_subtype": "modification",
+    "n_contested": 5,
+    "n_denied": 2,
+    "baseline_grant_rate": null,
+    "grant_rate_ci": null,
+    "data_confidence": "preliminary",
+    "suppress_display": true,
+    "checklist_items": [
+      {
+        "item": "File at least 14 days before hearing",
+        "direction": "positive",
+        "advance_grant_rate": 0.75,
+        "rush_grant_rate": 0.333,
+        "n_advance": 8,
+        "n_rush": 3,
+        "evidence_level": "low",
+        "effect_description": "Motions filed 14+ days before hearing: 75% vs 33% rushed"
+      },
+      {
+        "item": "Write a thorough motion",
+        "direction": "positive",
+        "granted_avg_words": 1827,
+        "denied_avg_words": 912,
+        "evidence_level": "low",
+        "effect_description": "Granted motions avg 1827 words vs denied avg 912 words"
+      },
+      {
+        "item": "File more complete briefing",
+        "direction": "positive",
+        "granted_avg_pages": 5.5,
+        "denied_avg_pages": 3.0,
+        "evidence_level": "low",
+        "effect_description": "Granted: avg 5.5 pages vs denied: avg 3.0 pages"
+      },
+      {
+        "item": "Cite relevant RCW statutes",
+        "direction": "positive",
+        "granted_avg_rcw": 3.0,
+        "denied_avg_rcw": 2.0,
+        "evidence_level": "low",
+        "effect_description": "Granted: avg 3.0 RCW citations vs denied: avg 2.0"
+      }
+    ],
+    "n_with_features": 4
+  },
+  {
+    "officer_id": 16,
+    "officer_name": "Jerry Scharosch",
+    "motion_type": "order_show_cause",
+    "case_subtype": "other_family",
+    "n_contested": 5,
+    "n_denied": 2,
+    "baseline_grant_rate": null,
+    "grant_rate_ci": null,
+    "data_confidence": "preliminary",
+    "suppress_display": true,
+    "checklist_items": [
+      {
+        "item": "File at least 14 days before hearing",
+        "direction": "positive",
+        "advance_grant_rate": 0.75,
+        "rush_grant_rate": 0.333,
+        "n_advance": 8,
+        "n_rush": 3,
+        "evidence_level": "low",
+        "effect_description": "Motions filed 14+ days before hearing: 75% vs 33% rushed"
+      },
+      {
+        "item": "Write a thorough motion",
+        "direction": "positive",
+        "granted_avg_words": 2550,
+        "denied_avg_words": 862,
+        "evidence_level": "low",
+        "effect_description": "Granted motions avg 2550 words vs denied avg 862 words"
+      },
+      {
+        "item": "File more complete briefing",
+        "direction": "positive",
+        "granted_avg_pages": 7.0,
+        "denied_avg_pages": 3.5,
+        "evidence_level": "low",
+        "effect_description": "Granted: avg 7.0 pages vs denied: avg 3.5 pages"
+      },
+      {
+        "item": "Cite relevant RCW statutes",
+        "direction": "positive",
+        "granted_avg_rcw": 3.5,
+        "denied_avg_rcw": 2.0,
+        "evidence_level": "low",
+        "effect_description": "Granted: avg 3.5 RCW citations vs denied: avg 2.0"
+      }
+    ],
+    "n_with_features": 4
   }
 ]

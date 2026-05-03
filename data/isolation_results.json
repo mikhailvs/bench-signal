@@ -1,15 +1,15 @@
 {
   "model_meta": {
-    "n_total": 97,
-    "n_granted": 24,
-    "n_denied": 73,
-    "n_train": 58,
-    "n_test": 39,
-    "pr_auc": 0.3362,
-    "pr_auc_baseline": 0.3077,
-    "roc_auc": 0.5309,
-    "inference_model_converged": true,
-    "publish_feature_importance": true,
+    "n_total": 255,
+    "n_granted": 60,
+    "n_denied": 195,
+    "n_train": 153,
+    "n_test": 102,
+    "pr_auc": 0.1504,
+    "pr_auc_baseline": 0.1667,
+    "roc_auc": 0.4201,
+    "inference_model_converged": false,
+    "publish_feature_importance": false,
     "link_methods_included": [
       "title_match",
       "sub_num_proximity",
@@ -17,141 +17,12 @@
       "vrp_statement"
     ],
     "min_link_confidence": 0.45,
-    "generated_at": "2026-05-02T16:49:43.009269Z"
+    "excluded_link_methods": [
+      "dispositive_doc",
+      "date_proximity"
+    ],
+    "generated_at": "2026-05-03T09:28:13.778403Z"
   },
-  "features": [
-    {
-      "name": "log_words",
-      "label": "Motion length (log scale)",
-      "odds_ratio": 4.5071,
-      "ci_low": 0.9611,
-      "ci_high": 21.1374,
-      "p_value": 0.0562,
-      "coefficient": 1.5057,
-      "n_valid": 97,
-      "direction": "positive",
-      "significant": false
-    },
-    {
-      "name": "urgency",
-      "label": "Urgency language count",
-      "odds_ratio": 0.2586,
-      "ci_low": 0.031,
-      "ci_high": 2.1551,
-      "p_value": 0.2112,
-      "coefficient": -1.3526,
-      "n_valid": 97,
-      "direction": "negative",
-      "significant": false
-    },
-    {
-      "name": "exhibits",
-      "label": "Number of exhibits",
-      "odds_ratio": 3.7664,
-      "ci_low": 0.8,
-      "ci_high": 17.7321,
-      "p_value": 0.0934,
-      "coefficient": 1.3261,
-      "n_valid": 97,
-      "direction": "positive",
-      "significant": false
-    },
-    {
-      "name": "citations",
-      "label": "Case citations",
-      "odds_ratio": 0.3267,
-      "ci_low": 0.0602,
-      "ci_high": 1.7736,
-      "p_value": 0.1949,
-      "coefficient": -1.1188,
-      "n_valid": 97,
-      "direction": "negative",
-      "significant": false
-    },
-    {
-      "name": "family_rcw",
-      "label": "Family law RCW chapter cited (26.09/26.26/etc.)",
-      "odds_ratio": 0.3685,
-      "ci_low": 0.0697,
-      "ci_high": 1.9481,
-      "p_value": 0.24,
-      "coefficient": -0.9982,
-      "n_valid": 97,
-      "direction": "negative",
-      "significant": false
-    },
-    {
-      "name": "experience",
-      "label": "Attorney experience (years in dataset)",
-      "odds_ratio": 2.6455,
-      "ci_low": 0.5548,
-      "ci_high": 12.6147,
-      "p_value": 0.2222,
-      "coefficient": 0.9729,
-      "n_valid": 97,
-      "direction": "positive",
-      "significant": false
-    },
-    {
-      "name": "std_review",
-      "label": "Legal standard cited (best interests, adequate cause, etc.)",
-      "odds_ratio": 0.3995,
-      "ci_low": 0.0353,
-      "ci_high": 4.527,
-      "p_value": 0.4588,
-      "coefficient": -0.9175,
-      "n_valid": 97,
-      "direction": "negative",
-      "significant": false
-    },
-    {
-      "name": "pages",
-      "label": "Number of pages",
-      "odds_ratio": 0.5717,
-      "ci_low": 0.3292,
-      "ci_high": 0.993,
-      "p_value": 0.0471,
-      "coefficient": -0.5591,
-      "n_valid": 97,
-      "direction": "negative",
-      "significant": true
-    },
-    {
-      "name": "declarations",
-      "label": "Number of declarations",
-      "odds_ratio": 1.0765,
-      "ci_low": 0.8031,
-      "ci_high": 1.4431,
-      "p_value": 0.6219,
-      "coefficient": 0.0737,
-      "n_valid": 97,
-      "direction": "positive",
-      "significant": false
-    },
-    {
-      "name": "rcw_count",
-      "label": "RCW citations",
-      "odds_ratio": 1.0557,
-      "ci_low": 0.5583,
-      "ci_high": 1.9961,
-      "p_value": 0.8676,
-      "coefficient": 0.0542,
-      "n_valid": 97,
-      "direction": "positive",
-      "significant": false
-    },
-    {
-      "name": "days_lead",
-      "label": "Days filed before hearing",
-      "odds_ratio": 1.0063,
-      "ci_low": 0.9838,
-      "ci_high": 1.0294,
-      "p_value": 0.5844,
-      "coefficient": 0.0063,
-      "n_valid": 97,
-      "direction": "positive",
-      "significant": false
-    }
-  ],
+  "features": [],
   "data_warning": null
 }
