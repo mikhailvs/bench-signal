@@ -119,20 +119,28 @@
           <div class="flex-1">
             <h2 class="text-lg font-bold text-white mb-3">Motion-Outcome Linking</h2>
             <div class="space-y-3 text-sm text-slate-300 leading-relaxed">
-              <p>Linking a motion document to its ruling is the hardest step. Docket entries lack explicit motion-order relationships. We use a <strong class="text-slate-100">3-pass linking strategy</strong>:</p>
+              <p>Linking a motion document to its ruling is the hardest step. Docket entries lack explicit motion-order relationships. We use a <strong class="text-slate-100">5-pass linking strategy</strong>:</p>
 
               <div class="space-y-3 mt-2">
                 <div class="border-l-2 border-indigo-600 pl-4">
                   <p class="font-semibold text-slate-100 text-xs uppercase tracking-wide mb-1">Pass A — Dispositive Document Match</p>
-                  <p class="text-xs text-slate-400">Documents whose docket title contains "Order on" or "Ruling on" are matched to the most recent motion of the same type filed within 90 days. Covers <strong class="text-slate-200">412 grants + 28 denials</strong>. Highest precision (~97%).</p>
+                  <p class="text-xs text-slate-400">Documents whose docket title contains "Order on" or "Ruling on" are matched to the most recent motion of the same type filed within 90 days. Covers ~2,600 granted outcomes. Highest precision (~97%). Excluded from ML training to prevent label leakage.</p>
                 </div>
                 <div class="border-l-2 border-cyan-600 pl-4">
                   <p class="font-semibold text-slate-100 text-xs uppercase tracking-wide mb-1">Pass B — Title Keyword Match</p>
-                  <p class="text-xs text-slate-400">Regex matching of "GRANTED", "DENIED", "APPROVED" within the first 500 characters of a document against pending motions in the same hearing. Covers <strong class="text-slate-200">174 grants + 12 denials</strong>. Precision ~88%.</p>
+                  <p class="text-xs text-slate-400">Order text matched against pending motions by motion type keyword and outcome language ("GRANTED", "DENIED"). Generic order titles ("ORDER ON") fall back to reading order text for outcome. Covers ~164 links.</p>
                 </div>
                 <div class="border-l-2 border-violet-600 pl-4">
                   <p class="font-semibold text-slate-100 text-xs uppercase tracking-wide mb-1">Pass C — Sub-Number Proximity</p>
-                  <p class="text-xs text-slate-400">Documents numbered sequentially (e.g., 045, 046) where 046 contains outcome language are linked to 045 if it matches a known motion pattern. Covers <strong class="text-slate-200">57 grants + 6 denials</strong>. Precision ~81% (lowest).</p>
+                  <p class="text-xs text-slate-400">Sequentially-numbered documents (e.g., 045→046) where 046 contains outcome language are linked to 045. Covers ~324 links.</p>
+                </div>
+                <div class="border-l-2 border-amber-600 pl-4">
+                  <p class="font-semibold text-slate-100 text-xs uppercase tracking-wide mb-1">Pass D — Date Proximity</p>
+                  <p class="text-xs text-slate-400">Unlinked motions matched to orders filed within 60 days with compatible motion types. Confidence threshold 0.45. Covers ~335 links.</p>
+                </div>
+                <div class="border-l-2 border-green-600 pl-4">
+                  <p class="font-semibold text-slate-100 text-xs uppercase tracking-wide mb-1">Pass E — VRP Statement</p>
+                  <p class="text-xs text-slate-400">VRP (Verbatim Report of Proceedings) court speech analyzed for ruling statements ("motion is granted/denied"). Covers ~31 links.</p>
                 </div>
               </div>
 
@@ -140,7 +148,7 @@
                 <svg class="w-4 h-4 text-indigo-400 mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M12 2a10 10 0 100 20A10 10 0 0012 2z"/>
                 </svg>
-                <p class="text-xs text-slate-400"><strong class="text-slate-200">Coverage:</strong> 697 of ~5,961 potential motion-outcome pairs are linked (~11.7%). The primary bottleneck is documents without extractable text (scanned images) and ambiguous docket titles. The linker is designed to be conservative — false positives are more harmful than missed links.</p>
+                <p class="text-xs text-slate-400"><strong class="text-slate-200">Coverage:</strong> 3,426 of ~7,881 motions are linked (43%). The primary bottleneck is ambiguous docket titles and motions without corresponding order documents. The linker is designed to be conservative — false positives are more harmful than missed links. 1,438 links (contested outcomes) are used for judge-level analysis.</p>
               </div>
             </div>
           </div>
@@ -217,7 +225,7 @@
             <ul class="space-y-2.5 text-sm text-slate-300 leading-relaxed">
               <li class="flex gap-2.5">
                 <span class="text-amber-400 shrink-0 mt-0.5">▸</span>
-                <span><strong class="text-slate-100">Low linking coverage (11.7%).</strong> Most motion-outcome pairs are unlinked due to document format constraints. Results reflect only linkable documents, which may be systematically different (e.g., better-formatted attorney-filed motions).</span>
+                <span><strong class="text-slate-100">Partial linking coverage (43%).</strong> 57% of motions cannot be linked to an outcome due to ambiguous docket titles or missing order documents. Results reflect only linkable documents, which may be systematically different (e.g., better-formatted attorney-filed motions).</span>
               </li>
               <li class="flex gap-2.5">
                 <span class="text-amber-400 shrink-0 mt-0.5">▸</span>
