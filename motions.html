@@ -53,6 +53,7 @@
           <select id="sort-by" class="w-full bg-slate-800 border border-slate-700 text-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-indigo-500">
             <option value="grant_rate_desc">Grant Rate ↓</option>
             <option value="grant_rate_asc">Grant Rate ↑</option>
+            <option value="n_denied_desc">N Denied ↓</option>
             <option value="n_total_desc">N Total ↓</option>
             <option value="officer_name">Judge A–Z</option>
             <option value="motion_type">Motion Type A–Z</option>
@@ -202,6 +203,7 @@
             const av = a.grant_rate ?? 2, bv = b.grant_rate ?? 2;
             return av - bv;
           }
+          case 'n_denied_desc': return (b.n_denied || 0) - (a.n_denied || 0);
           case 'n_total_desc':  return b.n_total - a.n_total;
           case 'officer_name':  return a.officer_name.localeCompare(b.officer_name);
           case 'motion_type':   return a.motion_type.localeCompare(b.motion_type);
