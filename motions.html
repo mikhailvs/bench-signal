@@ -64,6 +64,13 @@
       </div>
     </div>
 
+    <!-- ── High-denial motion types summary ── -->
+    <div id="deny-summary" class="hidden mb-6 bg-slate-900 border border-slate-800 rounded-xl p-5">
+      <p class="section-label mb-2">Motion Types with Highest Denial Rates</p>
+      <p class="text-xs text-slate-500 mb-3">Cross-judge aggregates · contested outcomes only · min 5 denials</p>
+      <div id="deny-chips" class="flex flex-wrap gap-2"></div>
+    </div>
+
     <!-- Row count -->
     <div class="flex items-center justify-between mb-3">
       <p id="row-count" class="text-xs text-slate-500"></p>
@@ -112,7 +119,29 @@
   <script src="js/charts.js"></script>
   <script>
   (async function () {
-    const motionStats = await fetch('data/motion_stats.json').then(r => r.json());
+    const [motionStats, contestedMotions] = await Promise.all([
+      fetch('data/motion_stats.json').then(r => r.json()),
+      fetch('data/contested_motions.json').then(r => r.json()).catch(() => []),
+    ]);
+
+    // Render high-denial chips
+    const highDeny = (contestedMotions || [])
+      .filter(m => (m.n_denied || 0) >= 5)
+      .sort((a, b) => (b.n_denied / (b.n_denied + b.n_granted)) - (a.n_denied / (a.n_denied + a.n_granted)))
+      .slice(0, 8);
+    if (highDeny.length > 0) {
+      document.getElementById('deny-summary').classList.remove('hidden');
+      document.getElementById('deny-chips').innerHTML = highDeny.map(m => {
+        const denyRate = Math.round(100 * m.n_denied / (m.n_denied + m.n_granted));
+        const color = denyRate >= 70 ? 'bg-red-900/50 text-red-300 border-red-800/50'
+                    : denyRate >= 50 ? 'bg-amber-900/40 text-amber-300 border-amber-800/40'
+                    : 'bg-slate-800 text-slate-300 border-slate-700';
+        const label = m.motion_type.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+        return `<span class="border rounded-full px-3 py-1 text-xs font-medium ${color}">
+          ${label} <span class="opacity-70">${denyRate}% denied (n=${m.n_denied})</span>
+        </span>`;
+      }).join('');
+    }
 
     // ── Populate filter dropdowns ─────────────────────────────────────────
     const judges   = [...new Set(motionStats.map(m => m.officer_name))].sort();
