@@ -47,13 +47,10 @@
         </div>
       </div>
 
-      <!-- By Hour -->
-      <div class="bg-slate-900 border border-slate-800 rounded-xl p-5">
+      <!-- By Hour — suppressed: 87% of rows use default '09' (hearing time not scraped) -->
+      <div class="bg-slate-900 border border-slate-800 rounded-xl p-5 opacity-40">
         <p class="section-label mb-1">By Hour of Day</p>
-        <p class="text-slate-400 text-xs mb-4">Scheduled hearing start time</p>
-        <div class="chart-container" style="height:240px;">
-          <canvas id="chart-hour"></canvas>
-        </div>
+        <p class="text-amber-400 text-xs mb-2">⚠ Data not available — hearing times were not captured in this dataset. This chart is suppressed to avoid misleading conclusions.</p>
       </div>
     </div>
 
@@ -63,7 +60,7 @@
       <ul class="space-y-2 text-sm text-slate-300">
         <li class="insight-item"><strong class="text-slate-100">October peak.</strong> October had the highest monthly outcome count (72), closely followed by April and September — consistent with post-summer filing surges.</li>
         <li class="insight-item"><strong class="text-slate-100">Tuesday dominates.</strong> Tuesday had the most linked outcomes, likely reflecting docket scheduling patterns rather than substantive differences.</li>
-        <li class="insight-item"><strong class="text-slate-100">10 AM prime time.</strong> The 10 AM slot accounted for the most outcomes — hearings after 3 PM are rare and show no denials in this dataset.</li>
+        <li class="insight-item"><strong class="text-slate-100">Hearing time not captured.</strong> Scheduled hearing times were not scraped in the 2023 dataset. The hour-of-day chart has been suppressed to avoid displaying a data artifact.</li>
         <li class="insight-item"><strong class="text-slate-100">February dip.</strong> February had the lowest count (40), consistent with fewer court days and post-holiday filings not yet reaching hearing stage.</li>
       </ul>
     </div>
