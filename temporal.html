@@ -126,14 +126,7 @@
       dowKeys.map(k => temporal.by_dow[k].denied),
     );
 
-    // ── By Hour ───────────────────────────────────────────────────────────
-    const hourKeys = Object.keys(temporal.by_hour).sort();
-    createStackedBar(
-      'chart-hour',
-      hourKeys.map(h => h + ':00'),
-      hourKeys.map(k => temporal.by_hour[k].granted),
-      hourKeys.map(k => temporal.by_hour[k].denied),
-    );
+    // ── By Hour — suppressed (no canvas in DOM; hearing times not captured) ──
 
     // ── Timing buckets grant rate ─────────────────────────────────────────
     const timingKeys = Object.keys(timing);
