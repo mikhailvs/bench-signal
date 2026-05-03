@@ -76,7 +76,7 @@
       <!-- Case subtype doughnut -->
       <div class="bg-slate-900 border border-slate-800 rounded-xl p-5">
         <p class="section-label mb-1">Case Subtypes</p>
-        <p class="text-slate-400 text-xs mb-4">596 cases, 2023</p>
+        <p class="text-slate-400 text-xs mb-4">2,499 cases, 2023</p>
         <div class="chart-container" style="height:280px;">
           <canvas id="chart-subtypes"></canvas>
         </div>
@@ -89,7 +89,7 @@
       <p class="section-label mb-4">What We Found</p>
       <ul class="space-y-3 text-sm text-slate-300">
         <li class="insight-item">
-          <strong class="text-slate-100">High overall grant rate (93%).</strong> Of 697 motion outcomes linked, 643 were granted — suggesting family law motions in Spokane courts are almost universally uncontested or pro forma at the hearing stage.
+          <strong class="text-slate-100">High overall grant rate.</strong> The majority of linked motion outcomes are granted — suggesting family law motions in Spokane courts are often uncontested or granted as filed. Contested outcomes (29% of linked) show more variation.
         </li>
         <li class="insight-item">
           <strong class="text-slate-100">Substantial judge-level variation.</strong> Grant rates among judges with sufficient outcome data range from 87% to 100%, a ~13 percentage-point spread that persists across motion types.
@@ -98,7 +98,7 @@
           <strong class="text-slate-100">Dissolution dominates the docket.</strong> 66% of cases are dissolutions; contempt and modification hearings (14% combined) show slightly lower grant rates and greater motion complexity.
         </li>
         <li class="insight-item">
-          <strong class="text-slate-100">Outcome linking is the key bottleneck.</strong> Only ~11.7% of all documents have linked outcomes; OCR quality on form-filled PDFs is the primary constraint — see Methodology.
+          <strong class="text-slate-100">Outcome linking at 43% of motions.</strong> A 5-pass linker (dispositive doc, title match, sub-number proximity, date proximity, VRP statement) links 3,426 of 7,881 motions to outcomes. Ambiguous docket titles are the primary bottleneck — see Methodology.
         </li>
       </ul>
     </section>
@@ -150,7 +150,7 @@
 
     const kpis = [
       { label: 'Total Cases',     value: totalCases.toLocaleString(),    sub: '2023 family law', color: 'text-indigo-400' },
-      { label: 'Linked Outcomes', value: totalOutcomes.toLocaleString(), sub: '~11.7% of docs',  color: 'text-cyan-400'   },
+      { label: 'Linked Outcomes', value: totalOutcomes.toLocaleString(), sub: '43% of motions',   color: 'text-cyan-400'   },
       { label: 'Overall Grant Rate', value: overallRate + '%',           sub: 'All outcomes incl. uncontested', color: 'text-emerald-400' },
       { label: 'Judges Covered', value: judges.length.toString(),        sub: 'officers of record', color: 'text-violet-400' },
     ];
