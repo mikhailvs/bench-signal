@@ -70,6 +70,10 @@
         <h2 id="checklist-title" class="text-xl font-semibold text-white"></h2>
       </div>
 
+      <div id="prelim-banner" class="hidden bg-amber-900/20 border border-amber-700/40 rounded-lg px-4 py-3 text-sm text-amber-400">
+        <strong>Preliminary data.</strong> Fewer than 5 contested denials — patterns shown here are directional only and may not hold with larger samples.
+      </div>
+
       <div id="checklist-items" class="space-y-3"></div>
 
       <div id="no-checklist" class="hidden text-slate-400 text-sm py-4">
@@ -251,7 +255,15 @@
       }`;
     }
 
-    document.getElementById('show-checklist-btn').classList.remove('hidden');
+    const btn = document.getElementById('show-checklist-btn');
+    btn.classList.remove('hidden');
+    if (entry && entry.suppress_display) {
+      btn.textContent = 'View Preliminary Patterns →';
+      btn.className = btn.className.replace('bg-indigo-600 hover:bg-indigo-500', 'bg-slate-700 hover:bg-slate-600');
+    } else {
+      btn.textContent = 'View Filing Checklist →';
+      btn.className = btn.className.replace('bg-slate-700 hover:bg-slate-600', 'bg-indigo-600 hover:bg-indigo-500');
+    }
   }
 
   function showChecklist() {
@@ -268,6 +280,14 @@
     const container = document.getElementById('checklist-items');
     const noData = document.getElementById('no-checklist');
     container.innerHTML = '';
+
+    // Show preliminary banner if data is thin
+    const prelimBanner = document.getElementById('prelim-banner');
+    if (entry && entry.suppress_display) {
+      prelimBanner.classList.remove('hidden');
+    } else {
+      prelimBanner.classList.add('hidden');
+    }
 
     if (!entry || !entry.checklist_items || entry.checklist_items.length === 0) {
       noData.classList.remove('hidden');
