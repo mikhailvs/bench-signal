@@ -77,24 +77,15 @@
         As more 2023 documents are processed, patterns may emerge.
       </div>
 
-      <!-- Model insights section -->
-      <div class="bg-slate-900 border border-indigo-800/50 rounded-xl p-5 mt-4">
-        <h3 class="font-semibold text-indigo-300 mb-3">Cross-judge finding (2023 data, n=97)</h3>
-        <div class="space-y-2 text-sm text-slate-300">
-          <div class="flex items-start gap-2">
-            <span class="text-orange-400 mt-0.5">→</span>
-            <span><strong>Page count:</strong> More pages is associated with <em>lower</em> grant probability across all judges and motion types (OR=0.57, 95% CI [0.33–0.99], p=0.047). The only statistically significant finding in the current dataset.</span>
-          </div>
-          <div class="flex items-start gap-2">
-            <span class="text-slate-500 mt-0.5">→</span>
-            <span><strong>Longer motions:</strong> Motions with more RCW citations and case citations trend positive but results are not yet statistically significant (n too small).</span>
-          </div>
-          <div class="flex items-start gap-2">
-            <span class="text-slate-500 mt-0.5">→</span>
-            <span><strong>Filing lead time:</strong> Directionally positive (earlier = higher grant rate) but high variance at current sample sizes.</span>
-          </div>
+      <!-- Model insights section — populated dynamically from isolation_results.json -->
+      <div id="model-insights" class="bg-slate-900 border border-indigo-800/50 rounded-xl p-5 mt-4 hidden">
+        <div class="flex items-center justify-between mb-3">
+          <h3 id="model-title" class="font-semibold text-indigo-300"></h3>
+          <span id="model-auc-badge" class="text-xs text-slate-500"></span>
         </div>
-        <p class="text-xs text-slate-500 mt-3">Based on logistic regression across all contested outcomes with complete features. All findings are correlational, not causal. Wide confidence intervals reflect small sample.</p>
+        <div id="model-warning" class="hidden mb-3 text-xs text-amber-400 bg-amber-900/20 rounded px-3 py-2"></div>
+        <div id="model-features" class="space-y-2 text-sm"></div>
+        <p class="text-xs text-slate-500 mt-3">Pooled logistic regression with judge + motion type fixed effects. Correlational only — not causal. Wide CIs reflect small sample.</p>
       </div>
     </div>
 
@@ -102,15 +93,79 @@
 
   <script>
   // ── Data loading ──────────────────────────────────────────────────────────
-  let judges = [], checklistIndex = [], motionStats = [];
+  let judges = [], checklistIndex = [], motionStats = [], isolationResults = null;
 
   async function loadData() {
-    [judges, checklistIndex, motionStats] = await Promise.all([
+    [judges, checklistIndex, motionStats, isolationResults] = await Promise.all([
       fetch('data/judges.json').then(r => r.json()),
       fetch('data/checklist_index.json').then(r => r.json()).catch(() => []),
       fetch('data/judge_motion_stats.json').then(r => r.json()).catch(() => []),
+      fetch('data/isolation_results.json').then(r => r.json()).catch(() => null),
     ]);
     populateJudgeDropdown();
+    renderModelInsights();
+  }
+
+  function renderModelInsights() {
+    const panel = document.getElementById('model-insights');
+    if (!isolationResults || !isolationResults.model_meta) return;
+
+    const meta = isolationResults.model_meta;
+    if (!meta.publish_feature_importance) return;
+
+    panel.classList.remove('hidden');
+
+    document.getElementById('model-title').textContent =
+      `Cross-judge associations (n=${meta.n_total} contested outcomes)`;
+    document.getElementById('model-auc-badge').textContent =
+      `PR-AUC ${meta.pr_auc?.toFixed(3)} vs ${meta.pr_auc_baseline?.toFixed(3)} baseline`;
+
+    const warnEl = document.getElementById('model-warning');
+    if (isolationResults.data_warning) {
+      warnEl.textContent = isolationResults.data_warning;
+      warnEl.classList.remove('hidden');
+    }
+
+    const features = isolationResults.features || [];
+    const sigFeats = features.filter(f => f.significant);
+    const trendFeats = features.filter(f => !f.significant && f.p_value < 0.20);
+
+    const container = document.getElementById('model-features');
+    container.innerHTML = '';
+
+    if (sigFeats.length === 0 && trendFeats.length === 0) {
+      container.innerHTML = '<p class="text-slate-500">No features reached statistical significance at current sample sizes.</p>';
+      return;
+    }
+
+    function featureRow(feat, significant) {
+      const dirColor = feat.direction === 'positive' ? 'text-green-400' : 'text-red-400';
+      const arrow = feat.direction === 'positive' ? '↑' : '↓';
+      const orStr = feat.odds_ratio != null ? feat.odds_ratio.toFixed(2) : '?';
+      const ciStr = (feat.ci_low != null && feat.ci_high != null)
+        ? `[${feat.ci_low.toFixed(2)}–${feat.ci_high.toFixed(2)}]` : '';
+      const pStr = feat.p_value != null ? `p=${feat.p_value.toFixed(3)}` : '';
+      const rowClass = significant ? 'text-slate-200' : 'text-slate-400';
+      const sigBadge = significant
+        ? '<span class="ml-2 text-xs bg-indigo-900/60 text-indigo-300 px-1.5 py-0.5 rounded">significant</span>'
+        : '<span class="ml-2 text-xs text-slate-600">trend</span>';
+
+      return `<div class="flex items-start gap-2 ${rowClass}">
+        <span class="${significant ? dirColor : 'text-slate-600'} font-bold mt-0.5">${arrow}</span>
+        <div class="flex-1">
+          <span class="font-medium">${feat.label || feat.name}</span>${sigBadge}
+          <span class="ml-2 text-xs font-mono ${significant ? 'text-slate-400' : 'text-slate-600'}">
+            OR=${orStr} ${ciStr} ${pStr}
+          </span>
+        </div>
+      </div>`;
+    }
+
+    sigFeats.forEach(f => { container.innerHTML += featureRow(f, true); });
+    if (trendFeats.length > 0) {
+      container.innerHTML += '<div class="text-xs text-slate-600 mt-2 mb-1">Directional trends (not significant):</div>';
+      trendFeats.forEach(f => { container.innerHTML += featureRow(f, false); });
+    }
   }
 
   function populateJudgeDropdown() {
