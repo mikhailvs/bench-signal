@@ -126,7 +126,17 @@
     if (!isolationResults || !isolationResults.model_meta) return;
 
     const meta = isolationResults.model_meta;
-    if (!meta.publish_feature_importance) return;
+    if (!meta.publish_feature_importance) {
+      // Show panel with honest "no signal" message
+      panel.classList.remove('hidden');
+      document.getElementById('model-title').textContent =
+        `Cross-judge model (n=${meta.n_total} contested outcomes)`;
+      document.getElementById('model-auc-badge').textContent =
+        `PR-AUC ${meta.pr_auc?.toFixed(3)} vs ${meta.pr_auc_baseline?.toFixed(3)} baseline`;
+      document.getElementById('model-features').innerHTML =
+        `<p class="text-slate-400 text-sm">No filing characteristics significantly predict contested outcomes at current sample sizes. The model does not outperform a naive baseline — suggesting outcomes are driven by case-specific factors not captured in motion documents.</p>`;
+      return;
+    }
 
     panel.classList.remove('hidden');
 
