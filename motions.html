@@ -86,7 +86,8 @@
               <th class="px-4 py-3 font-medium">Judge</th>
               <th class="px-4 py-3 font-medium">Motion Type</th>
               <th class="px-4 py-3 font-medium">Case Subtype</th>
-              <th class="px-4 py-3 font-medium text-right">N Total</th>
+              <th class="px-4 py-3 font-medium text-right">N</th>
+              <th class="px-4 py-3 font-medium text-right">Denied</th>
               <th class="px-4 py-3 font-medium text-right">Grant Rate</th>
               <th class="px-4 py-3 font-medium text-right">Avg Days<br/>Before Hrg</th>
               <th class="px-4 py-3 font-medium text-right">Avg Pages<br/>(Granted)</th>
@@ -238,6 +239,7 @@
             <td class="px-4 py-2.5 text-slate-300">${r.motion_type.replace(/_/g,' ')}</td>
             <td class="px-4 py-2.5 text-slate-400">${r.case_subtype.replace(/_/g,' ')}</td>
             <td class="px-4 py-2.5 text-right text-slate-300">${r.n_total}</td>
+            <td class="px-4 py-2.5 text-right ${r.n_denied > 0 ? 'text-red-400' : 'text-slate-600'}">${r.n_denied || 0}</td>
             <td class="px-4 py-2.5 text-right ${rateClass}">${rateStr}${phraseBtn}</td>
             <td class="px-4 py-2.5 text-right text-slate-400">${days}</td>
             <td class="px-4 py-2.5 text-right text-slate-400">${pgG}</td>
