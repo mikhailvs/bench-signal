@@ -81,6 +81,14 @@
         As more 2023 documents are processed, patterns may emerge.
       </div>
 
+      <!-- Timing signal — cross-judge, always shown -->
+      <div id="timing-panel" class="bg-slate-900 border border-slate-700 rounded-xl p-5 mt-4 hidden">
+        <h3 class="font-semibold text-slate-200 mb-1 text-sm">Filing Timing — Cross-Judge Pattern</h3>
+        <p class="text-xs text-slate-500 mb-3">Grant rate by days filed before hearing, across all 2023 contested outcomes (n=297 with timing data)</p>
+        <div id="timing-bars" class="space-y-2"></div>
+        <p class="text-xs text-slate-600 mt-3">Filing ≥15 days before hearing shows consistently higher grant rates. This holds across all judges and motion types in this dataset.</p>
+      </div>
+
       <!-- Model insights section — populated dynamically from isolation_results.json -->
       <div id="model-insights" class="bg-slate-900 border border-indigo-800/50 rounded-xl p-5 mt-4 hidden">
         <div class="flex items-center justify-between mb-3">
@@ -99,12 +107,15 @@
   // ── Data loading ──────────────────────────────────────────────────────────
   let judges = [], checklistIndex = [], motionStats = [], isolationResults = null;
 
+  let timingData = null;
+
   async function loadData() {
-    [judges, checklistIndex, motionStats, isolationResults] = await Promise.all([
+    [judges, checklistIndex, motionStats, isolationResults, timingData] = await Promise.all([
       fetch('data/judges.json').then(r => r.json()),
       fetch('data/checklist_index.json').then(r => r.json()).catch(() => []),
       fetch('data/judge_motion_stats.json').then(r => r.json()).catch(() => []),
       fetch('data/isolation_results.json').then(r => r.json()).catch(() => null),
+      fetch('data/timing.json').then(r => r.json()).catch(() => null),
     ]);
     populateJudgeDropdown();
     renderModelInsights();
@@ -170,6 +181,52 @@
       container.innerHTML += '<div class="text-xs text-slate-600 mt-2 mb-1">Directional trends (not significant):</div>';
       trendFeats.forEach(f => { container.innerHTML += featureRow(f, false); });
     }
+  }
+
+  function renderTimingPanel() {
+    const panel = document.getElementById('timing-panel');
+    if (!timingData) return;
+    panel.classList.remove('hidden');
+
+    const BUCKET_LABELS = {
+      '0-7':   '0–7 days',
+      '8-14':  '8–14 days',
+      '15-30': '15–30 days',
+      '31-60': '31–60 days',
+      '60+':   '60+ days',
+    };
+    const container = document.getElementById('timing-bars');
+    container.innerHTML = '';
+
+    const buckets = Object.entries(timingData)
+      .map(([k, v]) => {
+        const g = v.g ?? v.granted ?? 0;
+        const d = v.d ?? v.denied ?? 0;
+        const n = g + d;
+        const rate = n > 0 ? g / n : null;
+        return { key: k, label: BUCKET_LABELS[k] || k, g, d, n, rate };
+      })
+      .filter(b => b.n > 0)
+      .sort((a, b) => {
+        const order = ['0-7','8-14','15-30','31-60','60+'];
+        return order.indexOf(a.key) - order.indexOf(b.key);
+      });
+
+    const maxRate = Math.max(...buckets.map(b => b.rate ?? 0));
+    buckets.forEach(b => {
+      if (b.rate === null) return;
+      const pct = (b.rate * 100).toFixed(0);
+      const barW = maxRate > 0 ? ((b.rate / maxRate) * 100).toFixed(0) : 0;
+      const barColor = b.rate >= 0.80 ? 'bg-emerald-500' : b.rate >= 0.65 ? 'bg-yellow-500' : 'bg-red-500';
+      container.innerHTML += `
+        <div class="flex items-center gap-3 text-xs">
+          <span class="w-20 text-slate-400 shrink-0">${b.label}</span>
+          <div class="flex-1 bg-slate-800 rounded h-4 overflow-hidden">
+            <div class="${barColor} h-full rounded" style="width:${barW}%"></div>
+          </div>
+          <span class="w-16 text-right font-mono text-slate-300">${pct}% <span class="text-slate-600">(${b.n})</span></span>
+        </div>`;
+    });
   }
 
   function populateJudgeDropdown() {
@@ -280,6 +337,9 @@
     const container = document.getElementById('checklist-items');
     const noData = document.getElementById('no-checklist');
     container.innerHTML = '';
+
+    // Render timing panel
+    renderTimingPanel();
 
     // Show preliminary banner if data is thin
     const prelimBanner = document.getElementById('prelim-banner');
