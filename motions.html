@@ -137,10 +137,29 @@
                     : denyRate >= 50 ? 'bg-amber-900/40 text-amber-300 border-amber-800/40'
                     : 'bg-slate-800 text-slate-300 border-slate-700';
         const label = m.motion_type.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
-        return `<span class="border rounded-full px-3 py-1 text-xs font-medium ${color}">
+        return `<button class="deny-chip border rounded-full px-3 py-1 text-xs font-medium ${color} hover:opacity-80 transition-opacity cursor-pointer"
+          data-motion="${m.motion_type}">
           ${label} <span class="opacity-70">${denyRate}% denied (n=${m.n_denied})</span>
-        </span>`;
+        </button>`;
       }).join('');
+    }
+
+      // Wire chip clicks to filter table
+      document.getElementById('deny-chips').addEventListener('click', e => {
+        const chip = e.target.closest('.deny-chip');
+        if (!chip) return;
+        const mt = chip.dataset.motion;
+        const sel = document.getElementById('filter-motion');
+        if (sel.value === mt) {
+          sel.value = '';  // toggle off
+          chip.style.outline = '';
+        } else {
+          sel.value = mt;
+          document.querySelectorAll('.deny-chip').forEach(c => c.style.outline = '');
+          chip.style.outline = '2px solid #6366f1';
+        }
+        render();
+      });
     }
 
     // ── Populate filter dropdowns ─────────────────────────────────────────
