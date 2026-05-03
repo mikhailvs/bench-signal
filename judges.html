@@ -229,10 +229,11 @@
 
       // Stats row
       const statsEl = document.getElementById('modal-stats');
+      const hasContested = (j.n_contested || 0) > 0;
       statsEl.innerHTML = [
-        { label: 'Grant Rate', value: rateLabel(j) },
-        { label: 'Granted',    value: j.n_granted },
-        { label: 'Denied',     value: j.n_denied  },
+        { label: hasContested ? 'Contested Grant Rate' : 'Grant Rate', value: rateLabel(j) },
+        { label: 'Contested Denied', value: j.n_denied_contested || 0 },
+        { label: 'Contested Granted', value: j.n_granted_contested || 0 },
       ].map(s => `
         <div class="bg-slate-900 py-3 px-4 text-center">
           <p class="text-lg font-bold text-slate-100">${s.value}</p>
