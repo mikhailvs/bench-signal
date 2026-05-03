@@ -1,83 +1,83 @@
 {
   "by_month": {
     "06": {
-      "granted": 72,
-      "denied": 20
+      "granted": 64,
+      "denied": 26
     },
     "05": {
-      "granted": 69,
-      "denied": 27
+      "granted": 59,
+      "denied": 36
     },
     "10": {
-      "granted": 68,
+      "granted": 63,
       "denied": 46
     },
     "12": {
-      "granted": 87,
-      "denied": 37
+      "granted": 84,
+      "denied": 36
     },
     "03": {
-      "granted": 121,
-      "denied": 41
+      "granted": 113,
+      "denied": 47
     },
     "04": {
-      "granted": 72,
-      "denied": 35
+      "granted": 69,
+      "denied": 34
     },
     "02": {
-      "granted": 71,
-      "denied": 44
+      "granted": 66,
+      "denied": 47
     },
     "01": {
-      "granted": 95,
-      "denied": 31
+      "granted": 88,
+      "denied": 33
     },
     "08": {
-      "granted": 89,
+      "granted": 80,
       "denied": 22
     },
     "07": {
-      "granted": 77,
-      "denied": 43
+      "granted": 72,
+      "denied": 44
     },
     "09": {
-      "granted": 87,
+      "granted": 84,
       "denied": 32
     },
     "11": {
-      "granted": 89,
+      "granted": 83,
       "denied": 17
     }
   },
   "by_dow": {
     "1": {
-      "granted": 150,
-      "denied": 69
+      "granted": 141,
+      "denied": 70
     },
     "3": {
-      "granted": 215,
-      "denied": 90
+      "granted": 204,
+      "denied": 102
     },
     "2": {
-      "granted": 183,
-      "denied": 76
+      "granted": 166,
+      "denied": 77
     },
     "5": {
-      "granted": 283,
-      "denied": 108
+      "granted": 266,
+      "denied": 109
     },
     "4": {
-      "granted": 166,
-      "denied": 52
+      "granted": 148,
+      "denied": 62
     }
   },
   "by_hour": {
     "09": {
-      "granted": 847,
-      "denied": 373
+      "granted": 781,
+      "denied": 398
     },
     "00": {
-      "granted": 131,
+      "granted": 126,
       "denied": 13
     },
     "08": {
@@ -96,10 +96,6 @@
       "granted": 2,
       "denied": 0
     },
-    "10": {
-      "granted": 2,
-      "denied": 0
-    },
     "15": {
       "granted": 2,
       "denied": 0
@@ -107,12 +103,16 @@
     "07": {
       "granted": 1,
       "denied": 0
+    },
+    "10": {
+      "granted": 1,
+      "denied": 0
     }
   },
   "data_quality": {
-    "total_rows": 1392,
-    "from_hearing_date": 183,
-    "from_order_date": 1209,
+    "total_rows": 1345,
+    "from_hearing_date": 173,
+    "from_order_date": 1172,
     "note": "month/day from hearing scheduled_at where available, order filed_date otherwise",
     "hour_note": "hour from hearing scheduled_at where available"
   }

@@ -6,12 +6,10 @@
     "case_subtype": "dissolution",
     "n_contested": 15,
     "n_denied": 2,
-    "baseline_grant_rate": 0.867,
-    "grant_rate_ci": [
-      0.6212,
-      0.9626
-    ],
+    "baseline_grant_rate": null,
+    "grant_rate_ci": null,
     "data_confidence": "preliminary",
+    "suppress_display": true,
     "checklist_items": [
       {
         "item": "File at least 14 days before hearing",
